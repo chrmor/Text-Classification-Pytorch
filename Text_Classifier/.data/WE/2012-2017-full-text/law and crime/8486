@@ -1,0 +1,18 @@
+Cryptolocker ransomware has 'infected about 250,000 PCs'
+A virulent form of ransomware has now infected about quarter of a million Windows computers, according to a report by security researchers.
+Cryptolocker scrambles users' data and then demands a fee to unencrypt it alongside a countdown clock.
+Dell Secureworks said that the US and UK had been worst affected.
+It added that the cyber-criminals responsible were now targeting home internet users after initially focusing on professionals.
+The firm has provided a list of net domains that it suspects have been used to spread the code, but warned that more are being generated every day.
+Ransomware has existed since at least 1989, but this latest example is particularly problematic because of the way it makes files inaccessible.
+"Instead of using a custom cryptographic implementation like many other malware families, Cryptolocker uses strong third-party certified cryptography offered by Microsoft's CryptoAPI," said the report.
+"By using a sound implementation and following best practices, the malware authors have created a robust program that is difficult to circumvent."
+The first versions of Crytpolocker appear to have been posted to the net on 5 September.
+Early examples were spread via spam emails that asked the user to click on a Zip-archived extension identified as being a customer complaint about the recipient's organisation.
+Later it was distributed via malware attached to emails claiming there had been a problem clearing a cheque. Clicking the associated link downloaded a Trojan horse called Gameover Zeus, which in turn installed Cryptolocker onto the victim's PC.
+By mid-December, Dell Secureworks said between 200,000 to 250,000 computers had been infected.
+It said of those affected, "a minimum of 0.4%, and very likely many times that" had agreed to the ransom demand, which can currently only be paid in the virtual currencies Bitcoin and MoneyPak.
+"Anecdotal reports from victims who elected to pay the ransom indicate that the Cryptolocker threat actors honour payments by instructing infected computers to decrypt files and uninstall the malware," added the security firm.
+"According to reports from victims, payments may be accepted within minutes or may take several weeks to process."
+However, Trend Micro, another security firm, has warned that giving into the blackmail request only encouraged the further spread of Cryptolocker and other copycat schemes, and said that there was no guarantee of getting the data back.
+Dell suggested PCs be blocked from communicating with the hundreds of domains names it had flagged as being linked to the spread of Cryptolocker, and it suggested five further steps the public and businesses could take to protect themselves:

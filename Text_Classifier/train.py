@@ -2,16 +2,25 @@ import torch
 import torch.autograd as autograd
 import torch.nn as nn
 
-def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs):
+def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_file):
 
+	with open(log_file, 'a') as the_file:
+		the_file.write("\nModel: " + str(model))
+		the_file.write("\nLearning rate: " + str(learnign_rate));
+		the_file.write("\nEpochs: " + str(num_epochs));
+		the_file.close()
+    
     # gpu runnable 
 	if cuda: 
 		model.cuda()
-    
+
+	#Parallel CPU
+	torch.nn.DataParallel(model)
+        
     # train mode 
 	model.train()
 
-	num_batch = len(train_loader.dataset)
+	num_batch = len(train_loader)
 	step = 0
 
 	#Loss and optimizer 
@@ -33,7 +42,7 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs):
 			_, predicted = torch.max(output, 1)
 			loss = criterion(output, target)
 			loss.backward()
-			nn.utils.clip_grad_norm(model.parameters(), 3, norm_type = 2) # l2 constraint of 3
+			nn.utils.clip_grad_norm_(model.parameters(), 3, norm_type = 2) # l2 constraint of 3
 
 			optimizer.step()
 
@@ -42,12 +51,19 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs):
 
 
 			if(step) % 100 == 0:
-				print ('Epoch [%d/%d], Steps [%d/%d], Loss: %.4f'  
-					%(epoch+1, num_epochs, step,  num_batch * num_epochs, loss.data[0]))
+				msg = 'Epoch [%d/%d], Steps [%d/%d], Loss: %.4f' % (epoch+1, num_epochs, step,  num_batch * num_epochs, loss.item())
+				print(msg)
+				with open(log_file, 'a') as the_file:
+					the_file.write('\n' + msg)
+					the_file.close()
+    
 
-
-			if(step) % 1000 == 0:
-				eval(dev_loader, model, cuda)
+			if(step) % 500 == 0:
+				msg = eval(dev_loader, model, cuda)
+				print(msg)
+				with open(log_file, 'a') as the_file:
+					the_file.write('\nDev: ' + msg)
+					the_file.close()
 				#print(predicted[:10])
 
 
@@ -71,17 +87,17 @@ def eval(test_loader, model, cuda):
  		output = model(feature)
  		loss = criterion(output, target) # losses are summed, not average 
 
- 		avg_loss += loss.data[0]
+ 		avg_loss += loss.item()
  		corrects += (torch.max(output, 1)
                      [1].view(target.size()).data == target.data).sum()
  	
  	size = len(test_loader.dataset)
- 	accuracy = 100 * corrects / size 
+ 	accuracy = 100 * float(corrects) / size 
  	model.train()
- 	print('\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, 
+ 	return '\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, 
                                                                        accuracy, 
                                                                        corrects, 
-                                                                       size))
+                                                                       size)
 
 
 
@@ -93,8 +109,8 @@ def predict(sample_text, model, text_field, label_field):
 	text = [[text_field.vocab.stoi[x] for x in text]]
 	x = text_field.tensor_type(text)
 	x = autograd.Variable(x)
-	x = x.cuda()
-
+	if cuda:
+		x = x.cuda()
 	output = model(x)
 	_, predicted = torch.max(output, 1)
 

@@ -1,0 +1,38 @@
+'Biggest ransomware outbreak in history' hits nearly 100 countries with data held for ransom
+Dozens of countries have been hit with a huge cyber extortion attack that locked computers and held users' files for ransom at a multitude of hospitals, companies and government agencies.
+The most disruptive attacks were reported in Britain, where hospitals and clinics were forced to turn away patients after losing access to computers, but other countries — including Spain, Portugal and Russia — have also been targeted.
+Cyber extortionists tricked victims into opening malicious malware attachments to spam emails that appeared to contain invoices, job offers, security warnings and other legitimate files.
+The ransomware encrypted data on the computers, demanding payments of $300 to $600 to restore access. Security researchers said they observed some victims paying via the digital currency bitcoin, though they did not know what per cent had given in to the extortionists.
+Mikko Hypponen, chief research officer at Helsinki-based cybersecurity company F-Secure, called it "the biggest ransomware outbreak in history".
+The malicious software behind the onslaught appeared to exploit a vulnerability in Microsoft Windows that was supposedly identified by the National Security Agency for its own intelligence-gathering purposes and was later leaked to the internet.
+Researchers with security software maker Avast said they had observed 57,000 infections in 99 countries with Russia, Ukraine and Taiwan the top targets.
+Chris Wysopal of the software security firm Veracode said criminal organisations were probably behind the attack, given how quickly the malware spread.
+But Alan Woodward, visiting professor of computing at the University of Surrey, said he did not believe it was a targeted attack.
+"But will simply have been that the ransomware has sought out those organisations that are running susceptible devices," Mr Woodward said.
+The US Department of Homeland Security said late on Friday (local time) that it was aware of reports of the ransomware, was sharing information with domestic and foreign partners and was ready to lend technical support.
+The Group of Seven (G7) rich nations, which are holding a two-day meeting of finance ministers and central bankers in Italy, released a draft statement committing to join forces to fight the rising threat of cyber attacks.
+"We recognise that cyber incidents represent a growing threat for our economies and that appropriate economy-wide policy responses are needed," the draft statement said.
+It called for common shared practices to spot quickly any vulnerabilities in the world's financial system and stressed the importance of effective measures to assess cyber security among individual financial firms and at sector level.
+Private security firms identified the ransomware as a new variant of "WannaCry" that had the ability to automatically spread across large networks by exploiting a known bug in Microsoft's Windows operating system.
+The hackers, who have not come forward to claim responsibility or otherwise been identified, likely made it a "worm," or self-spreading malware, by exploiting a piece of NSA code known as "Eternal Blue" that was released last month by a group known as the Shadow Brokers, researchers with several private cyber security firms said.
+Microsoft said it was pushing out automatic Windows updates to defend clients from WannaCry. It issued a patch on March 14.
+The attack froze computers at hospitals across Britain, shutting down wards, closing emergency rooms and bringing medical treatments to a halt.
+NHS Digital, which oversees hospital cybersecurity, said the attack was affecting organisations from across a range of sectors.
+Many hospitals cancelled all routine procedures and warned patients not to come to hospital unless it was an emergency. Some chemotherapy patients were even sent home because their records could not be accessed.
+Several facilities in Scotland also reported being hit. Doctors' practices and pharmacies reported similar problems.
+Russia appeared to be the hardest hit, according to security experts, with the country's Interior Ministry confirming it was struck.
+The interior ministry said on its website that around 1,000 computers had been infected but it had localised the virus.
+In addition to Russia, the biggest targets appeared to be Ukraine and India, nations where it is common to find older, unpatched versions of Windows in use, according to security firm Kaspersky Lab's count.
+A spokesman for Prime Minister Malcolm Turnbull said there had been no confirmed reports of an impact on Australian organisations at this stage.
+He said the Federal Government was closely monitoring the situation.
+"The Prime Minister's Cyber Security Special Adviser is working with the Australian Cyber Security Centre and health agencies in Australia to determine any impact to Australia," he said.
+In Spain, some big firms took pre-emptive steps to thwart ransomware attacks following a warning from Spain's National Cryptology Centre of "a massive ransomware attack".
+Iberdrola and Gas Natural, along with Vodafone's unit in Spain, asked staff to turn off computers or cut off internet access in case they had been compromised, representatives from the firms said.
+Leading international shipper FedEx Corp said it was one of the companies whose system was infected with the malware that security firms said was delivered via spam emails.
+"Like many other companies, FedEx is experiencing interference with some of our Windows-based systems caused by malware," the company said in a statement.
+Only a small number of US-headquartered organisations were infected because the hackers appear to have begun the campaign by targeting organisations in Europe, a research manager with security software maker Symantec said.
+By the time they turned their attention to US organisations, spam filters had identified the new threat and flagged the ransomware-laden emails as malicious, Vikram Thakur said.
+Telecommunications company Telefonica was among many targets in Spain, though it said the attack was limited to some computers on an internal network and had not affected clients or services.
+Portugal Telecom and Telefonica Argentina both said they were also targeted.
+Britain's National Cyber Security Centre, part of the GCHQ electronic intelligence agency, said it was working with police and the health system to investigate the attack.
+British government officials and intelligence chiefs have repeatedly highlighted the threat to critical infrastructure and the economy from cyberattacks, with the National Cyber Security Centre reporting it had detected 188 "high-level" attacks in just three months.

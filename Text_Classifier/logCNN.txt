@@ -1,0 +1,810 @@
+
+
+dataset2012-2017-full-text
+len(train)16399
+len(dev)2342
+len(test)4685
+Model: CNNClassifier(
+  (embedding): Embedding(365144, 100)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 100), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 100), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 100), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 25
+Epoch [1/25], Steps [100/20500], Loss: 1.6839
+Epoch [1/25], Steps [200/20500], Loss: 2.1539
+Epoch [1/25], Steps [300/20500], Loss: 1.5029
+Epoch [1/25], Steps [400/20500], Loss: 1.7651
+Epoch [1/25], Steps [500/20500], Loss: 1.5482
+Dev: 
+Evaluation - loss: 1.567440  acc: 40.9479%(959/2342) 
+
+Epoch [1/25], Steps [600/20500], Loss: 1.7280
+Epoch [1/25], Steps [700/20500], Loss: 1.3626
+Epoch [1/25], Steps [800/20500], Loss: 1.3612
+Epoch [2/25], Steps [900/20500], Loss: 2.2717
+Epoch [2/25], Steps [1000/20500], Loss: 1.4270
+Dev: 
+Evaluation - loss: 1.406366  acc: 48.8044%(1143/2342) 
+
+Epoch [2/25], Steps [1100/20500], Loss: 1.2864
+Epoch [2/25], Steps [1200/20500], Loss: 1.2290
+Epoch [2/25], Steps [1300/20500], Loss: 1.4650
+Epoch [2/25], Steps [1400/20500], Loss: 1.2902
+Epoch [2/25], Steps [1500/20500], Loss: 1.5273
+Dev: 
+Evaluation - loss: 1.348728  acc: 52.8608%(1238/2342) 
+
+Epoch [2/25], Steps [1600/20500], Loss: 1.2578
+Epoch [3/25], Steps [1700/20500], Loss: 1.5025
+Epoch [3/25], Steps [1800/20500], Loss: 1.5747
+Epoch [3/25], Steps [1900/20500], Loss: 1.0093
+Epoch [3/25], Steps [2000/20500], Loss: 0.8425
+Dev: 
+Evaluation - loss: 1.316319  acc: 55.1665%(1292/2342) 
+
+Epoch [3/25], Steps [2100/20500], Loss: 1.2806
+Epoch [3/25], Steps [2200/20500], Loss: 1.1249
+Epoch [3/25], Steps [2300/20500], Loss: 1.3011
+Epoch [3/25], Steps [2400/20500], Loss: 1.3514
+Epoch [4/25], Steps [2500/20500], Loss: 1.4700
+Dev: 
+Evaluation - loss: 1.275702  acc: 55.5081%(1300/2342) 
+
+Epoch [4/25], Steps [2600/20500], Loss: 1.2953
+Epoch [4/25], Steps [2700/20500], Loss: 1.3744
+Epoch [4/25], Steps [2800/20500], Loss: 1.1120
+Epoch [4/25], Steps [2900/20500], Loss: 1.4075
+Epoch [4/25], Steps [3000/20500], Loss: 1.0972
+Dev: 
+Evaluation - loss: 1.255529  acc: 55.8497%(1308/2342) 
+
+Epoch [4/25], Steps [3100/20500], Loss: 1.4044
+Epoch [4/25], Steps [3200/20500], Loss: 1.2312
+Epoch [5/25], Steps [3300/20500], Loss: 0.9427
+Epoch [5/25], Steps [3400/20500], Loss: 1.6621
+Epoch [5/25], Steps [3500/20500], Loss: 1.5728
+Dev: 
+Evaluation - loss: 1.243458  acc: 56.4475%(1322/2342) 
+
+Epoch [5/25], Steps [3600/20500], Loss: 1.0344
+Epoch [5/25], Steps [3700/20500], Loss: 1.2379
+Epoch [5/25], Steps [3800/20500], Loss: 1.4823
+Epoch [5/25], Steps [3900/20500], Loss: 1.1892
+Epoch [5/25], Steps [4000/20500], Loss: 1.4785
+Dev: 
+Evaluation - loss: 1.229940  acc: 57.2588%(1341/2342) 
+
+Epoch [5/25], Steps [4100/20500], Loss: 1.1302
+Epoch [6/25], Steps [4200/20500], Loss: 1.2103
+Epoch [6/25], Steps [4300/20500], Loss: 0.8837
+Epoch [6/25], Steps [4400/20500], Loss: 1.0147
+Epoch [6/25], Steps [4500/20500], Loss: 1.0789
+Dev: 
+Evaluation - loss: 1.225608  acc: 57.6003%(1349/2342) 
+
+Epoch [6/25], Steps [4600/20500], Loss: 1.3346
+Epoch [6/25], Steps [4700/20500], Loss: 1.2157
+Epoch [6/25], Steps [4800/20500], Loss: 1.3897
+Epoch [6/25], Steps [4900/20500], Loss: 1.0267
+Epoch [7/25], Steps [5000/20500], Loss: 1.1186
+Dev: 
+Evaluation - loss: 1.209211  acc: 57.6430%(1350/2342) 
+
+Epoch [7/25], Steps [5100/20500], Loss: 1.1931
+Epoch [7/25], Steps [5200/20500], Loss: 1.0610
+Epoch [7/25], Steps [5300/20500], Loss: 1.2318
+Epoch [7/25], Steps [5400/20500], Loss: 1.1582
+Epoch [7/25], Steps [5500/20500], Loss: 1.1468
+Dev: 
+Evaluation - loss: 1.198761  acc: 58.7105%(1375/2342) 
+
+Epoch [7/25], Steps [5600/20500], Loss: 1.1338
+Epoch [7/25], Steps [5700/20500], Loss: 1.2234
+Epoch [8/25], Steps [5800/20500], Loss: 1.1487
+Epoch [8/25], Steps [5900/20500], Loss: 0.9544
+Epoch [8/25], Steps [6000/20500], Loss: 1.0368
+Dev: 
+Evaluation - loss: 1.221870  acc: 57.9419%(1357/2342) 
+
+Epoch [8/25], Steps [6100/20500], Loss: 1.1547
+Epoch [8/25], Steps [6200/20500], Loss: 0.8501
+Epoch [8/25], Steps [6300/20500], Loss: 1.3717
+Epoch [8/25], Steps [6400/20500], Loss: 1.3581
+Epoch [8/25], Steps [6500/20500], Loss: 1.1619
+Dev: 
+Evaluation - loss: 1.208599  acc: 60.0769%(1407/2342) 
+
+Epoch [9/25], Steps [6600/20500], Loss: 1.5016
+Epoch [9/25], Steps [6700/20500], Loss: 1.1529
+Epoch [9/25], Steps [6800/20500], Loss: 1.2025
+Epoch [9/25], Steps [6900/20500], Loss: 0.8520
+Epoch [9/25], Steps [7000/20500], Loss: 0.9639
+Dev: 
+Evaluation - loss: 1.202066  acc: 59.6499%(1397/2342) 
+
+Epoch [9/25], Steps [7100/20500], Loss: 0.8721
+Epoch [9/25], Steps [7200/20500], Loss: 1.3010
+Epoch [9/25], Steps [7300/20500], Loss: 1.1374
+Epoch [10/25], Steps [7400/20500], Loss: 1.1875
+Epoch [10/25], Steps [7500/20500], Loss: 0.8787
+Dev: 
+Evaluation - loss: 1.211711  acc: 59.5218%(1394/2342) 
+
+Epoch [10/25], Steps [7600/20500], Loss: 1.1764
+Epoch [10/25], Steps [7700/20500], Loss: 0.8701
+Epoch [10/25], Steps [7800/20500], Loss: 1.2242
+Epoch [10/25], Steps [7900/20500], Loss: 1.3877
+Epoch [10/25], Steps [8000/20500], Loss: 1.4738
+Dev: 
+Evaluation - loss: 1.212296  acc: 59.8207%(1401/2342) 
+
+Epoch [10/25], Steps [8100/20500], Loss: 0.9819
+Epoch [10/25], Steps [8200/20500], Loss: 1.2301
+Epoch [11/25], Steps [8300/20500], Loss: 0.5030
+Epoch [11/25], Steps [8400/20500], Loss: 0.9379
+Epoch [11/25], Steps [8500/20500], Loss: 1.1248
+Dev: 
+Evaluation - loss: 1.221903  acc: 59.9488%(1404/2342) 
+
+Epoch [11/25], Steps [8600/20500], Loss: 0.9683
+Epoch [11/25], Steps [8700/20500], Loss: 0.8883
+Epoch [11/25], Steps [8800/20500], Loss: 1.3766
+Epoch [11/25], Steps [8900/20500], Loss: 0.9094
+Epoch [11/25], Steps [9000/20500], Loss: 1.0428
+Dev: 
+Evaluation - loss: 1.228364  acc: 59.2656%(1388/2342) 
+
+Epoch [12/25], Steps [9100/20500], Loss: 1.0250
+Epoch [12/25], Steps [9200/20500], Loss: 0.7580
+Epoch [12/25], Steps [9300/20500], Loss: 0.7988
+Epoch [12/25], Steps [9400/20500], Loss: 1.5999
+Epoch [12/25], Steps [9500/20500], Loss: 0.9812
+Dev: 
+Evaluation - loss: 1.233150  acc: 59.5645%(1395/2342) 
+
+Epoch [12/25], Steps [9600/20500], Loss: 1.0268
+Epoch [12/25], Steps [9700/20500], Loss: 0.7954
+Epoch [12/25], Steps [9800/20500], Loss: 1.0349
+Epoch [13/25], Steps [9900/20500], Loss: 1.0873
+Epoch [13/25], Steps [10000/20500], Loss: 0.8915
+Dev: 
+Evaluation - loss: 1.247611  acc: 59.6072%(1396/2342) 
+
+Epoch [13/25], Steps [10100/20500], Loss: 1.0809
+Epoch [13/25], Steps [10200/20500], Loss: 1.2570
+Epoch [13/25], Steps [10300/20500], Loss: 0.6278
+Epoch [13/25], Steps [10400/20500], Loss: 1.2144
+Epoch [13/25], Steps [10500/20500], Loss: 1.2956
+Dev: 
+Evaluation - loss: 1.265208  acc: 59.2656%(1388/2342) 
+
+Epoch [13/25], Steps [10600/20500], Loss: 0.5939
+Epoch [14/25], Steps [10700/20500], Loss: 1.0803
+Epoch [14/25], Steps [10800/20500], Loss: 1.1896
+Epoch [14/25], Steps [10900/20500], Loss: 1.0088
+Epoch [14/25], Steps [11000/20500], Loss: 0.6771
+Dev: 
+Evaluation - loss: 1.264413  acc: 59.5218%(1394/2342) 
+
+Epoch [14/25], Steps [11100/20500], Loss: 0.8183
+Epoch [14/25], Steps [11200/20500], Loss: 0.8314
+Epoch [14/25], Steps [11300/20500], Loss: 0.9073
+Epoch [14/25], Steps [11400/20500], Loss: 0.9119
+Epoch [15/25], Steps [11500/20500], Loss: 1.2673
+Dev: 
+Evaluation - loss: 1.284194  acc: 59.3083%(1389/2342) 
+
+Epoch [15/25], Steps [11600/20500], Loss: 1.0098
+Epoch [15/25], Steps [11700/20500], Loss: 1.0683
+Epoch [15/25], Steps [11800/20500], Loss: 1.1242
+Epoch [15/25], Steps [11900/20500], Loss: 0.7692
+Epoch [15/25], Steps [12000/20500], Loss: 0.8503
+Dev: 
+Evaluation - loss: 1.311705  acc: 59.6926%(1398/2342) 
+
+Epoch [15/25], Steps [12100/20500], Loss: 0.6887
+Epoch [15/25], Steps [12200/20500], Loss: 0.9509
+Epoch [15/25], Steps [12300/20500], Loss: 1.1273
+Epoch [16/25], Steps [12400/20500], Loss: 0.8259
+Epoch [16/25], Steps [12500/20500], Loss: 1.4350
+Dev: 
+Evaluation - loss: 1.319771  acc: 59.1375%(1385/2342) 
+
+Epoch [16/25], Steps [12600/20500], Loss: 1.2706
+Epoch [16/25], Steps [12700/20500], Loss: 0.7863
+Epoch [16/25], Steps [12800/20500], Loss: 1.3620
+Epoch [16/25], Steps [12900/20500], Loss: 1.0648
+Epoch [16/25], Steps [13000/20500], Loss: 0.9931
+Dev: 
+Evaluation - loss: 1.349348  acc: 59.0094%(1382/2342) 
+
+Epoch [16/25], Steps [13100/20500], Loss: 1.2759
+Epoch [17/25], Steps [13200/20500], Loss: 0.9431
+Epoch [17/25], Steps [13300/20500], Loss: 0.6218
+Epoch [17/25], Steps [13400/20500], Loss: 1.1327
+Epoch [17/25], Steps [13500/20500], Loss: 0.5682
+Dev: 
+Evaluation - loss: 1.324915  acc: 59.3510%(1390/2342) 
+
+Epoch [17/25], Steps [13600/20500], Loss: 1.1583
+Epoch [17/25], Steps [13700/20500], Loss: 1.3462
+Epoch [17/25], Steps [13800/20500], Loss: 1.1013
+Epoch [17/25], Steps [13900/20500], Loss: 0.6543
+Epoch [18/25], Steps [14000/20500], Loss: 0.9180
+Dev: 
+Evaluation - loss: 1.347824  acc: 58.7959%(1377/2342) 
+
+Epoch [18/25], Steps [14100/20500], Loss: 0.7279
+Epoch [18/25], Steps [14200/20500], Loss: 0.7614
+Epoch [18/25], Steps [14300/20500], Loss: 0.9275
+Epoch [18/25], Steps [14400/20500], Loss: 0.6378
+Epoch [18/25], Steps [14500/20500], Loss: 1.2093
+Dev: 
+Evaluation - loss: 1.400777  acc: 59.0094%(1382/2342) 
+
+Epoch [18/25], Steps [14600/20500], Loss: 1.1050
+Epoch [18/25], Steps [14700/20500], Loss: 1.1214
+Epoch [19/25], Steps [14800/20500], Loss: 1.0323
+Epoch [19/25], Steps [14900/20500], Loss: 0.7033
+Epoch [19/25], Steps [15000/20500], Loss: 0.9609
+Dev: 
+Evaluation - loss: 1.386529  acc: 58.3689%(1367/2342) 
+
+Epoch [19/25], Steps [15100/20500], Loss: 1.0213
+Epoch [19/25], Steps [15200/20500], Loss: 0.9669
+Epoch [19/25], Steps [15300/20500], Loss: 0.9739
+Epoch [19/25], Steps [15400/20500], Loss: 1.0068
+Epoch [19/25], Steps [15500/20500], Loss: 1.0936
+Dev: 
+Evaluation - loss: 1.425525  acc: 58.3262%(1366/2342) 
+
+Epoch [20/25], Steps [15600/20500], Loss: 0.9817
+Epoch [20/25], Steps [15700/20500], Loss: 0.9660
+Epoch [20/25], Steps [15800/20500], Loss: 1.1371
+Epoch [20/25], Steps [15900/20500], Loss: 0.7364
+Epoch [20/25], Steps [16000/20500], Loss: 1.2134
+Dev: 
+Evaluation - loss: 1.432609  acc: 58.4543%(1369/2342) 
+
+Epoch [20/25], Steps [16100/20500], Loss: 0.7972
+Epoch [20/25], Steps [16200/20500], Loss: 1.1144
+Epoch [20/25], Steps [16300/20500], Loss: 1.0591
+Epoch [20/25], Steps [16400/20500], Loss: 1.2253
+Epoch [21/25], Steps [16500/20500], Loss: 1.1608
+Dev: 
+Evaluation - loss: 1.468088  acc: 57.1734%(1339/2342) 
+
+Epoch [21/25], Steps [16600/20500], Loss: 0.7786
+Epoch [21/25], Steps [16700/20500], Loss: 1.2558
+Epoch [21/25], Steps [16800/20500], Loss: 0.8394
+Epoch [21/25], Steps [16900/20500], Loss: 1.0527
+Epoch [21/25], Steps [17000/20500], Loss: 0.9509
+Dev: 
+Evaluation - loss: 1.439227  acc: 57.6430%(1350/2342) 
+
+Epoch [21/25], Steps [17100/20500], Loss: 0.5507
+Epoch [21/25], Steps [17200/20500], Loss: 1.0782
+Epoch [22/25], Steps [17300/20500], Loss: 1.1417
+Epoch [22/25], Steps [17400/20500], Loss: 0.9628
+Epoch [22/25], Steps [17500/20500], Loss: 0.7903
+Dev: 
+Evaluation - loss: 1.495376  acc: 57.7284%(1352/2342) 
+
+Epoch [22/25], Steps [17600/20500], Loss: 1.0401
+Epoch [22/25], Steps [17700/20500], Loss: 0.6917
+Epoch [22/25], Steps [17800/20500], Loss: 1.2697
+Epoch [22/25], Steps [17900/20500], Loss: 1.1644
+Epoch [22/25], Steps [18000/20500], Loss: 0.9987
+Dev: 
+Evaluation - loss: 1.520415  acc: 57.6430%(1350/2342) 
+
+Epoch [23/25], Steps [18100/20500], Loss: 0.7273
+Epoch [23/25], Steps [18200/20500], Loss: 1.1219
+Epoch [23/25], Steps [18300/20500], Loss: 0.9225
+Epoch [23/25], Steps [18400/20500], Loss: 1.1972
+Epoch [23/25], Steps [18500/20500], Loss: 1.2155
+Dev: 
+Evaluation - loss: 1.482536  acc: 57.4722%(1346/2342) 
+
+Epoch [23/25], Steps [18600/20500], Loss: 0.8252
+Epoch [23/25], Steps [18700/20500], Loss: 1.0628
+Epoch [23/25], Steps [18800/20500], Loss: 1.0424
+Epoch [24/25], Steps [18900/20500], Loss: 0.9184
+Epoch [24/25], Steps [19000/20500], Loss: 1.0281
+Dev: 
+Evaluation - loss: 1.534704  acc: 57.1307%(1338/2342) 
+
+Epoch [24/25], Steps [19100/20500], Loss: 1.1717
+Epoch [24/25], Steps [19200/20500], Loss: 1.1709
+Epoch [24/25], Steps [19300/20500], Loss: 0.6514
+Epoch [24/25], Steps [19400/20500], Loss: 1.3436
+Epoch [24/25], Steps [19500/20500], Loss: 0.9891
+Dev: 
+Evaluation - loss: 1.526907  acc: 57.7284%(1352/2342) 
+
+Epoch [24/25], Steps [19600/20500], Loss: 0.6112
+Epoch [25/25], Steps [19700/20500], Loss: 0.9223
+Epoch [25/25], Steps [19800/20500], Loss: 1.2709
+Epoch [25/25], Steps [19900/20500], Loss: 0.9681
+Epoch [25/25], Steps [20000/20500], Loss: 1.0722
+Dev: 
+Evaluation - loss: 1.561703  acc: 57.7284%(1352/2342) 
+
+Epoch [25/25], Steps [20100/20500], Loss: 1.1316
+Epoch [25/25], Steps [20200/20500], Loss: 1.2815
+Epoch [25/25], Steps [20300/20500], Loss: 0.8910
+Epoch [25/25], Steps [20400/20500], Loss: 0.8955
+Epoch [25/25], Steps [20500/20500], Loss: 0.7733
+Dev: 
+Evaluation - loss: 1.558606  acc: 56.5756%(1325/2342) 
+
+Test: 
+Evaluation - loss: 1.615236  acc: 57.0971%(2675/4685) 
+
+
+dataset2012-2017-full-text
+len(train)16399
+len(dev)2342
+len(test)4685
+Model: CNN
+
+dataset2012-2017-full-text
+len(train)16399
+len(dev)2342
+len(test)4685
+Model: CNN
+batch_size: 20
+Embeddings: glove-6B-300
+Model: CNNClassifier(
+  (embedding): Embedding(365144, 300)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 300), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 300), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 300), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 25
+Epoch [1/25], Steps [100/20500], Loss: 1.7582
+Epoch [1/25], Steps [200/20500], Loss: 1.6139
+Epoch [1/25], Steps [300/20500], Loss: 1.7725
+Epoch [1/25], Steps [400/20500], Loss: 1.4390
+Epoch [1/25], Steps [500/20500], Loss: 1.4736
+Dev: 
+Evaluation - loss: 1.463507  acc: 50.2562%(1177/2342) 
+
+Epoch [1/25], Steps [600/20500], Loss: 1.3770
+Epoch [1/25], Steps [700/20500], Loss: 1.6078
+Epoch [1/25], Steps [800/20500], Loss: 1.6087
+Epoch [2/25], Steps [900/20500], Loss: 1.3547
+Epoch [2/25], Steps [1000/20500], Loss: 1.3711
+Dev: 
+Evaluation - loss: 1.350403  acc: 53.1597%(1245/2342) 
+
+Epoch [2/25], Steps [1100/20500], Loss: 1.5244
+Epoch [2/25], Steps [1200/20500], Loss: 1.7295
+Epoch [2/25], Steps [1300/20500], Loss: 1.4826
+Epoch [2/25], Steps [1400/20500], Loss: 1.3700
+Epoch [2/25], Steps [1500/20500], Loss: 1.0567
+Dev: 
+Evaluation - loss: 1.298646  acc: 54.7395%(1282/2342) 
+
+Epoch [2/25], Steps [1600/20500], Loss: 1.7988
+Epoch [3/25], Steps [1700/20500], Loss: 1.4552
+Epoch [3/25], Steps [1800/20500], Loss: 1.2845
+Epoch [3/25], Steps [1900/20500], Loss: 2.3051
+Epoch [3/25], Steps [2000/20500], Loss: 1.5724
+Dev: 
+Evaluation - loss: 1.263112  acc: 55.8070%(1307/2342) 
+
+Epoch [3/25], Steps [2100/20500], Loss: 1.2710
+Epoch [3/25], Steps [2200/20500], Loss: 1.2891
+Epoch [3/25], Steps [2300/20500], Loss: 1.3819
+Epoch [3/25], Steps [2400/20500], Loss: 1.0914
+Epoch [4/25], Steps [2500/20500], Loss: 1.4693
+Dev: 
+Evaluation - loss: 1.244975  acc: 56.1059%(1314/2342) 
+
+Epoch [4/25], Steps [2600/20500], Loss: 0.9754
+Epoch [4/25], Steps [2700/20500], Loss: 1.4348
+Epoch [4/25], Steps [2800/20500], Loss: 1.2937
+Epoch [4/25], Steps [2900/20500], Loss: 1.7287
+Epoch [4/25], Steps [3000/20500], Loss: 1.3814
+Dev: 
+Evaluation - loss: 1.223096  acc: 57.3868%(1344/2342) 
+
+Epoch [4/25], Steps [3100/20500], Loss: 1.1064
+Epoch [4/25], Steps [3200/20500], Loss: 0.9295
+Epoch [5/25], Steps [3300/20500], Loss: 0.9513
+Epoch [5/25], Steps [3400/20500], Loss: 1.2738
+Epoch [5/25], Steps [3500/20500], Loss: 1.1919
+Dev: 
+Evaluation - loss: 1.209728  acc: 59.1375%(1385/2342) 
+
+Epoch [5/25], Steps [3600/20500], Loss: 1.3504
+Epoch [5/25], Steps [3700/20500], Loss: 1.2040
+Epoch [5/25], Steps [3800/20500], Loss: 1.0767
+Epoch [5/25], Steps [3900/20500], Loss: 1.3501
+Epoch [5/25], Steps [4000/20500], Loss: 1.2797
+Dev: 
+Evaluation - loss: 1.210716  acc: 59.6926%(1398/2342) 
+
+Epoch [5/25], Steps [4100/20500], Loss: 1.1945
+Epoch [6/25], Steps [4200/20500], Loss: 1.4098
+Epoch [6/25], Steps [4300/20500], Loss: 1.1448
+Epoch [6/25], Steps [4400/20500], Loss: 1.2060
+Epoch [6/25], Steps [4500/20500], Loss: 0.9267
+Dev: 
+Evaluation - loss: 1.200870  acc: 59.5645%(1395/2342) 
+
+Epoch [6/25], Steps [4600/20500], Loss: 1.0040
+Epoch [6/25], Steps [4700/20500], Loss: 1.1717
+Epoch [6/25], Steps [4800/20500], Loss: 1.1923
+Epoch [6/25], Steps [4900/20500], Loss: 0.9955
+Epoch [7/25], Steps [5000/20500], Loss: 1.1183
+Dev: 
+Evaluation - loss: 1.197959  acc: 60.1196%(1408/2342) 
+
+Epoch [7/25], Steps [5100/20500], Loss: 1.2593
+Epoch [7/25], Steps [5200/20500], Loss: 1.3889
+Epoch [7/25], Steps [5300/20500], Loss: 1.1640
+Epoch [7/25], Steps [5400/20500], Loss: 1.3281
+Epoch [7/25], Steps [5500/20500], Loss: 1.2114
+Dev: 
+Evaluation - loss: 1.209368  acc: 59.4364%(1392/2342) 
+
+Epoch [7/25], Steps [5600/20500], Loss: 0.9839
+Epoch [7/25], Steps [5700/20500], Loss: 1.0317
+Epoch [8/25], Steps [5800/20500], Loss: 1.1140
+Epoch [8/25], Steps [5900/20500], Loss: 0.6134
+Epoch [8/25], Steps [6000/20500], Loss: 1.3615
+Dev: 
+Evaluation - loss: 1.222372  acc: 59.9061%(1403/2342) 
+
+Epoch [8/25], Steps [6100/20500], Loss: 1.3321
+Epoch [8/25], Steps [6200/20500], Loss: 1.2956
+Epoch [8/25], Steps [6300/20500], Loss: 1.6496
+Epoch [8/25], Steps [6400/20500], Loss: 1.7211
+Epoch [8/25], Steps [6500/20500], Loss: 1.1044
+Dev: 
+Evaluation - loss: 1.225106  acc: 60.4611%(1416/2342) 
+
+Epoch [9/25], Steps [6600/20500], Loss: 0.9862
+Epoch [9/25], Steps [6700/20500], Loss: 1.1853
+Epoch [9/25], Steps [6800/20500], Loss: 1.0741
+Epoch [9/25], Steps [6900/20500], Loss: 0.9865
+Epoch [9/25], Steps [7000/20500], Loss: 0.5540
+Dev: 
+Evaluation - loss: 1.233801  acc: 59.9061%(1403/2342) 
+
+Epoch [9/25], Steps [7100/20500], Loss: 1.0421
+Epoch [9/25], Steps [7200/20500], Loss: 1.2658
+Epoch [9/25], Steps [7300/20500], Loss: 1.3938
+Epoch [10/25], Steps [7400/20500], Loss: 1.0367
+Epoch [10/25], Steps [7500/20500], Loss: 1.2053
+Dev: 
+Evaluation - loss: 1.229183  acc: 61.4859%(1440/2342) 
+
+Epoch [10/25], Steps [7600/20500], Loss: 0.9854
+Epoch [10/25], Steps [7700/20500], Loss: 0.9120
+Epoch [10/25], Steps [7800/20500], Loss: 1.3718
+Epoch [10/25], Steps [7900/20500], Loss: 0.8150
+Epoch [10/25], Steps [8000/20500], Loss: 1.0729
+Dev: 
+Evaluation - loss: 1.243881  acc: 61.2297%(1434/2342) 
+
+Epoch [10/25], Steps [8100/20500], Loss: 1.0428
+Epoch [10/25], Steps [8200/20500], Loss: 1.0857
+Epoch [11/25], Steps [8300/20500], Loss: 1.2698
+Epoch [11/25], Steps [8400/20500], Loss: 1.2783
+Epoch [11/25], Steps [8500/20500], Loss: 0.9113
+Dev: 
+Evaluation - loss: 1.270629  acc: 61.2724%(1435/2342) 
+
+Epoch [11/25], Steps [8600/20500], Loss: 1.1056
+Epoch [11/25], Steps [8700/20500], Loss: 0.7912
+Epoch [11/25], Steps [8800/20500], Loss: 0.7928
+Epoch [11/25], Steps [8900/20500], Loss: 1.2109
+Epoch [11/25], Steps [9000/20500], Loss: 0.9334
+Dev: 
+Evaluation - loss: 1.279597  acc: 61.0589%(1430/2342) 
+
+Epoch [12/25], Steps [9100/20500], Loss: 0.6472
+Epoch [12/25], Steps [9200/20500], Loss: 1.0342
+Epoch [12/25], Steps [9300/20500], Loss: 1.1945
+Epoch [12/25], Steps [9400/20500], Loss: 1.0218
+Epoch [12/25], Steps [9500/20500], Loss: 1.0041
+Dev: 
+Evaluation - loss: 1.290676  acc: 61.8702%(1449/2342) 
+
+Epoch [12/25], Steps [9600/20500], Loss: 1.1501
+Epoch [12/25], Steps [9700/20500], Loss: 0.8573
+Epoch [12/25], Steps [9800/20500], Loss: 0.9298
+Epoch [13/25], Steps [9900/20500], Loss: 0.8366
+Epoch [13/25], Steps [10000/20500], Loss: 0.7449
+Dev: 
+Evaluation - loss: 1.322764  acc: 61.4432%(1439/2342) 
+
+Epoch [13/25], Steps [10100/20500], Loss: 1.9623
+Epoch [13/25], Steps [10200/20500], Loss: 0.7590
+Epoch [13/25], Steps [10300/20500], Loss: 0.5896
+Epoch [13/25], Steps [10400/20500], Loss: 1.0049
+Epoch [13/25], Steps [10500/20500], Loss: 0.9045
+Dev: 
+Evaluation - loss: 1.324005  acc: 60.9735%(1428/2342) 
+
+Epoch [13/25], Steps [10600/20500], Loss: 1.0109
+Epoch [14/25], Steps [10700/20500], Loss: 0.7588
+Epoch [14/25], Steps [10800/20500], Loss: 1.0061
+Epoch [14/25], Steps [10900/20500], Loss: 0.9895
+Epoch [14/25], Steps [11000/20500], Loss: 0.6732
+Dev: 
+Evaluation - loss: 1.341474  acc: 61.0589%(1430/2342) 
+
+Epoch [14/25], Steps [11100/20500], Loss: 1.0868
+Epoch [14/25], Steps [11200/20500], Loss: 0.9686
+Epoch [14/25], Steps [11300/20500], Loss: 2.0058
+Epoch [14/25], Steps [11400/20500], Loss: 1.1675
+Epoch [15/25], Steps [11500/20500], Loss: 0.9047
+Dev: 
+Evaluation - loss: 1.382683  acc: 60.2904%(1412/2342) 
+
+Epoch [15/25], Steps [11600/20500], Loss: 1.3459
+Epoch [15/25], Steps [11700/20500], Loss: 0.8277
+Epoch [15/25], Steps [11800/20500], Loss: 0.9014
+Epoch [15/25], Steps [11900/20500], Loss: 1.3189
+Epoch [15/25], Steps [12000/20500], Loss: 0.8665
+Dev: 
+Evaluation - loss: 1.366908  acc: 60.5892%(1419/2342) 
+
+Epoch [15/25], Steps [12100/20500], Loss: 0.9573
+Epoch [15/25], Steps [12200/20500], Loss: 1.2435
+Epoch [15/25], Steps [12300/20500], Loss: 0.7891
+Epoch [16/25], Steps [12400/20500], Loss: 0.8551
+Epoch [16/25], Steps [12500/20500], Loss: 0.5870
+Dev: 
+Evaluation - loss: 1.389694  acc: 59.7353%(1399/2342) 
+
+Epoch [16/25], Steps [12600/20500], Loss: 0.7769
+Epoch [16/25], Steps [12700/20500], Loss: 1.3746
+Epoch [16/25], Steps [12800/20500], Loss: 0.8972
+Epoch [16/25], Steps [12900/20500], Loss: 0.8886
+Epoch [16/25], Steps [13000/20500], Loss: 1.0342
+Dev: 
+Evaluation - loss: 1.423666  acc: 59.7780%(1400/2342) 
+
+Epoch [16/25], Steps [13100/20500], Loss: 0.9744
+Epoch [17/25], Steps [13200/20500], Loss: 0.5163
+Epoch [17/25], Steps [13300/20500], Loss: 0.8812
+Epoch [17/25], Steps [13400/20500], Loss: 0.7972
+Epoch [17/25], Steps [13500/20500], Loss: 0.8565
+Dev: 
+Evaluation - loss: 1.450189  acc: 59.0521%(1383/2342) 
+
+Epoch [17/25], Steps [13600/20500], Loss: 0.7076
+Epoch [17/25], Steps [13700/20500], Loss: 0.8552
+Epoch [17/25], Steps [13800/20500], Loss: 1.1187
+Epoch [17/25], Steps [13900/20500], Loss: 1.1055
+Epoch [18/25], Steps [14000/20500], Loss: 0.6261
+Dev: 
+Evaluation - loss: 1.464233  acc: 60.4611%(1416/2342) 
+
+Epoch [18/25], Steps [14100/20500], Loss: 1.1557
+Epoch [18/25], Steps [14200/20500], Loss: 0.8793
+Epoch [18/25], Steps [14300/20500], Loss: 0.5828
+Epoch [18/25], Steps [14400/20500], Loss: 1.2514
+Epoch [18/25], Steps [14500/20500], Loss: 1.0369
+Dev: 
+Evaluation - loss: 1.482435  acc: 60.7173%(1422/2342) 
+
+Epoch [18/25], Steps [14600/20500], Loss: 1.2910
+Epoch [18/25], Steps [14700/20500], Loss: 0.9564
+Epoch [19/25], Steps [14800/20500], Loss: 1.3086
+Epoch [19/25], Steps [14900/20500], Loss: 0.5729
+Epoch [19/25], Steps [15000/20500], Loss: 1.2585
+Dev: 
+Evaluation - loss: 1.481775  acc: 60.1196%(1408/2342) 
+
+Epoch [19/25], Steps [15100/20500], Loss: 1.0903
+Epoch [19/25], Steps [15200/20500], Loss: 0.7207
+Epoch [19/25], Steps [15300/20500], Loss: 0.7853
+Epoch [19/25], Steps [15400/20500], Loss: 1.1234
+Epoch [19/25], Steps [15500/20500], Loss: 1.1592
+Dev: 
+Evaluation - loss: 1.511195  acc: 60.2050%(1410/2342) 
+
+Epoch [20/25], Steps [15600/20500], Loss: 1.5258
+Epoch [20/25], Steps [15700/20500], Loss: 1.0555
+Epoch [20/25], Steps [15800/20500], Loss: 1.1581
+Epoch [20/25], Steps [15900/20500], Loss: 0.8884
+Epoch [20/25], Steps [16000/20500], Loss: 0.8076
+Dev: 
+Evaluation - loss: 1.519109  acc: 58.8386%(1378/2342) 
+
+Epoch [20/25], Steps [16100/20500], Loss: 1.3397
+Epoch [20/25], Steps [16200/20500], Loss: 1.1227
+Epoch [20/25], Steps [16300/20500], Loss: 1.1164
+Epoch [20/25], Steps [16400/20500], Loss: 0.8633
+Epoch [21/25], Steps [16500/20500], Loss: 1.0173
+Dev: 
+Evaluation - loss: 1.521794  acc: 59.5645%(1395/2342) 
+
+Epoch [21/25], Steps [16600/20500], Loss: 0.4909
+Epoch [21/25], Steps [16700/20500], Loss: 0.5608
+Epoch [21/25], Steps [16800/20500], Loss: 0.6492
+Epoch [21/25], Steps [16900/20500], Loss: 1.0612
+Epoch [21/25], Steps [17000/20500], Loss: 0.8056
+Dev: 
+Evaluation - loss: 1.592673  acc: 59.8634%(1402/2342) 
+
+Epoch [21/25], Steps [17100/20500], Loss: 1.2657
+Epoch [21/25], Steps [17200/20500], Loss: 1.2157
+Epoch [22/25], Steps [17300/20500], Loss: 1.1091
+Epoch [22/25], Steps [17400/20500], Loss: 1.3343
+Epoch [22/25], Steps [17500/20500], Loss: 1.0426
+Dev: 
+Evaluation - loss: 1.596999  acc: 59.8207%(1401/2342) 
+
+Epoch [22/25], Steps [17600/20500], Loss: 0.8849
+Epoch [22/25], Steps [17700/20500], Loss: 0.8447
+Epoch [22/25], Steps [17800/20500], Loss: 1.3637
+Epoch [22/25], Steps [17900/20500], Loss: 1.2059
+Epoch [22/25], Steps [18000/20500], Loss: 1.1941
+Dev: 
+Evaluation - loss: 1.590993  acc: 59.5645%(1395/2342) 
+
+Epoch [23/25], Steps [18100/20500], Loss: 1.0664
+Epoch [23/25], Steps [18200/20500], Loss: 0.9706
+Epoch [23/25], Steps [18300/20500], Loss: 0.9332
+Epoch [23/25], Steps [18400/20500], Loss: 0.8491
+Epoch [23/25], Steps [18500/20500], Loss: 1.0531
+Dev: 
+Evaluation - loss: 1.606660  acc: 59.0521%(1383/2342) 
+
+Epoch [23/25], Steps [18600/20500], Loss: 0.7405
+Epoch [23/25], Steps [18700/20500], Loss: 0.7688
+Epoch [23/25], Steps [18800/20500], Loss: 0.8415
+Epoch [24/25], Steps [18900/20500], Loss: 1.0051
+Epoch [24/25], Steps [19000/20500], Loss: 0.9487
+Dev: 
+Evaluation - loss: 1.654162  acc: 59.8207%(1401/2342) 
+
+Epoch [24/25], Steps [19100/20500], Loss: 1.1264
+Epoch [24/25], Steps [19200/20500], Loss: 0.4382
+Epoch [24/25], Steps [19300/20500], Loss: 0.4761
+Epoch [24/25], Steps [19400/20500], Loss: 1.0924
+Epoch [24/25], Steps [19500/20500], Loss: 0.7120
+Dev: 
+Evaluation - loss: 1.635724  acc: 59.0948%(1384/2342) 
+
+Epoch [24/25], Steps [19600/20500], Loss: 1.1034
+Epoch [25/25], Steps [19700/20500], Loss: 0.9894
+Epoch [25/25], Steps [19800/20500], Loss: 1.1797
+Epoch [25/25], Steps [19900/20500], Loss: 0.7724
+Epoch [25/25], Steps [20000/20500], Loss: 0.8858
+Dev: 
+Evaluation - loss: 1.691207  acc: 59.3510%(1390/2342) 
+
+Epoch [25/25], Steps [20100/20500], Loss: 1.3907
+Epoch [25/25], Steps [20200/20500], Loss: 1.3753
+Epoch [25/25], Steps [20300/20500], Loss: 0.6861
+Epoch [25/25], Steps [20400/20500], Loss: 0.9069
+Epoch [25/25], Steps [20500/20500], Loss: 0.9991
+Dev: 
+Evaluation - loss: 1.687449  acc: 60.0342%(1406/2342) 
+
+Test: 
+Evaluation - loss: 1.621196  acc: 59.5304%(2789/4685) 
+
+
+dataset2012-2012-short-text
+len(train)3138
+len(dev)448
+len(test)896
+Model: CNN
+batch_size: 20
+Embeddings: glove-6B-300
+Model: CNNClassifier(
+  (embedding): Embedding(18830, 300)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 300), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 300), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 300), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 1
+
+dataset2012-2012-short-text
+len(train)3138
+len(dev)448
+len(test)896
+Model: CNN
+batch_size: 20
+Embeddings: glove-6B-300
+Model: CNNClassifier(
+  (embedding): Embedding(18830, 300)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 300), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 300), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 300), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 1
+Epoch [1/1], Steps [100/157], Loss: 2.0137
+
+dataset2012-2012-short-text
+len(train)3138
+len(dev)448
+len(test)896
+Model: CNN
+batch_size: 20
+Embeddings: glove-6B-300
+Model: CNNClassifier(
+  (embedding): Embedding(18830, 300)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 300), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 300), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 300), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 1
+
+dataset2012-2012-short-text
+len(train)3138
+len(dev)448
+len(test)896
+Model: CNN
+batch_size: 20
+Embeddings: glove-6B-300
+Model: CNNClassifier(
+  (embedding): Embedding(18830, 300)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 300), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 300), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 300), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 1
+
+dataset2012-2012-short-text
+len(train)3138
+len(dev)448
+len(test)896
+Model: CNN
+batch_size: 20
+Embeddings: glove-6B-100
+Model: CNNClassifier(
+  (embedding): Embedding(18830, 100)
+  (convs): ModuleList(
+    (0): Conv2d(1, 2, kernel_size=(3, 100), stride=(1, 1))
+    (1): Conv2d(1, 2, kernel_size=(4, 100), stride=(1, 1))
+    (2): Conv2d(1, 2, kernel_size=(5, 100), stride=(1, 1))
+  )
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=6, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 1
+Epoch [1/1], Steps [100/157], Loss: 1.8200
+Test: 
+Evaluation - loss: 1.725670  acc: 28.1250%(252/896) 

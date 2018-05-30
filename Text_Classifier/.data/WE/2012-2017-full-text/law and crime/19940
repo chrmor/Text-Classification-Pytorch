@@ -1,0 +1,9 @@
+Hackers used 'smart' home devices to carry out Dyn cyberattack
+MANCHESTER, N.H., Oct. 22 (UPI) -- Hackers used "smart" home devices connected to the internet as weapons in the cyberattack against internet performance company Dyn, security experts said.
+Security analysts believe the Friday distributed-denial-of-service attack, which shutdown popular websites such as Twitter, Spotify, Netflix, Reddit and Amazon was carried out using CCTV video cameras, digital video recorders and other similar devices.
+Security firm Flashpoint confirmed the attack used "botnets" infected with a form of malware known as "Mirai" to access an "Internet of Things" made up of various internet-connected home devices, according to the BBC.
+"Mirai scours the Web for IoT devices protected by little more than factory-default usernames and passwords, and then enlists the devices in attacks that hurl junk traffic at an online target until it can no longer accommodate legitimate visitors or users," cybersecurity expert Brian Krebs wrote on his blog.
+Allison Nixon, director of research at Flashpoint, told Krebs the majority of the devices involved in the attack on Dyn used digital video recorders and IP cameras made by Chinese company XiongMai Technologies.
+"It's remarkable that virtually an entire company's product line has just been turned into a botnet that is now attacking the United States," Nixon said.
+Krebs, whose website was targeted by a similar attack in September, said the XiongMai devices are "essentially unfixable" and will remain a danger to others unless they are totally removed from the internet.
+"The issue with these particular devices is that a user cannot feasibly change this password," Zach Wikholm of Flashpoint said. "The password is hardcoded into the firmware, and the tools necessary to disable it are not present. Even worse, the web interface is not aware that these credentials even exist."

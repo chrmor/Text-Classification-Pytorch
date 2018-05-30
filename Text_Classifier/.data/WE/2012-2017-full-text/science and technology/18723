@@ -1,0 +1,7 @@
+HummingBad Chinese Malwae Infects 10 Million Android Devices
+Chinese malware called HummingBad has infected at least 10 million Android devices, according to security researchers.
+Cybersecurity software maker Check Point released an analysis about the malware, which the firm has tracked since it was discovered in February. HummingBad gives cybercriminals administrative-level access to infected Android devices. It downloads apps and clicks adds without users’ knowledge, generating fraudulent advertising revenue of up to $300,000 per month, CNET reports.
+The majority of the malware’s victims are in China and India, each with over 1 million cases. The U.S. is home to roughly a quarter of a million infected devices, according to the report.
+Check Point says a team of developers at Yingmob, a multimillion-dollar advertising analytics agency based in Beijing, is behind HummingBad. The group can also sell access to and give away information from infected phones, the security firm says.
+“We’ve long been aware of this evolving family of malware and we’re constantly improving our systems that detect it,” a Google spokesperson told TIME. “We actively block installations of infected apps to keep users and their information safe.”
+According to Check Point, Apple devices have also been hit by similar malware, including some attacks from Yingmob using an iOS malware called Yispecter.

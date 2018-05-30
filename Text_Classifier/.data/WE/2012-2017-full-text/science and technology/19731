@@ -1,0 +1,16 @@
+Johnson & Johnson says insulin pump 'could be hacked'
+Pharmaceutical firm Johnson & Johnson has warned that one of its insulin pumps for diabetics is at risk of being hacked, causing an overdose.
+The firm said the vulnerability concerned its OneTouch Ping pump which is only sold in the US and Canada.
+However, it told the BBC there had been no reported attacks and the risk was "extremely low".
+"It would require technical expertise, sophisticated equipment and proximity to the pump," it said.
+The disclosure was made in a letter to patients on 27 September, the firm said.
+The Animas OneTouch Ping pump, which was launched in 2008, enables diabetics to dose themselves with insulin using a Wi-Fi remote control. This removes the hassle of directly accessing the device, which can be worn under the patient's clothes.
+Johnson & Johnson said the pump was not connected to the internet or to any external network.
+But Jay Radcliffe - a diabetic and researcher with cyber security firm Rapid7 - said he had discovered it could still be hacked from a distance of 25 feet.
+He found communications between the pump and its radio frequency remote could be hijacked - in theory allowing a hacker to administer unauthorised injections.
+Johnson & Johnson (J&J) said it had confirmed Mr Radcliffe's findings but that the pump remained "safe and reliable".
+It said worried patients could take precautions, such as not using the pump's remote and programming the device to limit its maximum dose.
+There are growing concerns over the risk of medical device hacks.
+In February, cyber security firm Kaspersky Lab revealed it had hacked into a hospital's IT infrastructure - with its permission - and was able to access an MRI device.
+And the US Food & Drug Administration is said to be preparing formal guidance for manufacturers on how to respond to reports of cyber attacks.
+The agency has previously urged medical firms to work with cyber security experts to mitigate risks - however it says it knows of no cases where criminals have hacked a device to cause harm.

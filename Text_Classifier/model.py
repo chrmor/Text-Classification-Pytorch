@@ -20,7 +20,7 @@ class CNNClassifier(nn.Module):
 		self.fc.weight.data.normal_(0, 0.01)
 
 		for layer in self.convs:
-			nn.init.xavier_normal(layer.weight)
+			nn.init.xavier_normal_(layer.weight)
 
 
 	def forward(self, x):
@@ -47,10 +47,11 @@ class CNNClassifier(nn.Module):
 
 
 class RNNClassifier(nn.Module):
-	def __init__(self, voca_size, embed_size, hidden_size, num_layers, num_classes, embedding_weight):
+	def __init__(self, voca_size, embed_size, hidden_size, num_layers, num_classes, embedding_weight, cuda):
 		super(RNNClassifier,self).__init__()
 		self.hidden_size = hidden_size
 		self.num_layers = num_layers
+		self.cuda = cuda
 		self.embedding_weight = embedding_weight
 		self.embed = nn.Embedding(voca_size, embed_size)
 		self.lstm = nn.LSTM(embed_size, hidden_size, num_layers, batch_first= True)
@@ -71,11 +72,15 @@ class RNNClassifier(nn.Module):
 		x = self.embed(x)
 
 		# Set initial states  & GPU run
-		h0 = Variable(torch.zeros(self.num_layers, x.size(0), self.hidden_size)).cuda()
-		c0 = Variable(torch.zeros(self.num_layers, x.size(0), self.hidden_size)).cuda()
+		if self.cuda:
+			h0 = Variable(torch.zeros(self.num_layers, x.size(0), self.hidden_size)).cuda()
+			c0 = Variable(torch.zeros(self.num_layers, x.size(0), self.hidden_size)).cuda()
+		else:
+			h0 = Variable(torch.zeros(self.num_layers, x.size(0), self.hidden_size))
+			c0 = Variable(torch.zeros(self.num_layers, x.size(0), self.hidden_size))
 
-		h0 = (nn.init.xavier_normal(h0))
-		c0 = (nn.init.xavier_normal(c0))
+		h0 = (nn.init.xavier_normal_(h0))
+		c0 = (nn.init.xavier_normal_(c0))
 
 		# Forward 
 		out, _ = self.lstm(x, (h0,c0))
@@ -86,12 +91,12 @@ class RNNClassifier(nn.Module):
 
 		
 class RCNN_Classifier(nn.Module):
-	def __init__(self, voca_size, embed_size, hidden_size, sm_hidden_size,  num_layers, num_classes, embedding_weight):
+	def __init__(self, voca_size, embed_size, hidden_size, sm_hidden_size,  num_layers, num_classes, embedding_weight, cuda):
 		super(RCNN_Classifier,self).__init__()
 		self.hidden_size = hidden_size
 		self.sm_hidden_size = sm_hidden_size
 		self.num_layers = num_layers
-
+		self.cuda = cuda
 		self.embedding_weight = embedding_weight
 		self.embed = nn.Embedding(voca_size, embed_size)
 		self.bi_lstm = nn.LSTM(embed_size, hidden_size, num_layers, batch_first= True, bidirectional = True)
@@ -108,11 +113,15 @@ class RCNN_Classifier(nn.Module):
 		x = self.embed(x)
 
 		#Set inital states & GPU run
-		h0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)).cuda()
-		c0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)).cuda() # *2 for bidirectional
+		if self.cuda:
+			h0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)).cuda()
+			c0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)).cuda() # *2 for bidirectional
+		else:
+			h0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size))
+			c0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)) # *2 for bidirectional
 
-		h0 = (nn.init.xavier_normal(h0))
-		c0 = (nn.init.xavier_normal(c0))
+		h0 = (nn.init.xavier_normal_(h0))
+		c0 = (nn.init.xavier_normal_(c0))
 
 		#Forward 
 		lstm_out, _ = self.bi_lstm(x, (h0, c0))
@@ -125,7 +134,7 @@ class RCNN_Classifier(nn.Module):
 
 		y4 = self.fc(y3) # eq.6
 
-		final_out = F.softmax(y4) # eq.7
+		final_out = F.softmax(y4, dim=-1) # eq.7
 
 		return final_out
 		

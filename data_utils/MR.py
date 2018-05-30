@@ -3,7 +3,7 @@ import sys
 import glob
 import random
 sys.path.append( os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-import pytorch_text.torchtext.data as data
+import torchtext.data as data
 
 
 class MR(data.Dataset):

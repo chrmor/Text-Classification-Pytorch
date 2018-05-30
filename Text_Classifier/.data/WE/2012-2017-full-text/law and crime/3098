@@ -1,0 +1,11 @@
+AntiSec hacking group did not obtain Apple IDs from federal laptop, says FBI
+Group said it found over 12m Apple IDs on agent's computer, but FBI says it has no knowledge of any data breach
+The FBI has denied claims by a hacking group that says it obtained details of more than 12m Apple IDs from the laptop of a federal agent.
+The group, called AntiSec, said it found 12.36m IDs on the laptop and was making some details public in order to draw attention the the FBI's activities.
+In a statement, the group predicted the FBI would deny the breach. "Seems quite clear nobody pays attention if you just come and say 'Hey, FBI is using your device details and info and who the fuck knows what the hell are they experimenting with that,' well sorry, but nobody will care. FBI will, as usual, deny or ignore this uncomfortable thingie and everybody will forget the whole thing at amazing speed."
+The group said it believed the FBI was using the IDs to track people.
+The FBI released a statement late on Monday, which said: "The FBI is aware of published reports alleging that an FBI laptop was compromised and private data regarding Apple UDIDs was exposed. At this time there is no evidence indicating that an FBI laptop was compromised or that the FBI either sought or obtained this data."
+Apple did not return calls for comment.
+According to the group the UDIDs (unique device IDs) were stored in a file named NCFTA_iOS_devices_intel.csv. NCFTA stands for National Cyber-Forensics & Training Alliance and is an alliance between businesses, academics and law enforcements aimed at cracking down on cybercrime.
+Marco Arment, creator of the Instapaper app, said in a blogpost that the information could have come from an app and not necessarily from Apple.
+"All of this information could have been collected from an app transmitting data to a server. For instance, this is exactly the information that an ad network would want to collect. And in order to get stats from 12 million devices, it would probably need to be from a set of popular, free apps … where you'd probably see ads," he wrote.

@@ -3,7 +3,7 @@ import sys
 import glob
 import random
 sys.path.append( os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-import pytorch_text.torchtext.data as data
+import torchtext.data as data
 
 
 class News20(data.Dataset):
@@ -66,6 +66,8 @@ class News20(data.Dataset):
 	            Dataset.
 	    """
 	    path = cls.download(root)
+	    print("Data path: " + path)
+        
 	    examples = cls(path, text_field, label_field, **kwargs).examples
 	    random.shuffle(examples)
 	    dev_ratio = 0.1 

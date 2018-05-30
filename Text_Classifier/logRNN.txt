@@ -1,0 +1,124 @@
+
+
+dataset2012-2017-full-text
+len(train)16399
+len(dev)2342
+len(test)4685
+Model: RNN
+batch_size: 20
+Embeddings: glove-6B-100
+Model: RNNClassifier(
+  (embed): Embedding(365144, 100)
+  (lstm): LSTM(100, 128, num_layers=25, batch_first=True)
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=128, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 25
+Epoch [1/25], Steps [100/20500], Loss: 1.8448
+Epoch [1/25], Steps [200/20500], Loss: 2.0583
+Epoch [1/25], Steps [300/20500], Loss: 1.9407
+Epoch [1/25], Steps [400/20500], Loss: 1.7674
+Epoch [1/25], Steps [500/20500], Loss: 1.7429
+Dev: 
+Evaluation - loss: 1.897210  acc: 23.9966%(562/2342) 
+
+Epoch [1/25], Steps [600/20500], Loss: 1.8057
+Epoch [1/25], Steps [700/20500], Loss: 1.8299
+Epoch [1/25], Steps [800/20500], Loss: 1.9100
+Epoch [2/25], Steps [900/20500], Loss: 1.8637
+Epoch [2/25], Steps [1000/20500], Loss: 2.0996
+Dev: 
+Evaluation - loss: 1.896447  acc: 25.7045%(602/2342) 
+
+Epoch [2/25], Steps [1100/20500], Loss: 1.9573
+Epoch [2/25], Steps [1200/20500], Loss: 1.7375
+Epoch [2/25], Steps [1300/20500], Loss: 1.8715
+Epoch [2/25], Steps [1400/20500], Loss: 1.7704
+Epoch [2/25], Steps [1500/20500], Loss: 1.8881
+Dev: 
+Evaluation - loss: 1.893478  acc: 25.7045%(602/2342) 
+
+Epoch [2/25], Steps [1600/20500], Loss: 1.7126
+Epoch [3/25], Steps [1700/20500], Loss: 2.0372
+Epoch [3/25], Steps [1800/20500], Loss: 1.9511
+Epoch [3/25], Steps [1900/20500], Loss: 2.2011
+Epoch [3/25], Steps [2000/20500], Loss: 1.8382
+Dev: 
+Evaluation - loss: 1.894224  acc: 23.9966%(562/2342) 
+
+Epoch [3/25], Steps [2100/20500], Loss: 1.8304
+Epoch [3/25], Steps [2200/20500], Loss: 1.8014
+Epoch [3/25], Steps [2300/20500], Loss: 1.9433
+Epoch [3/25], Steps [2400/20500], Loss: 1.7524
+Epoch [4/25], Steps [2500/20500], Loss: 1.9385
+Dev: 
+Evaluation - loss: 1.896668  acc: 25.7045%(602/2342) 
+
+Epoch [4/25], Steps [2600/20500], Loss: 1.7295
+Epoch [4/25], Steps [2700/20500], Loss: 1.8096
+Epoch [4/25], Steps [2800/20500], Loss: 1.9253
+Epoch [4/25], Steps [2900/20500], Loss: 1.7353
+Epoch [4/25], Steps [3000/20500], Loss: 2.0250
+Dev: 
+Evaluation - loss: 1.893577  acc: 25.7045%(602/2342) 
+
+Epoch [4/25], Steps [3100/20500], Loss: 1.7990
+Epoch [4/25], Steps [3200/20500], Loss: 2.0357
+Epoch [5/25], Steps [3300/20500], Loss: 1.8809
+Epoch [5/25], Steps [3400/20500], Loss: 1.6222
+Epoch [5/25], Steps [3500/20500], Loss: 1.9478
+Dev: 
+Evaluation - loss: 1.896410  acc: 25.7045%(602/2342) 
+
+Epoch [5/25], Steps [3600/20500], Loss: 1.7987
+Epoch [5/25], Steps [3700/20500], Loss: 1.9503
+Epoch [5/25], Steps [3800/20500], Loss: 1.9448
+Epoch [5/25], Steps [3900/20500], Loss: 1.8116
+Epoch [5/25], Steps [4000/20500], Loss: 1.7554
+Dev: 
+Evaluation - loss: 1.892660  acc: 25.7045%(602/2342) 
+
+Epoch [5/25], Steps [4100/20500], Loss: 2.0694
+Epoch [6/25], Steps [4200/20500], Loss: 1.9747
+Epoch [6/25], Steps [4300/20500], Loss: 1.8635
+Epoch [6/25], Steps [4400/20500], Loss: 1.7328
+Epoch [6/25], Steps [4500/20500], Loss: 1.9552
+Dev: 
+Evaluation - loss: 1.896250  acc: 23.9966%(562/2342) 
+
+Epoch [6/25], Steps [4600/20500], Loss: 1.8365
+Epoch [6/25], Steps [4700/20500], Loss: 1.9960
+Epoch [6/25], Steps [4800/20500], Loss: 2.1099
+Epoch [6/25], Steps [4900/20500], Loss: 2.0666
+Epoch [7/25], Steps [5000/20500], Loss: 1.9876
+Dev: 
+Evaluation - loss: 1.892463  acc: 25.7045%(602/2342) 
+
+Epoch [7/25], Steps [5100/20500], Loss: 2.2811
+Epoch [7/25], Steps [5200/20500], Loss: 1.7668
+Epoch [7/25], Steps [5300/20500], Loss: 1.8730
+Epoch [7/25], Steps [5400/20500], Loss: 1.8150
+Epoch [7/25], Steps [5500/20500], Loss: 1.6539
+Dev: 
+Evaluation - loss: 1.895621  acc: 25.7045%(602/2342) 
+
+Epoch [7/25], Steps [5600/20500], Loss: 1.8900
+Epoch [7/25], Steps [5700/20500], Loss: 1.9650
+Epoch [8/25], Steps [5800/20500], Loss: 1.8739
+
+dataset2012-2017-full-text
+len(train)16399
+len(dev)2342
+len(test)4685
+Model: RNN
+batch_size: 20
+Embeddings: glove-6B-100
+Model: RNNClassifier(
+  (embed): Embedding(365144, 100)
+  (lstm): LSTM(100, 128, num_layers=25, batch_first=True)
+  (dropout): Dropout(p=0.5)
+  (fc): Linear(in_features=128, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 25

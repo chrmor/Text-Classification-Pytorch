@@ -1,0 +1,14 @@
+Tiny DNA Switches Aim To Revolutionize 'Cellular' Computing
+If you think programming a clock radio is hard, try reprogramming life itself. That's the goal of Drew Endy, a synthetic biologist at Stanford University.
+Endy has been working with a laboratory strain of E. colibacteria. He sees the microbes as more than just single-cell organisms. They're little computers.
+"Any system that's receiving information, processing information and then using that activity to control what happens next, you can think of as a computing system," Endy says.
+Normally the E. coli follow their own program. Is there food? Is the temperature all right? The bacteria process this information and make simple decisions about what to do next. Mainly, they decide whether to reproduce. Endy sees potential for them to do much more. He wants to take control of a cell's genetic machinery and use it to do human computing.
+"For us, what's become exciting is the idea that we could get inside the cells in sort of a bottom-up fashion," he says.
+Endy is talking about more than splicing in a few extra genes, as scientists already do with crops. He wants to make cells that can follow different programs, just like a computer. To do that, he needed to create something all computers have to have: the transistor.
+Transistors are simple on/off switches. Computers are made of many millions of these switches. And to program a cell, you need a biological version. As Endy reports this week in Science, he managed to make one out of DNA.
+His switch, which he calls a "transcriptor," is a piece of DNA that he can flip on and off, using chemicals called enzymes. Endy put several of these DNA switches inside his bacteria. He could use the switches to build logic circuits that program each cell's behavior. For example, he could tell a cell to change color in the presence of both enzyme A and enzyme B. That's a simple program: IF enzyme A AND enzyme B [are present] THEN turn green. For an in-depth look, check out Endy's own explanation on YouTube.
+Timothy Lu, a researcher at the Massachusetts Institute of Technology, is also building cellular computers. He can see lots of ways they could be used. For example, you could program cells to automatically scan your bowels for chemical signals of cancer and let you know if they find any.
+"These cells could light up, and you could easily see whether the cell has computed [if] you may have early signs of cancer or not," he says. With a little more programming, such cells might be able to produce a drug, or target the cancer directly.
+So far, only the simplest logic circuits work. And Endy doubts that these DNA computers will ever outperform a smartphone. But that's not the point.
+"We're building computers that will operate in a place where your cellphone isn't going to work," he says.
+He's betting that even a little bit of computing in places where cellphones will never roam can be very valuable.

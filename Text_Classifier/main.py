@@ -108,13 +108,13 @@ if __name__=='__main__':
     #glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	glove = vocab.GloVe(name = '6B', dim = 100)
 	embeddings = 'glove-6B-100'
-	iscuda = False
+	iscuda = True
 	WE_dataset = '2012-2017-full-text'
 	device_value = 'cpu'  	#device = - 1 : cpu 
 	batch_size = 20
 	nn_model = 'RCNN'
 	log_file = 'log' + nn_model + '.txt'
-	max_length = 400
+	max_length = 10
 
 #	if torch.cuda.is_available() is True:
 #		iscuda = True
@@ -148,7 +148,7 @@ if __name__=='__main__':
 	embedding_weight = text_field.vocab.vectors
 
 	learnign_rate = 0.001
-	num_epochs = 25
+	num_epochs = 3
 
 	#parameter of rnn 
 	num_layer  = 25

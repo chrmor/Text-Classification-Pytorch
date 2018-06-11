@@ -96,7 +96,7 @@ class RCNN_Classifier(nn.Module):
 		self.hidden_size = hidden_size
 		self.sm_hidden_size = sm_hidden_size
 		self.num_layers = num_layers
-		self.cuda = cuda
+		self.iscuda = cuda
 		self.embedding_weight = embedding_weight
 		self.embed = nn.Embedding(voca_size, embed_size)
 		self.bi_lstm = nn.LSTM(embed_size, hidden_size, num_layers, batch_first= True, bidirectional = True)
@@ -113,7 +113,7 @@ class RCNN_Classifier(nn.Module):
 		x = self.embed(x)
 
 		#Set inital states & GPU run
-		if self.cuda:
+		if self.iscuda:
 			h0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)).cuda()
 			c0 = Variable(torch.zeros(self.num_layers*2, x.size(0), self.hidden_size)).cuda() # *2 for bidirectional
 		else:

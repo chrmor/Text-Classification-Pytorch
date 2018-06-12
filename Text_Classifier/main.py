@@ -14,7 +14,7 @@ from nltk.corpus import stopwords
 
 torch.manual_seed(0)
 
-iscuda = False
+iscuda = True
 
 if iscuda:
 	import GPUtil

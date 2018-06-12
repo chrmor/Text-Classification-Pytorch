@@ -114,7 +114,7 @@ if __name__=='__main__':
 	batch_size = 20
 	nn_model = 'RCNN'
 	log_file = 'log' + nn_model + '.txt'
-	max_length = 10
+	max_length = 500
 
 #	if torch.cuda.is_available() is True:
 #		iscuda = True
@@ -148,7 +148,7 @@ if __name__=='__main__':
 	embedding_weight = text_field.vocab.vectors
 
 	learnign_rate = 0.001
-	num_epochs = 3
+	num_epochs = 1
 
 	#parameter of rnn 
 	num_layer  = 25

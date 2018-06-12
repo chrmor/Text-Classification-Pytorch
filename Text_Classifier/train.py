@@ -65,9 +65,8 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 					the_file.write('\nDev: ' + msg)
 					the_file.close()
 				#print(predicted[:10])
-
-
-
+                
+                
 def eval(test_loader, model, cuda):
  	#eval mode 
  	model.eval()

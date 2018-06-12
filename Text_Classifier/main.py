@@ -147,8 +147,9 @@ if __name__=='__main__':
 	"embeddings": 'glove-6B-100',#options.model,
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 100,
-	"load_model": False
+	"max_length": 500,
+	"load_model": False,
+	"num_epochs": 25
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
@@ -191,7 +192,6 @@ if __name__=='__main__':
 	embedding_weight = text_field.vocab.vectors
 
 	learnign_rate = 0.001
-	num_epochs = 1
 
 	#parameter of rnn 
 	num_layer  = 25

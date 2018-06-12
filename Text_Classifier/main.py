@@ -14,7 +14,7 @@ from nltk.corpus import stopwords
 
 torch.manual_seed(0)
 
-iscuda = True
+iscuda = False
 
 if iscuda:
 	import GPUtil
@@ -31,6 +31,23 @@ if iscuda:
 		print(deviceIDs[0])
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
+def save_model(self, model, params):
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
+	pickle.dump(model, open(path, "wb"))
+	print(f"A model is saved successfully as {path}!")
+
+
+def load_model(self, params):
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
+	try:
+		model = pickle.load(open(path, "rb"))
+		print(f"Model in {path} loaded successfully!")
+
+		return model
+	except:
+		print(f"No available model such as {path}.")
+		exit()
+        
 def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
 
@@ -52,23 +69,6 @@ def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
 	return train_loader, dev_loader, test_loader
 
-
-	def save_model(self, model, params):
-		path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
-		pickle.dump(model, open(path, "wb"))
-		print(f"A model is saved successfully as {path}!")
-
-
-	def load_model(self, params):
-		path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
-		try:
-			model = pickle.load(open(path, "rb"))
-			print(f"Model in {path} loaded successfully!")
-
-			return model
-		except:
-			print(f"No available model such as {path}.")
-			exit()
 
 def MR_data_loader(text_field, label_field, vector, b_size, **kwargs):
 

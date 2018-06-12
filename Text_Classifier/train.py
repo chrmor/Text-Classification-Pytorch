@@ -75,7 +75,7 @@ def eval(test_loader, model, cuda):
  	criterion = nn.CrossEntropyLoss()
 
  	corrects = 0
- 	avg_loss = 0 
+# 	avg_loss = 0 
  	with torch.no_grad(): 
  		for i, batch in enumerate(test_loader):
  			feature, target = batch.text, batch.label
@@ -84,19 +84,16 @@ def eval(test_loader, model, cuda):
  				feature, target = feature.cuda(), target.cuda()
 
  			output = model(feature)
- 			loss = criterion(output, target) # losses are summed, not average 
+# 			loss = criterion(output, target) # losses are summed, not average 
 
- 			avg_loss += loss.item()
+# 			avg_loss += loss.item()
  			corrects += (torch.max(output, 1)
                      [1].view(target.size()).data == target.data).sum()
  	
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / size 
  	model.train()
- 	return '\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, 
-                                                                       accuracy, 
-                                                                       corrects, 
-                                                                       size)
+ 	return '\nEvaluation acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
 
 
 

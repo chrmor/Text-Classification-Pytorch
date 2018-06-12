@@ -33,14 +33,14 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
 def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}.pt"
 	#pickle.dump(model, open(path, "wb"))
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}.pt"
 	try:
 		model = torch.load(path)
 		#model = pickle.load(open(path, "rb"))
@@ -232,6 +232,6 @@ if __name__=='__main__':
 
 		# train 
 		print("Start Train...")
-		train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, num_epochs, log_file)
+		train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, params['num_epochs'], log_file)
 		print("Finished Train...")
 		save_model(classifier_model, params)

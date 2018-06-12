@@ -77,7 +77,7 @@ def eval(test_loader, model, cuda):
 
  	corrects = 0
  	avg_loss = 0 
-	with torch.no_grad(): 
+ 	with torch.no_grad(): 
  		for i, batch in enumerate(test_loader):
  			feature, target = batch.text, batch.label
  			target.data.sub_(1) # index

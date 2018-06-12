@@ -34,14 +34,16 @@ if iscuda:
 
 def save_model(model, params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
-	pickle.dump(model, open(path, "wb"))
+	#pickle.dump(model, open(path, "wb"))
+	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
 	try:
-		model = pickle.load(open(path, "rb"))
+		model = torch.load(path)
+		#model = pickle.load(open(path, "rb"))
 		print(f"Model in {path} loaded successfully!")
 
 		return model
@@ -146,7 +148,7 @@ if __name__=='__main__':
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
 	"max_length": 100,
-	"load_model": True
+	"load_model": False
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 

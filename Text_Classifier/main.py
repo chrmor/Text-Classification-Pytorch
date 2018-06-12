@@ -31,13 +31,13 @@ if iscuda:
 		print(deviceIDs[0])
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
-def save_model(self, model, params):
+def save_model(model, params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
 	pickle.dump(model, open(path, "wb"))
 	print(f"A model is saved successfully as {path}!")
 
 
-def load_model(self, params):
+def load_model(params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
 	try:
 		model = pickle.load(open(path, "rb"))
@@ -150,7 +150,10 @@ if __name__=='__main__':
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	glove = vocab.GloVe(name = '6B', dim = 100)
-	device_value = 'cpu'  	#device = - 1 : cpu 
+	if (iscuda):
+		device_value = -1  	#device = - 1 : cpu 
+	else:
+		device_value = 0  	#device = - 1 : cpu 
 	batch_size = 20
 	log_file = 'log' + params['nn_model'] + '.txt'
 

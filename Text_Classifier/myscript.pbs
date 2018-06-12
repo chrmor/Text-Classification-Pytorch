@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=12:00:00
+#PBS -W x=GRES:gpu@1
+
+cd ~/Text-Classification-RCNN-CNN-RNN/Text_Classifier/
+
+# export per CUDA
+export PATH=$PATH:/usr/local/cuda-9.0/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+
+# export CUDNN 6.0
+export LD_LIBRARY_PATH=/home/a3lab/shared/CUDNN/cudnn-9.0-linux-x64-v7.1.2/lib64:$LD_LIBRARY_PATH
+export CPATH=/home/a3lab/shared/CUDNN/cudnn-9.0-linux-x64-v7.1.2/include:$CPATH
+export LIBRARY_PATH=/home/a3lab/shared/CUDNN/cudnn-9.0-linux-x64-v7.1.2/lib64:$LIBRARY_PATH
+
+# abilitazione virtual environment utente
+source ~/deepnlp/bin/activate
+
+# esecuzione script utente
+python main.py
+

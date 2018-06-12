@@ -14,6 +14,20 @@ from nltk.corpus import stopwords
 
 torch.manual_seed(0)
 
+import GPUtil
+
+# Get the first available GPU
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+try:
+	deviceIDs = GPUtil.getAvailable(order='memory', limit=1, maxLoad=10, maxMemory=10)  # return a list of available gpus
+
+except:
+	print('GPU not compatible with NVIDIA-SMI')
+
+else:
+	print(deviceIDs[0])
+	os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
+
 def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
 

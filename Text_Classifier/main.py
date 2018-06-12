@@ -14,19 +14,22 @@ from nltk.corpus import stopwords
 
 torch.manual_seed(0)
 
-import GPUtil
+iscuda = False
 
-# Get the first available GPU
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-try:
-	deviceIDs = GPUtil.getAvailable(order='memory', limit=1, maxLoad=10, maxMemory=10)  # return a list of available gpus
+if iscuda:
+	import GPUtil
 
-except:
-	print('GPU not compatible with NVIDIA-SMI')
+	# Get the first available GPU
+	os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+	try:
+		deviceIDs = GPUtil.getAvailable(order='memory', limit=1, maxLoad=10, maxMemory=10)  # return a list of available gpus
 
-else:
-	print(deviceIDs[0])
-	os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
+	except:
+		print('GPU not compatible with NVIDIA-SMI')
+
+	else:
+		print(deviceIDs[0])
+		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
 def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
@@ -48,6 +51,24 @@ def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
 
 	return train_loader, dev_loader, test_loader
+
+
+	def save_model(self, model, params):
+		path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
+		pickle.dump(model, open(path, "wb"))
+		print(f"A model is saved successfully as {path}!")
+
+
+	def load_model(self, params):
+		path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}.pkl"
+		try:
+			model = pickle.load(open(path, "rb"))
+			print(f"Model in {path} loaded successfully!")
+
+			return model
+		except:
+			print(f"No available model such as {path}.")
+			exit()
 
 def MR_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
@@ -118,17 +139,20 @@ def clean_str(strings):
 
 if __name__=='__main__':
 
-	   
-    #glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
+#parameters 
+	params = {
+	"embeddings": 'glove-6B-100',#options.model,
+	"WE_dataset": '2012-2012-short-text',#options.architecture,
+	"nn_model": 'RCNN',#options.dataset,
+	"max_length": 100,
+	"load_model": False
+}
+    
+	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	glove = vocab.GloVe(name = '6B', dim = 100)
-	embeddings = 'glove-6B-100'
-	iscuda = True
-	WE_dataset = '2012-2017-full-text'
 	device_value = 'cpu'  	#device = - 1 : cpu 
 	batch_size = 20
-	nn_model = 'RCNN'
-	log_file = 'log' + nn_model + '.txt'
-	max_length = 500
+	log_file = 'log' + params['nn_model'] + '.txt'
 
 #	if torch.cuda.is_available() is True:
 #		iscuda = True
@@ -141,17 +165,16 @@ if __name__=='__main__':
 	#load data
 	print("Load data...")
 	# to fix length : fix_length = a 
-	text_field = data.Field(lower = True, batch_first = True, fix_length = max_length, preprocessing = clean_str)
+	text_field = data.Field(lower = True, batch_first = True, fix_length = params['max_length'], preprocessing = clean_str)
 	label_field = data.Field(sequential = False)
 
     #select data set 
-	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, batch_size, log_file, ds = WE_dataset, device = device_value, repeat = False)
+	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, batch_size, log_file, ds = params['WE_dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, batch_size, device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, batch_size, device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, batch_size, device = device_value, repeat = False)
 
 
-    #parameters 
 	in_channels = 1 
 	out_channels = 2
 	voca_size = len(text_field.vocab)
@@ -172,19 +195,19 @@ if __name__=='__main__':
 	num_sm_hidden = 100 
 
 	with open(log_file, 'a') as the_file:
-		the_file.write("\nModel: " + nn_model)
-		the_file.write("\nMax length: " + str(max_length))
+		the_file.write("\nModel: " + params['nn_model'])
+		the_file.write("\nMax length: " + str(params['max_length']))
 		the_file.write("\nbatch_size: " + str(batch_size));
-		the_file.write("\nEmbeddings: " + str(embeddings));
+		the_file.write("\nEmbeddings: " + str(params['embeddings']));
 		the_file.close()
     
 	# model 
 	print("Load model...")
-	if nn_model == 'RCNN':
+	if params['nn_model'] == 'RCNN':
 		classifier_model = model.RCNN_Classifier(voca_size, embed_dim, num_hidden, num_sm_hidden, num_layer, num_classes, embedding_weight,iscuda)
-	elif nn_model == 'CNN':
+	elif params['nn_model'] == 'CNN':
 		classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, dropout_p, embedding_weight)
-	elif nn_model == 'RNN':
+	elif params['nn_model'] == 'RNN':
 		classifier_model = model.RNNClassifier(voca_size, embed_dim, num_hidden, num_layer, num_classes, embedding_weight, iscuda)
         
          
@@ -196,13 +219,15 @@ if __name__=='__main__':
 	print("Start Train...")
 	train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, num_epochs, log_file)
 
+	save_model(classifier_model, params)
+    
 	# eval 
-	print("Evaluation")
-	msg = train.eval(test_loader, classifier_model, iscuda) 
-	print(msg)
-	with open(log_file, 'a') as the_file:
-		the_file.write('\nTest: ' + msg)
-		the_file.close()
+	#print("Evaluation")
+	#msg = train.eval(test_loader, classifier_model, iscuda) 
+	#print(msg)
+	#with open(log_file, 'a') as the_file:
+		#the_file.write('\nTest: ' + msg)
+		#the_file.close()
 
 
 	

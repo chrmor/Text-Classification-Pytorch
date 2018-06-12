@@ -77,12 +77,12 @@ def eval(test_loader, model, cuda):
 
  	corrects = 0
  	avg_loss = 0 
-    with torch.no_grad(): 
- 	 	for i, batch in enumerate(test_loader):
- 		 	feature, target = batch.text, batch.label
- 		 	target.data.sub_(1) # index
- 		 	if cuda:
- 			 	feature, target = feature.cuda(), target.cuda()
+	with torch.no_grad(): 
+ 		for i, batch in enumerate(test_loader):
+ 			feature, target = batch.text, batch.label
+ 			target.data.sub_(1) # index
+ 			if cuda:
+ 				feature, target = feature.cuda(), target.cuda()
 
  			output = model(feature)
  			loss = criterion(output, target) # losses are summed, not average 

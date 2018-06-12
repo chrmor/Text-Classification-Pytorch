@@ -11,6 +11,7 @@ from data_utils.MR import MR
 from data_utils.News20 import News20
 from data_utils.WE import WE
 from nltk.corpus import stopwords
+import pickle
 
 torch.manual_seed(0)
 
@@ -145,15 +146,15 @@ if __name__=='__main__':
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
 	"max_length": 100,
-	"load_model": False
+	"load_model": True
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	glove = vocab.GloVe(name = '6B', dim = 100)
 	if (iscuda):
-		device_value = -1  	#device = - 1 : cpu 
+		device_value = 0  #device = - 1 : cpu 
 	else:
-		device_value = 0  	#device = - 1 : cpu 
+		device_value = -1 #device = - 1 : cpu 
 	batch_size = 20
 	log_file = 'log' + params['nn_model'] + '.txt'
 
@@ -205,32 +206,30 @@ if __name__=='__main__':
 		the_file.close()
     
 	# model 
-	print("Load model...")
-	if params['nn_model'] == 'RCNN':
-		classifier_model = model.RCNN_Classifier(voca_size, embed_dim, num_hidden, num_sm_hidden, num_layer, num_classes, embedding_weight,iscuda)
-	elif params['nn_model'] == 'CNN':
-		classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, dropout_p, embedding_weight)
-	elif params['nn_model'] == 'RNN':
-		classifier_model = model.RNNClassifier(voca_size, embed_dim, num_hidden, num_layer, num_classes, embedding_weight, iscuda)
-        
-         
+	if params['load_model']:
+		print("Load pre-trained model...")
+		classifier_model = load_model(params)
+		# eval 
+		print("Evaluation")
+		msg = train.eval(test_loader, classifier_model, iscuda) 
+		print(msg)
+		with open(log_file, 'a') as the_file:
+			the_file.write('\nTest: ' + msg)
+			the_file.close()
+	else:
+		print("Init new model...")
+		if params['nn_model'] == 'RCNN':
+			classifier_model = model.RCNN_Classifier(voca_size, embed_dim, num_hidden, num_sm_hidden, num_layer, num_classes, embedding_weight,iscuda)
+		elif params['nn_model'] == 'CNN':
+			classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, dropout_p, embedding_weight)
+		elif params['nn_model'] == 'RNN':
+			classifier_model = model.RNNClassifier(voca_size, embed_dim, num_hidden, num_layer, num_classes, embedding_weight, iscuda)
 
-	if iscuda:
-		classifier_model = classifier_model.cuda()
+		if iscuda:
+			classifier_model = classifier_model.cuda()
 
-	# train 
-	print("Start Train...")
-	train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, num_epochs, log_file)
-
-	save_model(classifier_model, params)
-    
-	# eval 
-	#print("Evaluation")
-	#msg = train.eval(test_loader, classifier_model, iscuda) 
-	#print(msg)
-	#with open(log_file, 'a') as the_file:
-		#the_file.write('\nTest: ' + msg)
-		#the_file.close()
-
-
-	
+		# train 
+		print("Start Train...")
+		train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, num_epochs, log_file)
+		print("Finished Train...")
+		save_model(classifier_model, params)

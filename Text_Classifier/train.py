@@ -14,8 +14,8 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 	if cuda: 
 		model.cuda()
 
-	#Parallel CPU
-	torch.nn.DataParallel(model)
+	#Parallel
+	#torch.nn.DataParallel(model)
         
     # train mode 
 	model.train()

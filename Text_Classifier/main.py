@@ -148,8 +148,7 @@ if __name__=='__main__':
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
 	"max_length": 200,
-	"load_model": False,
-	"evaluation": True,    
+	"load_model": True,
 	"num_epochs": 1
 }
     
@@ -212,6 +211,13 @@ if __name__=='__main__':
 	if params['load_model']:
 		print("Load pre-trained model...")
 		classifier_model = load_model(params)
+		# eval 
+		print("Evaluation")
+		msg = train.eval(test_loader, classifier_model, iscuda) 
+		print(msg)
+		with open(log_file, 'a') as the_file:
+			the_file.write('\nTest: ' + msg)
+			the_file.close()
 	else:
 		print("Init new model...")
 		if params['nn_model'] == 'RCNN':
@@ -229,12 +235,3 @@ if __name__=='__main__':
 		train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, params['num_epochs'], log_file)
 		print("Finished Train...")
 		save_model(classifier_model, params)
-
-	if params['evaluation']:
-		# eval 
-		print("Evaluation")
-		msg = train.eval(test_loader, classifier_model, iscuda) 
-		print(msg)
-		with open(log_file, 'a') as the_file:
-			the_file.write('\nTest: ' + msg)
-			the_file.close()

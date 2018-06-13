@@ -69,7 +69,7 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 
 def eval(test_loader, model, cuda):
  	#eval mode 
- 	#model.eval()
+ 	model.eval()
 
  	#Loss and optimizer 
  	criterion = nn.CrossEntropyLoss()
@@ -92,7 +92,7 @@ def eval(test_loader, model, cuda):
  	
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / size 
- 	#model.train()
+ 	model.train()
  	#return '\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, accuracy, corrects, size)
  	return '\nEvaluation - acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
 

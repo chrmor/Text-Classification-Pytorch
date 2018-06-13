@@ -69,7 +69,7 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 
 def eval(test_loader, model, cuda):
  	#eval mode 
- 	model.eval()
+ 	#model.eval()
 
  	#Loss and optimizer 
  	criterion = nn.CrossEntropyLoss()
@@ -84,20 +84,17 @@ def eval(test_loader, model, cuda):
  				feature, target = feature.cuda(), target.cuda()
 
  			output = model(feature)
- 			loss = criterion(output, target) # losses are summed, not average 
+ 			#loss = criterion(output, target) # losses are summed, not average 
 
- 			avg_loss += loss.item()
+ 			#avg_loss += loss.item()
  			corrects += (torch.max(output, 1)
                      [1].view(target.size()).data == target.data).sum()
  	
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / size 
- 	model.train()
- 	return '\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, 
-                                                                       accuracy, 
-                                                                       corrects, 
-                                                                       size)
-
+ 	#model.train()
+ 	#return '\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, accuracy, corrects, size)
+	return '\nEvaluation - acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
 
 
 def predict(sample_text, model, text_field, label_field):

@@ -82,7 +82,7 @@ def eval(test_loader, model, cuda):
  			target.data.sub_(1) # index
  			if cuda:
  				feature, target = feature.cuda(), target.cuda()
-
+    
  			output = model(feature)
  			#loss = criterion(output, target) # losses are summed, not average 
 

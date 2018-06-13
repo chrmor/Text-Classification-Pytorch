@@ -148,8 +148,8 @@ if __name__=='__main__':
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
 	"max_length": 10,
-	"load_model": False,
-	"num_epochs": 25
+	"load_model": True,
+	"num_epochs": 1
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 

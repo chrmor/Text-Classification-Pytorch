@@ -147,9 +147,9 @@ if __name__=='__main__':
 	"embeddings": 'glove-6B-100',#options.model,
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 200,
-	"load_model": True,
-	"num_epochs": 1
+	"max_length": 400,
+	"load_model": False,
+	"num_epochs": 2
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 

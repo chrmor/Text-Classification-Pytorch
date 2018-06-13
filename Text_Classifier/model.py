@@ -101,7 +101,6 @@ class RCNN_Classifier(nn.Module):
 		self.embed = nn.Embedding(voca_size, embed_size)
 		self.bi_lstm = nn.LSTM(embed_size, hidden_size, num_layers, batch_first= True, bidirectional = True)
 		self.sm_fc = nn.Linear(embed_size + hidden_size*2 , sm_hidden_size)
-
 		self.fc = nn.Linear(sm_hidden_size, num_classes)
 		self.init_weights()
 
@@ -124,6 +123,7 @@ class RCNN_Classifier(nn.Module):
 		c0 = (nn.init.xavier_normal_(c0))
 
 		#Forward 
+		self.bi_lstm.flatten_parameters()
 		lstm_out, _ = self.bi_lstm(x, (h0, c0))
 		out = torch.cat((lstm_out, x), 2)  # eq. 3 
 

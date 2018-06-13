@@ -39,7 +39,7 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 			#Forward, Backward, Optimize 
 			optimizer.zero_grad()
 			output = model(feature)
-			_, predicted = torch.max(output, 1)
+			#_, predicted = torch.max(output, 1)
 			loss = criterion(output, target)
 			loss.backward()
 			nn.utils.clip_grad_norm_(model.parameters(), 3, norm_type = 2) # l2 constraint of 3

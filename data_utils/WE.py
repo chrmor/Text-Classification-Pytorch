@@ -80,7 +80,7 @@ class WE(data.Dataset):
 
 	    random.shuffle(examples)
 	    dev_ratio = 0.1 
-	    test_ratio = 0.1 
+	    test_ratio = 0.2 
 	    dev_index = -1 * int((dev_ratio+test_ratio)*len(examples))
 	    test_index = -1 * int(test_ratio * len(examples))
 

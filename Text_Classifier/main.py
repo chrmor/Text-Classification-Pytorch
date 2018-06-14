@@ -15,7 +15,7 @@ import pickle
 
 torch.manual_seed(0)
 
-iscuda = False
+iscuda = True
 
 if iscuda:
 	import GPUtil
@@ -145,9 +145,9 @@ if __name__=='__main__':
 #parameters 
 	params = {
 	"embeddings": 'glove-6B-100',#options.model,
-	"WE_dataset": '2012-2012-short-text',#options.architecture,
+	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 5,
+	"max_length": 400,
 	"load_model": False,
 	"num_epochs": 2,
 	"batch_size": 20        

@@ -2,7 +2,7 @@ import torch
 import torch.autograd as autograd
 import torch.nn as nn
 
-def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_file):
+def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batch_size, log_file):
 
 	with open(log_file, 'a') as the_file:
 		the_file.write("\nModel: " + str(model))
@@ -30,6 +30,8 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 	for epoch in range(num_epochs):
 		for i, batch in enumerate(train_loader):
 			feature, target = batch.text, batch.label
+			if feature.size()[0]!= batch_size:
+				continue
 			target.data.sub_(1)  # index 
 			if cuda:
 				feature, target = feature.cuda(), target.cuda()
@@ -41,8 +43,6 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, log_
 			output = model(feature)
             #XXX: unclear fix! but it works
 			if list(output.size())[0]!=20 or list(output.size())[1]!=8 or target.size()[0]!=20:
-				output = output.unsqueeze(0)
-				target = target.unsqueeze(0)
 				with open(log_file, 'a') as the_file:
 					the_file.write('\nAnomalous dimensions: Input: ' + str(feature.size()) + 'Output: ' + str(output.size()) + " target: " + str(target.size()))
 					the_file.close()

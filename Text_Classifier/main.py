@@ -15,7 +15,7 @@ import pickle
 
 torch.manual_seed(0)
 
-iscuda = True
+iscuda = False
 
 if iscuda:
 	import GPUtil
@@ -145,11 +145,12 @@ if __name__=='__main__':
 #parameters 
 	params = {
 	"embeddings": 'glove-6B-100',#options.model,
-	"WE_dataset": '2012-2017-full-text',#options.architecture,
+	"WE_dataset": '2012-2012-short-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 400,
+	"max_length": 5,
 	"load_model": False,
-	"num_epochs": 2
+	"num_epochs": 2,
+	"batch_size": 20        
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
@@ -158,7 +159,6 @@ if __name__=='__main__':
 		device_value = 0  #device = - 1 : cpu 
 	else:
 		device_value = -1 #device = - 1 : cpu 
-	batch_size = 20
 	log_file = 'log' + params['nn_model'] + '.txt'
 
 #	if torch.cuda.is_available() is True:
@@ -176,10 +176,10 @@ if __name__=='__main__':
 	label_field = data.Field(sequential = False)
 
     #select data set 
-	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, batch_size, log_file, ds = params['WE_dataset'], device = device_value, repeat = False)
-	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, batch_size, device = device_value, repeat = False)
-	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, batch_size, device = device_value, repeat = False)
-	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, batch_size, device = device_value, repeat = False)
+	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = params['WE_dataset'], device = device_value, repeat = False)
+	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
+	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
+	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 
 
 	in_channels = 1 
@@ -203,7 +203,7 @@ if __name__=='__main__':
 	with open(log_file, 'a') as the_file:
 		the_file.write("\nModel: " + params['nn_model'])
 		the_file.write("\nMax length: " + str(params['max_length']))
-		the_file.write("\nbatch_size: " + str(batch_size));
+		the_file.write("\nbatch_size: " + str(params['batch_size']));
 		the_file.write("\nEmbeddings: " + str(params['embeddings']));
 		the_file.close()
     
@@ -232,6 +232,6 @@ if __name__=='__main__':
 
 		# train 
 		print("Start Train...")
-		train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, params['num_epochs'], log_file)
+		train.train(train_loader, dev_loader, classifier_model, iscuda, learnign_rate, params['num_epochs'], params['batch_size'], log_file)
 		print("Finished Train...")
 		save_model(classifier_model, params)

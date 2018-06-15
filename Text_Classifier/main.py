@@ -154,11 +154,12 @@ if __name__=='__main__':
 	"embeddings": 'glove-6B-100',#options.model,
 	"WE_dataset": '2012-2012-short-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 10,
+	"max_length": 2,
 	"load_model": False,
-	"num_epochs": 10,
+	"num_epochs": 1,
 	"batch_size": 10        
 }
+	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['WE_dataset']) + "_" + str(params['embeddings']) + "_" + str(params['num_epochs']) + "_" + str(params['batch_size']) + '.txt'
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	glove = vocab.GloVe(name = '6B', dim = 100)
@@ -166,7 +167,7 @@ if __name__=='__main__':
 		device_value = 0  #device = - 1 : cpu 
 	else:
 		device_value = -1 #device = - 1 : cpu 
-	log_file = 'log' + params['nn_model'] + '.txt'
+
 
 #	if torch.cuda.is_available() is True:
 #		iscuda = True

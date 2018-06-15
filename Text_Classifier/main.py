@@ -23,14 +23,14 @@ if iscuda:
 	# Get the first available GPU
 	os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 	try:
-		deviceIDs = GPUtil.getAvailable(order='memory', limit=1, maxLoad=10, maxMemory=10)  # return a list of available gpus
+		deviceIDs = GPUtil.getAvailable(order='memory', limit=2, maxLoad=100, maxMemory=20)  # return a list of available gpus
 
 	except:
 		print('GPU not compatible with NVIDIA-SMI')
 
 	else:
-		print(deviceIDs[0])
-		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
+		print(deviceIDs[1])
+		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[1])
 
 def save_model(model, params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}.pt"
@@ -42,7 +42,12 @@ def save_model(model, params):
 def load_model(params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}.pt"
 	try:
-		model = torch.load(path)
+		if iscuda:
+			model = torch.load(path)
+		else:
+			#model = torch.load(path, map_location=lambda storage, loc: storage)
+			model = torch.load(path)
+			model = model.cpu()
 		#model = pickle.load(open(path, "rb"))
 		print(f"Model in {path} loaded successfully!")
 
@@ -144,17 +149,17 @@ if __name__=='__main__':
 
 #parameters 
 	params = {
-	"embeddings": 'glove-6B-100',#options.model,
+	"embeddings": 'glove-6B-300',#options.model,
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
 	"max_length": 400,
-	"load_model": False,
-	"num_epochs": 2,
+	"load_model": True,
+	"num_epochs": 10,
 	"batch_size": 20        
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
-	glove = vocab.GloVe(name = '6B', dim = 100)
+	glove = vocab.GloVe(name = '6B', dim = 300)
 	if (iscuda):
 		device_value = 0  #device = - 1 : cpu 
 	else:

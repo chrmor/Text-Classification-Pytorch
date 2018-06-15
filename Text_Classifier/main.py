@@ -130,8 +130,10 @@ def WE_data_loader(text_field, label_field, vector, b_size, log_file, ds, **kwar
 		the_file.close()
     
 
+	#train_loader, dev_loader, test_loader = data.BucketIterator.splits(
+		#(train_data, dev_data, test_data), batch_sizes = (b_size, len(dev_data), len(test_data)), **kwargs)
 	train_loader, dev_loader, test_loader = data.BucketIterator.splits(
-		(train_data, dev_data, test_data), batch_sizes = (b_size, len(dev_data), len(test_data)), **kwargs)
+		(train_data, dev_data, test_data), batch_sizes = (b_size, b_size, b_size), **kwargs)
 
 
 

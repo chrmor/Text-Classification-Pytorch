@@ -33,14 +33,14 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[1])
 
 def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}.pt"
 	#pickle.dump(model, open(path, "wb"))
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}.pt"
 	try:
 		if iscuda:
 			model = torch.load(path)
@@ -151,17 +151,17 @@ if __name__=='__main__':
 
 #parameters 
 	params = {
-	"embeddings": 'glove-6B-300',#options.model,
-	"WE_dataset": '2012-2017-full-text',#options.architecture,
+	"embeddings": 'glove-6B-100',#options.model,
+	"WE_dataset": '2012-2012-short-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 400,
-	"load_model": True,
+	"max_length": 10,
+	"load_model": False,
 	"num_epochs": 10,
-	"batch_size": 20        
+	"batch_size": 10        
 }
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
-	glove = vocab.GloVe(name = '6B', dim = 300)
+	glove = vocab.GloVe(name = '6B', dim = 100)
 	if (iscuda):
 		device_value = 0  #device = - 1 : cpu 
 	else:

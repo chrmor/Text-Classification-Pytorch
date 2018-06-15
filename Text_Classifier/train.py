@@ -41,11 +41,6 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 			#Forward, Backward, Optimize 
 			optimizer.zero_grad()
 			output = model(feature)
-            #XXX: unclear fix! but it works
-			if list(output.size())[0]!=20 or list(output.size())[1]!=8 or target.size()[0]!=20:
-				with open(log_file, 'a') as the_file:
-					the_file.write('\nAnomalous dimensions: Input: ' + str(feature.size()) + 'Output: ' + str(output.size()) + " target: " + str(target.size()))
-					the_file.close()
 			#_, predicted = torch.max(output, 1)
 			loss = criterion(output, target)
 			loss.backward()

@@ -13,7 +13,7 @@ from data_utils.WE import WE
 from nltk.corpus import stopwords
 import pickle
 
-seedId = 2;
+seedId = 0;
 torch.manual_seed(seedId)
 
 iscuda = True
@@ -24,7 +24,7 @@ if iscuda:
 	# Get the first available GPU
 	os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 	try:
-		deviceIDs = GPUtil.getAvailable(order='memory', limit=2, maxLoad=100, maxMemory=20)  # return a list of available gpus
+		deviceIDs = GPUtil.getAvailable(order='memory', limit=1, maxLoad=100, maxMemory=20)  # return a list of available gpus
 
 	except:
 		print('GPU not compatible with NVIDIA-SMI')
@@ -155,9 +155,9 @@ if __name__=='__main__':
 	"embeddings": 'glove-6B-100',#options.model,
 	"WE_dataset": '2012-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 1600,
+	"max_length": 2000,
 	"load_model": False,
-	"num_epochs": 10,
+	"num_epochs": 4,
 	"batch_size": 10        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['WE_dataset']) + "_" + str(params['embeddings']) + "_" + str(params['num_epochs']) + "_" + str(params['batch_size']) + '_seed' + str(seedId)  + '.txt'

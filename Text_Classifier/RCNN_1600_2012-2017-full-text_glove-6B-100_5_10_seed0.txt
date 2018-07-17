@@ -1,0 +1,167 @@
+
+
+dataset2012-2017-full-text
+len(train)18741
+len(dev)2343
+len(test)2342
+Model: RCNN
+Max length: 1600
+batch_size: 10
+Embeddings: glove-6B-100
+Model: RCNN_Classifier(
+  (embed): Embedding(365144, 100)
+  (bi_lstm): LSTM(100, 128, num_layers=25, batch_first=True, bidirectional=True)
+  (sm_fc): Linear(in_features=356, out_features=100, bias=True)
+  (fc): Linear(in_features=100, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 5
+Epoch [1/5], Steps [100/9375], Loss: 1.8970
+Epoch [1/5], Steps [200/9375], Loss: 1.9484
+Epoch [1/5], Steps [300/9375], Loss: 1.6936
+Epoch [1/5], Steps [400/9375], Loss: 1.6811
+Epoch [1/5], Steps [500/9375], Loss: 1.8279
+Dev: 
+Evaluation - acc: 57.8745%(1356/2343) 
+
+Epoch [1/5], Steps [600/9375], Loss: 1.8063
+Epoch [1/5], Steps [700/9375], Loss: 1.7639
+Epoch [1/5], Steps [800/9375], Loss: 1.7493
+Epoch [1/5], Steps [900/9375], Loss: 1.5591
+Epoch [1/5], Steps [1000/9375], Loss: 1.7286
+Dev: 
+Evaluation - acc: 67.6483%(1585/2343) 
+
+Epoch [1/5], Steps [1100/9375], Loss: 1.4725
+Epoch [1/5], Steps [1200/9375], Loss: 1.4898
+Epoch [1/5], Steps [1300/9375], Loss: 1.5890
+Epoch [1/5], Steps [1400/9375], Loss: 1.6075
+Epoch [1/5], Steps [1500/9375], Loss: 1.6564
+Dev: 
+Evaluation - acc: 67.5203%(1582/2343) 
+
+Epoch [1/5], Steps [1600/9375], Loss: 1.5877
+Epoch [1/5], Steps [1700/9375], Loss: 1.6458
+Epoch [1/5], Steps [1800/9375], Loss: 1.6441
+Epoch [2/5], Steps [1900/9375], Loss: 1.5727
+Epoch [2/5], Steps [2000/9375], Loss: 1.6891
+Dev: 
+Evaluation - acc: 72.5992%(1701/2343) 
+
+Epoch [2/5], Steps [2100/9375], Loss: 1.5032
+Epoch [2/5], Steps [2200/9375], Loss: 1.6135
+Epoch [2/5], Steps [2300/9375], Loss: 1.5338
+Epoch [2/5], Steps [2400/9375], Loss: 1.3533
+Epoch [2/5], Steps [2500/9375], Loss: 1.4918
+Dev: 
+Evaluation - acc: 74.0930%(1736/2343) 
+
+Epoch [2/5], Steps [2600/9375], Loss: 1.4823
+Epoch [2/5], Steps [2700/9375], Loss: 1.6576
+Epoch [2/5], Steps [2800/9375], Loss: 1.3821
+Epoch [2/5], Steps [2900/9375], Loss: 1.3321
+Epoch [2/5], Steps [3000/9375], Loss: 1.4578
+Dev: 
+Evaluation - acc: 75.5869%(1771/2343) 
+
+Epoch [2/5], Steps [3100/9375], Loss: 1.3697
+Epoch [2/5], Steps [3200/9375], Loss: 1.5597
+Epoch [2/5], Steps [3300/9375], Loss: 1.4384
+Epoch [2/5], Steps [3400/9375], Loss: 1.6136
+Epoch [2/5], Steps [3500/9375], Loss: 1.5462
+Dev: 
+Evaluation - acc: 76.3551%(1789/2343) 
+
+Epoch [2/5], Steps [3600/9375], Loss: 1.5747
+Epoch [2/5], Steps [3700/9375], Loss: 1.3863
+Epoch [3/5], Steps [3800/9375], Loss: 1.5318
+Epoch [3/5], Steps [3900/9375], Loss: 1.3194
+Epoch [3/5], Steps [4000/9375], Loss: 1.4722
+Dev: 
+Evaluation - acc: 76.7392%(1798/2343) 
+
+Epoch [3/5], Steps [4100/9375], Loss: 1.5632
+Epoch [3/5], Steps [4200/9375], Loss: 1.3918
+Epoch [3/5], Steps [4300/9375], Loss: 1.3021
+Epoch [3/5], Steps [4400/9375], Loss: 1.3031
+Epoch [3/5], Steps [4500/9375], Loss: 1.3221
+Dev: 
+Evaluation - acc: 78.5318%(1840/2343) 
+
+Epoch [3/5], Steps [4600/9375], Loss: 1.4516
+Epoch [3/5], Steps [4700/9375], Loss: 1.5534
+Epoch [3/5], Steps [4800/9375], Loss: 1.4256
+Epoch [3/5], Steps [4900/9375], Loss: 1.3939
+Epoch [3/5], Steps [5000/9375], Loss: 1.4935
+Dev: 
+Evaluation - acc: 78.4891%(1839/2343) 
+
+Epoch [3/5], Steps [5100/9375], Loss: 1.3714
+Epoch [3/5], Steps [5200/9375], Loss: 1.3664
+Epoch [3/5], Steps [5300/9375], Loss: 1.3751
+Epoch [3/5], Steps [5400/9375], Loss: 1.2823
+Epoch [3/5], Steps [5500/9375], Loss: 1.3832
+Dev: 
+Evaluation - acc: 78.1477%(1831/2343) 
+
+Epoch [3/5], Steps [5600/9375], Loss: 1.5041
+Epoch [4/5], Steps [5700/9375], Loss: 1.3769
+Epoch [4/5], Steps [5800/9375], Loss: 1.2932
+Epoch [4/5], Steps [5900/9375], Loss: 1.2799
+Epoch [4/5], Steps [6000/9375], Loss: 1.3773
+Dev: 
+Evaluation - acc: 78.5318%(1840/2343) 
+
+Epoch [4/5], Steps [6100/9375], Loss: 1.2812
+Epoch [4/5], Steps [6200/9375], Loss: 1.3922
+Epoch [4/5], Steps [6300/9375], Loss: 1.4364
+Epoch [4/5], Steps [6400/9375], Loss: 1.3826
+Epoch [4/5], Steps [6500/9375], Loss: 1.4044
+Dev: 
+Evaluation - acc: 77.9770%(1827/2343) 
+
+Epoch [4/5], Steps [6600/9375], Loss: 1.3617
+Epoch [4/5], Steps [6700/9375], Loss: 1.2800
+Epoch [4/5], Steps [6800/9375], Loss: 1.3938
+Epoch [4/5], Steps [6900/9375], Loss: 1.5620
+Epoch [4/5], Steps [7000/9375], Loss: 1.3232
+Dev: 
+Evaluation - acc: 78.4038%(1837/2343) 
+
+Epoch [4/5], Steps [7100/9375], Loss: 1.4522
+Epoch [4/5], Steps [7200/9375], Loss: 1.2812
+Epoch [4/5], Steps [7300/9375], Loss: 1.2840
+Epoch [4/5], Steps [7400/9375], Loss: 1.5036
+Epoch [5/5], Steps [7500/9375], Loss: 1.2771
+Dev: 
+Evaluation - acc: 78.7452%(1845/2343) 
+
+Epoch [5/5], Steps [7600/9375], Loss: 1.3756
+Epoch [5/5], Steps [7700/9375], Loss: 1.4599
+Epoch [5/5], Steps [7800/9375], Loss: 1.3756
+Epoch [5/5], Steps [7900/9375], Loss: 1.3749
+Epoch [5/5], Steps [8000/9375], Loss: 1.3815
+Dev: 
+Evaluation - acc: 78.3184%(1835/2343) 
+
+Epoch [5/5], Steps [8100/9375], Loss: 1.2786
+Epoch [5/5], Steps [8200/9375], Loss: 1.3535
+Epoch [5/5], Steps [8300/9375], Loss: 1.3168
+Epoch [5/5], Steps [8400/9375], Loss: 1.2793
+Epoch [5/5], Steps [8500/9375], Loss: 1.4972
+Dev: 
+Evaluation - acc: 77.8916%(1825/2343) 
+
+Epoch [5/5], Steps [8600/9375], Loss: 1.3730
+Epoch [5/5], Steps [8700/9375], Loss: 1.4237
+Epoch [5/5], Steps [8800/9375], Loss: 1.2845
+Epoch [5/5], Steps [8900/9375], Loss: 1.2755
+Epoch [5/5], Steps [9000/9375], Loss: 1.3767
+Dev: 
+Evaluation - acc: 78.6598%(1843/2343) 
+
+Epoch [5/5], Steps [9100/9375], Loss: 1.2865
+Epoch [5/5], Steps [9200/9375], Loss: 1.2745
+Epoch [5/5], Steps [9300/9375], Loss: 1.2754
+Test: 
+Evaluation - acc: 78.3945%(1836/2342) 

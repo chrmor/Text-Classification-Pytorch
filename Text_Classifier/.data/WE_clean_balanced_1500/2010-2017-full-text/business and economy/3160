@@ -1,0 +1,16 @@
+Deadline expires for ‘Doomsday’ fix
+Thousands of computer users may be without Internet access Monday after a deadline expired for a temporary fix to a malicious software scam shut down by the FBI last year.
+What is it?
+Millions of computers were infected with the so-called "Internet Doomsday" virus used in the hacking scam, which redirected Internet searches through DNS servers used by the scammers. (Who, in turn, allegedly netted $14 million in bogus advertising revenue.) After U.S. and Estonian authorities busted the malware ring last November, a federal judge ordered that the FBI use temporary servers while the malware victims' PCs were repaired. The temporary servers shut down at 12:01 am EDT Monday, meaning anyone using a computer still infected with the virus will likely lose Internet access.
+"Connectivity will be lost to the Internet PERIOD," Symantec, the online security firm, said in a blog post. "If your computer is still using DNS entries that are pointing to the FBI servers on July 9, you will lose TOTAL access to the Internet. No connecting to the office from home, no updating Facebook, nothing until the DNS settings are fixed."
+How many computers have it?
+It's unclear how widespread the "blackout" will be. According to a working group set up by security experts, more than 300,000 computers remained infected as of June 11, including 69,000 in the United States. Last week, 245,000 computers were said to be still infected with the so-called Alureon virus, according online security firm Deteque, including 45,355 U.S. machines.
+Wired estimates 64,000 U.S. users and an additional 200,000 users outside the United States are still infected with the malware, "despite repeated warnings in the news, e-mail messages sent by ISPs and alerts posted by Google and Facebook." According to Internet Identity, another IT security firm, "12 percent of all Fortune 500 companies and four percent of 'major' U.S. federal agencies are still infected with DNSChanger malware."
+But it's also unclear how many of those machines are still in use.
+What you can do
+According to Reuters, U.S. Internet providers including AT&T and Time Warner Cable "have made temporary arrangements so that their customers will be able to access the Internet using the address of the rogue DNS servers." And the problem, security experts say, is relatively easy to fix.
+"It's a very easy one to fix," Gunter Ollmann, vice president of research for security company Damballa, told the news service. "There are plenty of tools available."
+Online security firms, Facebook and the FBI are offering free diagnostic checks for users whose computers may be infected. Here are links to several:
+Of course, that hasn't stopped local media outlets from breathless reporting on the looming "blackout."
+"Monday morning," Alabama's WAAY-TV reported last week, "hundreds of thousands of Internet enthusiasts could wake up to find nothing but a dark, empty computer screen."
+The media hype over a potential "blackout" threatens "to obscure what has been a highly successful effort--one of few to date--to stamp out a global online scam and malware infestation," Paul Roberts wrote on Threatpost.com. Six people were arrested in Estonia and charged with Internet fraud in the sting. A seventh, who was living in Russia, remains at large.

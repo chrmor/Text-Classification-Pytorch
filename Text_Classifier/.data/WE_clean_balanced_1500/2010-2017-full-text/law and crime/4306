@@ -1,0 +1,13 @@
+Ukrainian Software Firm's Servers Seized After Cyber Attack
+Premium Service, which says it is an official dealer of M.E.Doc's software, wrote a post on M.E.Doc's Facebook page saying that masked men were searching M.E.Doc's offices and that the software firm's servers and services were down.
+Premium Service couldn't be reached for further comment. Cyber Police spokeswoman Yulia Kvitko said further comment would be made Wednesday.
+The police move came after cybersecurity investigators unearthed further evidence on Tuesday that the attack had been planned months in advance by highly skilled hackers, who they said had inserted a vulnerability into the M.E.Doc program.
+Researchers at the Slovakian security software firm ESET said they had found a "backdoor" written into some of M.E.Doc's software updates, likely with access to the company's source code, which allowed hackers to enter companies' systems undetected.
+"We identified a very stealthy and cunning backdoor that was injected by attackers into one of M.E.Doc's legitimate modules," senior malware researcher Anton Cherepanov said in a technical note. "It seems very unlikely that attackers could do this without access to M.E.Doc's source code."
+"This was a thoroughly well-planned and well-executed operation," he said.
+Oleg Derevianko, board chairman at Ukrainian cyber security firm ISSP, said an update issued by M.E.Doc in April delivered a virus to the company's clients, which instructed computers to download 350 megabytes of data from an unknown source on the internet.
+The virus then exported 35 megabytes of company data to the hackers, he told Reuters in an interview at his office in Kiev.
+"With this 35 megabytes, you can exfiltrate anything — emails from all of the banks, user accounts, passwords, anything."
+Ukrainian intelligence officials accused Russian security services on Saturday of being behind the attack, and cybersecurity researchers linked it to a suspected Russian group that attacked the Ukrainian power grid in December.
+M.E.Doc is little known outside Ukrainian accounting circles, but it is used by around 80 percent of companies in Ukraine. The software allows its 400,000 clients to send and collaborate on financial documents among internal departments, as well as file them with the Ukrainian state tax service.
+Ukraine's government said Tuesday that it would submit a draft law to Parliament to extend the country's tax deadline to July 15 and to waive fines for companies that missed the June 13 cutoff because of the attack.

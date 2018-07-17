@@ -1,0 +1,15 @@
+Second hacker group targets SWIFT users, Symantec warns
+(Reuters) - Cyber-security firm Symantec Corp said on Tuesday that a second hacking group has sought to rob banks using fraudulent SWIFT messages, the same approach that yielded $81 million in the high-profile February attack on Bangladesh’s central bank.
+Symantec said that a group dubbed Odinaff has infected 10 to 20 organizations with malware that can be used to hide fraudulent transfer requests made over SWIFT, the messaging system that is a lynchpin of the global financial system.
+Symantec’s research provided new insight into ongoing hacking that has previously been disclosed by SWIFT. SWIFT Chief Executive Gottfried Leibbrandt last month told customers about three hacks and warned that cyber attacks on banks are poised to rise.
+SWIFT and Symantec have not identified specific victims beyond Bangladesh Bank. Symantec said that most Odinaff attacks occurred in the United States, Hong Kong, Australia, the United Kingdom and Ukraine.
+Symantec said it would share technical information about Odinaff with banks, governments and other security firms.
+The company in May said it believed the Bangladesh heist was carried out by a group known as Lazarus, which was also responsible for attacks on SWIFT customers in Southeast Asia as well as the 2014 hack of Sony Pictures Entertainment.
+The U.S. government has blamed North Korea for the Sony attack.
+Symantec researcher Eric Chien said his firm has not confirmed that North Korea was behind Lazarus, but that the high level of sophistication of its work suggests involvement by a nation state.
+Odinaff, on the other hand, appears to be a financially motivated criminal group, not a nation state, he added.
+SWIFT spokeswoman Natasha de Terán said that the messaging cooperative’s customer security intelligence team had sent a warning about Odinaff’s activities to its members in the early summer.
+That warning included technical indicators to help thwart potential attacks and a description of the group’s habits, Terán said.
+Symantec said it believed that Odinaff is linked to Carbanak, a hacking group that has been targeting banks and merchant point-of-sale systems since at least 2014.
+The two groups employ similar tactics in carrying out attacks and have used the same IP addresses to connect to their servers, according to Symantec.
+(This version of the story corrects to make clear that 10 to 20 organizations were infected with Odinaff and not all of them were Symantec customers in the second paragraph)

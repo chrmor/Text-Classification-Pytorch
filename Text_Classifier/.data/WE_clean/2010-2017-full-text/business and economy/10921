@@ -1,0 +1,12 @@
+LinkedIn passwords leaked by hackers
+Social networking website LinkedIn has said some of its members' passwords have been "compromised" after reports that more than six million passwords had been leaked onto the internet.
+They have invited the hacking community to help with decryption.
+LinkedIn, which has more than 150 million users, said the leaked passwords would no longer be valid.
+Members would receive an email with instructions on how to reset them, the company said. Users would then receive a second email with further details about why the change was necessary, it added.
+The news comes as LinkedIn was forced to update its mobile app after a privacy flaw was uncovered by security researchers.
+Skycure Security said the the mobile app was sending unencrypted calendar entries to LinkedIn servers without users' knowledge.
+The information included meeting notes, which often contain information such as dialling numbers and passcodes for conference calls.
+In response LinkedIn said it would "no longer send data from the meeting notes section of your calendar".
+The company stressed that the calendar function was an opt-in feature.
+However, the researchers who uncovered the flaw said the transmission of the data to LinkedIn's servers was done without a "clear indication from the app to the user".
+In a statement posted on the company's blog , LinkedIn's mobile product head Joff Redfern said a new "learn more" link would be added to the app so users have a clearer picture about how their information is being used and transmitted.

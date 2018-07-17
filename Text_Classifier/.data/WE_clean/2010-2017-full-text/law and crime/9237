@@ -1,0 +1,18 @@
+Symantec: parts of antivirus source code exposed
+(Reuters) - Symantec Corp, the top maker of security software, said hackers had exposed a chunk of its source code, which is essentially the blueprint for its products, potentially giving rivals some insight into the company’s technology.
+The developer of the popular Norton antivirus software said the hackers stole the code from a third party and that the company’s own network had not been breached, nor had any customer information been affected.
+The software maker would not confirm the claim of a group called the Lords of Dharmaraja, who said that they had obtained Symantec’s source code by hacking the Indian military.
+Some governments ask their security vendors to provide their source code to ensure there is nothing in the code that could act as spyware, said Rob Rachwald, director of security strategy at data security firm Imperva.
+Microsoft Corp, for example, in 2003 began allowing governments including Russia and international organizations such as NATO to look at the source code for its Windows operating system to dispel rumors that it had a secret “back door” built in to let the U.S. government spy on its users.
+Symantec downplayed the risks, saying the exposed code was several years old.
+“Symantec can confirm that a segment of its source code used in two of our older enterprise products has been accessed, one of which has been discontinued,” Cris Paden, a spokesman for Symantec, said in an email on Friday.
+Symantec, which reported $1.68 billion in sales in the third quarter, has benefited from heightened concern over hacking in the wave of high-profile attacks on Google Inc, Lockheed Martin and Nasdaq OMX Group Inc.
+A software maker’s intellectual property, specifically its source code, is its most precious asset. Symantec’s Norton Internet Security is among the most popular software available to stop viruses, spyware, and online identity theft.
+The code that was exposed for Symantec Endpoint Protection (SEP) 11.0 - which is used to block outgoing data from being leaked - was four years old and had been updated regularly since, Paden said.
+The code for Symantec Antivirus 10.2 was five years old and had been discontinued, he said, adding that while it was not on sale anymore it was still being serviced.
+“There are no indications that customer information has been impacted or exposed at this time,” Paden said.
+Rachwald said it was likely that Symantec’s source code had been overhauled and that there was not much in the exposed code that the hackers did not know before.
+“The workings of most of the anti-virus’ algorithms have also been studied already by hackers in order to write the malware that defeats them,” Rachwald said in a blog on the Imperva website.
+Unlike hackers who aim to get around firewalls and software protection, rivals could be more interested in having the source code to study the market leader’s software, Rachwald said.
+On Thursday, the Lords of Dharmaraja said on the information-sharing website pastebin that it would soon list a Norton antivirus source code package. A person using the handle “Yama Tough” posted several items in an effort to prove the group had accessed the code.
+“...we are sharing here one technical documentation file from Symantec Soruce (sic) Code transferred to Indian Military Intel and located at MEA (Ministry of External Affairs) servers we owneed (sic) recently,” Yama Tough posted.

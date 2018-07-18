@@ -153,14 +153,15 @@ if __name__=='__main__':
 #parameters 
 	params = {
 	"embeddings": 'glove-6B-100',#options.model,
-	"WE_dataset": '2010-2017-full-text',#options.architecture,
+	"data_folder": 'WE_clean_balanced_1500',
+	"dataset": '2010-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
 	"max_length": 200,
 	"load_model": False,
 	"num_epochs": 4,
 	"batch_size": 20        
 }
-	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['WE_dataset']) + "_" + str(params['embeddings']) + "_" + str(params['num_epochs']) + "_" + str(params['batch_size']) + '_seed' + str(seedId)  + '.txt'
+	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "_" + str(params['num_epochs']) + "_" + str(params['batch_size']) + '_seed' + str(seedId)  + '.txt'
     
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	glove = vocab.GloVe(name = '6B', dim = 100)
@@ -185,8 +186,7 @@ if __name__=='__main__':
 	label_field = data.Field(sequential = False)
 
     #select data set 
-	dataprefix = 'WE_clean_balanced_1500'
-	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = dataprefix + params['WE_dataset'], device = device_value, repeat = False)
+	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)

@@ -34,14 +34,14 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
 def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_seed{seedId}.pt"
 	#pickle.dump(model, open(path, "wb"))
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['WE_dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_seed{seedId}.pt"
 	try:
 		if iscuda:
 			model = torch.load(path)

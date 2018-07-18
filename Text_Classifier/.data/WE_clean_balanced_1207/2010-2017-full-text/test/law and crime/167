@@ -1,0 +1,12 @@
+Eavesdropping concerns in Samsung smart TVs
+SEOUL, South Korea (AP) — Watch what you say in your living room. Samsung's smart TV could be listening. And sharing.
+At least that's what you'd conclude in reading Samsung's privacy policy for smart TVs. Voice recognition technology in Samsung's Internet-connected TVs captures and transmits nearby conversations. The policy warns, "Please be aware that if your spoken words include personal or other sensitive information, that information will be among the data captured and transmitted to a third party through your use of Voice Recognition."
+In a blog post Tuesday, Samsung said it is removing that sentence and clarifying the policy "to better explain what actually occurs."
+For the voice command feature to work, the TV listens for predefined commands such as changing the channel or the volume. That speech isn't stored or transmitted, according to Samsung. But the remote control also has a microphone that can not only respond to those commands but also search for content, such as requests to recommend a good movie. The speech is translated by third-party software into text and sent back to the TV as a command.
+Although Samsung initially declined to name the software company, the blog post identifies it as Nuance Communications Inc. The TV also transmits other information including its unique identifier, both to provide the service and to improve the feature.
+Samsung said voice recognition on the remote must be activated by pressing a button. It's similar to how Siri and Google Now voice assistants work on smartphones. If the feature isn't activated, there's no threat of eavesdropping, Samsung said. Users will see microphone icon on the screen when it is on. Users can disable the feature, but voice control would then be limited to predefined commands.
+The South Korean company said it takes consumer privacy "very seriously."
+"We employ industry-standard security safeguards and practices, including data encryption, to secure consumers' personal information and prevent unauthorized collection or use."
+It is not the first time that smart TVs sparked privacy concerns. In 2013, the owner of a LG Electronics smart TV revealed it was sending information about his viewing habits back to the company without consent and without encrypting data.
+LG has also experimented with displaying targeted ads on its smart TVs, which requires collecting and utilizing user data, such as their location, age and gender.
+Technology Writer Anick Jesdanun contributed to this story from New York.

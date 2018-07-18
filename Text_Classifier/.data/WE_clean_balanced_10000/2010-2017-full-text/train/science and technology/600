@@ -1,0 +1,23 @@
+Google says its cars grabbed emails, passwords
+SAN FRANCISCO (Reuters) - Google Inc admitted for the first time its “Street View” cars around the world accidentally collected more personal data than previously disclosed — including complete emails and passwords — potentially breathing new life into probes in various countries.
+The disclosure comes just days after Canada’s privacy watchdog said Google had collected complete emails and accused Google of violating the rights of thousands of Canadians.
+“If in fact laws were broken...then there’s some serious question of culpability and Google may need to face significant fines,” said Marc Rotenberg, the executive director of the Electronic Privacy Information Center, a Washington DC-based privacy advocacy group.
+Regulators in France, Germany and Spain, among others, have opened investigations into the matter.
+A coalition of more than 30 state attorneys general in the United States also have launched a joint probe.
+It remains unclear how many people may have been affected by the privacy breach.
+Connecticut Attorney General Richard Blumenthal, who is leading the multi-state investigation, said in a statement on Friday that Google’s disclosure about the types of data it collected “validates and heightens our significant concerns,” and noted that the investigation is continuing.
+Google’s Street View cars, which are well known for crisscrossing the globe and taking panoramic pictures of the city’s streets, accidentally collected data from unsecured wireless networks used by residents in more than 30 countries, Google disclosed in May.
+At the time, Google said the information was typically limited to “fragments” of unencrypted data because the cars were always moving and because the cars’ wireless equipment automatically changed channels about five times a second.
+A Google spokesperson said the company had not examined the roughly 600 GB of data captured by the cars in any detail to avoid violating privacy.
+The latest disclosure comes from information from regulators in various countries, who have examined the data collected by Google.
+“It’s clear from those inspections that while most of the data is fragmentary, in some instances entire emails and URLs were captured, as well as passwords,” Google Vice President of Engineering and Research Alan Eustace said in a post on Google’s blog on Friday.
+Google also said in the blog post that it hoped to delete the data as soon as possible.
+Google had deleted the data in countries where regulators had given it permission to do so, a spokeswoman said. Investigations in six countries including New Zealand and the Netherlands, were closed, the spokeswoman said. There were investigations ongoing in other countries, but Google could not delete the data until the investigations were closed.
+Google appointed Alma Whitten as director of privacy for engineering and product management as part of a campaign to bolster its privacy protections, including adding new internal procedures requiring engineering product managers to maintain a privacy design document that records how user data is handled.
+Google also said it was enhancing its privacy training for engineers and other important groups within the company.
+“We’re acutely aware that we failed badly here,” Eustace said in the blog post.
+Google’s cars collected the WiFi data in more than 30 countries between 2006 and mid-2010 so that Google could amass data on WiFi hotspots that could help provide location-based services — a project unrelated to taking photos for Google Maps.
+But Google apparently thought it was only collecting a limited type of WiFi data relating to the WiFi network’s name and router numbers.
+The collection of the additional, so-called payload data was a simple mistake resulting from a piece of computer code that was accidentally included from an experimental project, Google said.
+Google has said that its Street View cars no longer collect any type of wireless information.
+The admission that emails and other types of data were collected means that the problem is much more serious than Google initially suggested, Rotenberg said.

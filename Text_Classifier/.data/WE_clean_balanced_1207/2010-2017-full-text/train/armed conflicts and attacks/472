@@ -1,0 +1,7 @@
+Malicious Web attack hits a million site addresses
+SEATTLE, April 1 (Reuters) - More than one million website addresses have been compromised by a sophisticated hacking attack that injects code into sites that link to a fraudulent software sales operation.
+The mass attack has managed to inject malicious code into websites’ links by gaining access to the servers running the databases that power the Internet, according to the technology security company that discovered it.
+Websense, which first found evidence of the attack earlier this week, has called it ‘LizaMoon,’ after the name of the site the malicious code first directed its researchers to.
+On that site and others, users are shown a warning from ‘Windows Stability Center’ — posing as a Microsoft Corp (MSFT.O) security product — that there are problems with their computer and are urged to pay for software to fix it.
+Microsoft has no product of that name. The company did not immediately have a comment on the attack.
+Websense said some Web addresses related to Apple Inc’s (AAPL.O) iTunes service were compromised. Apple did not immediately respond to a request for comment. (Reporting by Bill Rigby; editing by Andre Grenon)

@@ -1,0 +1,16 @@
+Gamers targeted by ransomware virus
+Gamers are being targeted by a computer virus that stops them playing their favourite titles unless they pay a ransom.
+On infected machines, the malicious program seeks out saved games and other files and encrypts them.
+A key to unlock encrypted files is only supplied if victims pay at least $500 (£340) in Bitcoins.
+The malware targets 40 separate games including Call of Duty, World of Warcraft, Minecraft and World of Tanks.
+The malicious program looks similar to the much more widely distributed Cryptolocker ransomware that has caught out thousands of people over the last couple of years.
+But analysis of the malware, called Teslacrypt, reveals that it shares no code with Cryptolocker and appears to be have been created by a different cybercrime group.
+Researcher Vadim Kotov from security firm Bromium said the file was catching people out via a website its creators had managed to compromise. The site involved is a Wordpress blog that is inadvertently hosting a file that abuses a loophole in Flash to infect visitors.
+One a machine is infected, wrote Mr Kotov, the malware looks for 185 different file extensions. In particular, it seeks out files associated with many popular video games and online services such as Steam that give people access to them.
+"Interestingly, although these are all popular games, none of them matches any particular 'Top Sellers' or 'Most Played' chart, " said Mr Kotov. "They could just be games the developer loves to play."
+Files holding gamers' profiles, maps, saves and modified versions of games are all sought by Teslacrypt, he said.
+He said anyone who tries to outwit the malware by uninstalling a game they obtained via an online service may end up disappointed.
+"Often it's not possible to restore this kind of data even after re-installing a game via Steam," he wrote.
+Once target files are encrypted the malware pops up a window telling victims they have a few days to pay up and retrieve their data.
+To decrypt, victims can either pay $500 in Bitcoins or $1,000 in Paypal My Cash payment cards. The virus tells victims to send payment details to an address located on the Tor anonymous browsing network.
+The encryption system used by Teslacrypt has yet to be cracked meaning victims would have to turn to back-ups to restore scrambled files.

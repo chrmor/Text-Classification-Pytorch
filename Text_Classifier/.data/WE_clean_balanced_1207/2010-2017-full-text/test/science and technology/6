@@ -1,0 +1,14 @@
+Windows 10 update stops webcams working
+A Windows 10 update has stopped many popular webcams from working.
+The update, released earlier this month, stops many cameras being used for Skype or to broadcast and stream footage.
+The cause seems to be a change in the way Windows 10 handles video so it can be used by more than one program at a time.
+Microsoft said it was working on a fix but has not given any date for when the patch will be available.
+Soon after Windows Update 1607 was distributed in early August, many people started reporting webcam problems to Microsoft via its support site. The trouble affected both webcams connected via USB cables or on the same network and meant either that footage could not be streamed, or that images froze after a while.
+The problems even affected webcams working with Skype and Lync - both companies owned by Microsoft.
+Comments on the support thread suggest millions of people have been inconvenienced by the bug. Some companies said customers who used webcams for internet banking had complained because they could no longer verify transactions.
+Analysis put the blame on changes to the video encoding systems with which Windows 10 works. The update ends support for two widely used encoding systems so it became possible for more than one application to use video as it is being shot. Prior to the update Windows 10 only allowed one application access to a stream.
+A Microsoft camera engineer who responded to complaints on the support thread said the company had done "a poor job" of letting people know about the change.
+"We dropped the ball on that front, so I'd like to offer my apologies to you all," he said.
+He added that Microsoft was working on a way to fix the problem and get webcams working again. The fix is likely to be released in September.
+Microsoft has yet to officially comment on the problem.
+Changes to the way Microsoft handles updates also seem to have made the problem harder to fix. Prior to update 1607, Windows 10 users could roll-back to a previous version within 30 days of it being installed. The update cut that to 10 days giving people little chance to switch back to the earlier version of Windows 10 under which their webcams worked.

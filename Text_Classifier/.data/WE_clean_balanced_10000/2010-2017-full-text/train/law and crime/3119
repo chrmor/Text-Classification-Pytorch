@@ -1,0 +1,9 @@
+AntiSec hackers publish 1,000,001 Apple UDIDs allegedly obtained from FBI - Enterprise
+AntiSec, a hacking group linked to Anonymous and LulzSec, has published data it claims was obtained from a breached FBI laptop that contained more than 12m Apple unique device identifiers (UDIDs) and other personal user data.
+Earlier today (at 4am Irish time), AntiSec tweeted that a ‘special delivery’ was on the way. Shortly after that, the group announced it had obtained information on 12m identified and tracked iOS devices, courtesy of FBI supervisor special agent Christopher Stangl.
+According to AntiSec, a Dell Vostro notebook used by Stangl was breached in March of this year. Files were downloaded from his desktop, one of which turned out to be an incomplete database of more than 12m Apple iOS devices, including UDIDs (unique numbers that identify each iOS device), usernames, names of devices, types of device, Apple Push Notification Service tokens, zip codes, phone numbers, addresses, and more.
+In what it says is an effort to alert people to how the FBI is storing such information, AntiSec has published 1,000,001 UDIDs from the list, excluding personal data like full names, phone numbers and addresses, but leaving enough information for users to discover if their devices are listed or not.
+Apple and the FBI have yet to comment on the leak.
+UPDATE: The FBI has denied the leaked data came from one of its computers, while AntiSec has warned that it is just getting started.
+UPDATE: Apple has now weighed in on the issue saying that the FBI did not request nor did it receive the UDID information from them. A spokesperson has also said that Apple is now planning to ban the use of UDIDs.
+UPDATE: It has since come to light that the leaked data came from BlueToad, a digital publishing company.

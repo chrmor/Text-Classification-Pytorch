@@ -1,0 +1,22 @@
+Microsoft warns of Internet Explorer flaw
+Microsoft has warned consumers that a vulnerability in its Internet Explorer browser could let hackers gain access and user rights to their computer.
+The flaw affects Internet Explorer (IE) versions 6 to 11 and Microsoft said it was aware of "limited, targeted attacks" to exploit it.
+According to NetMarket Share, the IE versions account for more than 50% of global browser market.
+Microsoft says it is investigating the flaw and will take "appropriate" steps.
+The firm, which issued a security advisory over the weekend, said the steps "may include providing a solution through our monthly security update release process, or an out-of-cycle security update, depending on customer needs".
+The US government advised computer users to consider using alternative web browsers until a security fix is released.
+However, the issue may be of special concern to people still using the Windows XP operating system.
+That is because Microsoft ended official support for that system earlier this month.
+It means there will be no more official security updates and bug fixes for XP from the firm.
+Cyber security firm Symantec said it had carried out tests which confirmed that "the vulnerability crashes Internet Explorer on Windows XP".
+"This will be the first zero day vulnerability that will not be patched for Windows XP users," it added.
+About 30% of all desktops are thought to be still running Windows XP and analysts have previously warned that those users would be vulnerable to attacks from cyber-thieves.
+Microsoft has suggested businesses and consumers still using the system should upgrade to a newer alternative.
+Microsoft said that hackers looking to exploit the flaw could host a "specially crafted website" containing content that can help them do so.
+However, they would still need to convince users to view the website for them to be able to gain access to their computer.
+They could do this by getting them to click on a link sent via an email or instant messenger, or by opening an attachment sent through an email.
+However, a hacker would have "no way to force users" to view the content.
+If successful, a hacker could gain the same rights as the computer's current user.
+"If the current user is logged on with administrative user rights, an attacker who successfully exploited this vulnerability could take complete control of an affected system," the firm warned.
+"An attacker could then install programs; view, change, or delete data; or create new accounts with full user rights."
+But the firm added that Internet Explorer on Windows Server 2003, Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, and Windows Server 2012 R2 runs in a restricted mode, which "mitigates this vulnerability".

@@ -1,0 +1,24 @@
+ABC News (Australian Broadcasting Corporation)
+Researchers from Australia and Japan have successfully teleported wave packets of light, potentially revolutionising quantum communications and computing.
+The team, led by researchers at the University of Tokyo, say this is the first-ever teleportation, or transfer, of a particular complex set of quantum information from one point to another.
+They say it will make possible high-speed, high-fidelity transmission of large volumes of information, such as quantum encryption keys, via communications networks.
+The research appears today in the journal Science.
+Professor Elanor Huntington, of the School of Engineering and Information Technology at UNSW's Canberra campus, explains that teleportation - the transfer of quantum information from one location to another using normal, "classical" communications - is a fundamental quantum communication technique.
+"It relies on having two things," she said.
+"One is the normal fibre-optic internet or even copper cables, and the other is a shared resource between the sender and the receiver, that could have been shared at any time in the past: we call that entanglement."
+Professor Huntington says the idea of quantum teleportation has been around for about 10 years, but has been difficult to put into practice.
+"There used to be two ways of doing teleportation and both had their limitations," she said.
+"One was quite fast, but had a limited probability of succeeding. The other way of doing it was quite slow, but had a very good probability of working.
+"What we've done is managed to get it both fast and good quality."
+They did it by teleporting the wave packets of light in a "Schrodinger's cat" state.
+In Schrodinger's famous thought experiment of the 1930s, a cat would be placed in a sealed box with a device containing atomic material.
+A Geiger counter was included to measure radiation if at some point an atom decayed. Should that happen, the Geiger counter would trigger the release of cyanide gas, which would kill the cat.
+The idea was that it was impossible to know whether or not the cat was alive or dead without opening the box and observing it, and that until that happened, both realities existed. This became known as superposition.
+Schrodinger is said to have devised the experiment to ridicule the emerging theories of quantum physics, but since then physicists have found many examples of superposition in the quantum world.
+"What was funky about Schrodinger's idea was that you could take a normal macroscopic object, which we all think we know and understand fairly well, and you could put it into a quantum superposition - and that's kind of weird," Professor Huntington said.
+"Nowadays any kind of system where you do that is known as a Schrodinger's cat.
+"So in our case what we've done is take a macroscopic beam of light and put it into a quantum superposition, which is extremely fragile, and teleported that from one place to another.
+"One of the ways that we encode digital information is by its phase, so what we've done is created a wave packet that's simultaneously a one and a zero in its phase."
+"Superposition is exactly what underlies the power of things like quantum computers. You enable parallel processing because at the same time it's a one and a zero. The point is, we've managed to teleport it from A to B without the one and the zero getting confused."
+Professor Huntington says being able to demonstrate this will enable researchers to take the next step in quantum computing.
+"[Being able to transfer data packets] is a necessary thing to do in order to build a proper quantum computer or a quantum communications device," she said.

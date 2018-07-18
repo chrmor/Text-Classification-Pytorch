@@ -1,0 +1,48 @@
+NZ computers caught up in global cyberattack
+Computers in thousands of locations have apparently been locked by a programme, WannaCry, that demands $300 ($NZD430) in Bitcoin.
+There have been reports of infections in as many as 100 countries, including several in New Zealand, a live-tracking map of the attack showed.
+The government's cyber emergency response team (CERT) said it was aware of the ransomware and was working on how to advise those affected.
+It said the attack will likely take the shape of a phishing email with a malicious attachment or link in it and exploits machines running un-updated versions of Windows XP through to Windows 2008.
+Once a single computer in a network is infected with WannaCry, the programme looks for other vulnerable computers on the network and infects them as well.
+A spokesperson says people with locked up computers should lodge a report on the team's [www.cert.govt.nz website].
+No significant cyber security issues have been reported either by the Ministry of Health or the wider health sector.
+Ministry of Health officials have been briefed by police about the ransomware attacks.
+Police said they had not been made aware of any attacks in New Zealand and the briefing to the ministry was a precaution.
+The Ministry said it had passed on the police warning to its staff and to district health boards who were taking it to the health sector agencies they work with.
+One overseas cyber-security researcher tweeted that he had detected many thousands of cases of the ransomware.
+"This is huge," said Jakub Kroustek at Avast.
+Another, at cyber-security firm Kaspersky, said that the ransomware had been spotted cropping up in 74 countries and that the number was still growing.
+Waikato University's cyber lab head Ryan Ko said New Zealanders who had not updated their Windows operating system should do so now, as the ransomware exploited a vulnerability in the system.
+"Some computers are still not patched. When you get the 'Do you want to update your computer now?' message, some people will just choose not to do so, and because of that would leave the vulnerability open to attack."
+The UK's National Health Service was among organisations hit by the outbreak and screenshots of the WannaCry program were shared by NHS staff.
+Hospitals and doctors' surgeries in parts of England have been forced to turn away patients and cancel appointments.
+People in affected areas were being advised to seek medical care only in emergencies.
+A number of Spanish firms were among the apparent victims elsewhere in Europe.
+Telecoms giant Telefonica said in a statement that it was aware of a "cybersecurity incident" but that clients and services had not been affected.
+Power firm Iberdrola and utility provider Gas Natural were also reported to have suffered from the outbreak.
+There were reports that staff at the firms were told to turn off their computers.
+In Italy, one user shared images appearing to show a university computer lab with machines locked by the same programme.
+Some reports said Russia had seen more infections than any other single country. Russia's interior ministry said it had "localised the virus" following an "attack on personal computers using Windows operating system".
+Bitcoin wallets seemingly associated with the ransomware were reported to have already started filling up with cash.
+Another firm that confirmed it had been caught out was delivery company FedEx, though it did not clarify in which territories it had been hit.
+"Like many other companies, FedEx is experiencing interference with some of our Windows-based systems caused by malware," it said in a statement.
+"We are implementing remediation steps as quickly as possible."
+"This is a major cyber attack, impacting organisations across Europe at a scale I've never seen before," security architect Kevin Beaumont said.
+According to security firm Check Point, the version of the ransomware that appeared today is a new variant.
+"Even so, it's spreading fast," said Aatish Pattni, head of threat prevention for northern Europe.
+Vodafone New Zealand said it was aware of the ransomware attacks and had taken measures to protect its systems.
+The company said it had no evidence that it had been the victim of an attack but was monitoring the situation closely.
+Some experts say the attack may be have been built to exploit a weakness in Microsoft systems that was identified by the NSA and given the name EternalBlue.
+The NSA tools were then stolen by a group of hackers known as The Shadow Brokers, who then attempted to sell the encrypted cache in an online auction.
+However they subsequently made the tools freely available, releasing a password for the encryption on 8 April.
+The hackers said they had published the password as a "protest" about US President Donald Trump.
+At the time, some cyber-security experts said some of the malware was real, but old.
+A patch for the vulnerability was released by Microsoft in March, but many systems may not have had the update installed.
+Microsoft said on Friday its engineers had added detection and protection against the malware. The company was providing assistance to customers, it added.
+Some security researchers have pointed out that the infections seem to be deployed via a worm - a program that spreads by itself between computers.
+Unlike many other malicious programs, this one has the ability to move around a network by itself. Most others rely on humans to spread by tricking them into clicking on an attachment harbouring the attack code.
+By contrast, once WannaCry is inside an organisation it will hunt down vulnerable machines and infect them too. This perhaps explains why its impact is so public - because large numbers of machines at each victim organisation are being compromised.
+A UK-based cybersecurity researcher, tweeting as @MalwareTechBlog, said he had accidentally managed to temporarily halt the spread of the virus.
+He was quoted as saying that he noticed that the virus was searching for a web address that had not been registered. He bought the domain name for around $10 and found that by registering it, he triggered a "kill switch" that stopped the worm's spread.
+But he warned it was likely to be only a temporary fix.
+"So long as the domain isn't removed, this particular strain will no longer cause harm, but patch your systems ASAP as they will try again," he tweeted.

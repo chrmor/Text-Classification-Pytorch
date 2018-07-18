@@ -34,14 +34,14 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
 def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
 	#pickle.dump(model, open(path, "wb"))
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
 	try:
 		if iscuda:
 			model = torch.load(path)
@@ -149,20 +149,27 @@ def clean_str(strings):
 
 if __name__=='__main__':
 
+    
+	print_evaluation_details = False
+
 #parameters 
 	params = {
+    #Setting this to True we load a previously trained model with the same parameters as specified here!
+	"load_model": False,    
+	"do_training": True,
+	"save_model": True,
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
-	"embeddings_dim": 100,
-	"data_folder": 'WE_clean_balanced_50',
+	"embeddings_dim": 300,
+	"data_folder": 'WE_clean_balanced_1207',
 	"dataset": '2010-2017-full-text',#options.architecture,
+	"dataset_model": '2010-2017-full-text',#options.architecture,        
 	"nn_model": 'CNN',#options.dataset,
-	"dropout_p": 0.5,
+	"dropout_p": 0.9,
 	"learning_rate": 0.001,
 	"max_length": 200,
-	"load_model": True,
 	"num_epochs": 20,
-	"batch_size": 20        
+	"batch_size": 30        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'
     
@@ -233,18 +240,20 @@ if __name__=='__main__':
 		elif params['nn_model'] == 'RNN':
 			classifier_model = model.RNNClassifier(voca_size, embed_dim, num_hidden, num_layer, num_classes, embedding_weight, iscuda)
 
-		if iscuda:
-			classifier_model = classifier_model.cuda()
+	if iscuda:
+		classifier_model = classifier_model.cuda()
 
+	if params['do_training']:    
 		# train 
 		print("Start Train...")
 		train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file)
 		print("Finished Train...")
+	if params['save_model']:
 		save_model(classifier_model, params)
         
 	# eval 
 	print("Evaluation")
-	msg = train.eval(test_loader, classifier_model, iscuda) 
+	msg = train.eval_treshold(test_loader, classifier_model, iscuda, print_evaluation_details, 0.2) 
 	print(msg)
 	with open(log_file, 'a') as the_file:
 		the_file.write('\nTest: ' + msg)

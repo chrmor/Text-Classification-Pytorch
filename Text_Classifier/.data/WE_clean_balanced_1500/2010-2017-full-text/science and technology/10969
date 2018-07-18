@@ -1,5 +1,0 @@
-Apple Bans Hundreds of Apps That Hid Chinese Spyware
-This surreptitious collection was discovered independently by cybersecurity firm SourceDNA and researchers at Purdue University. Apple confirmed the findings, issuing a statement after removing the 256 offending apps.
-Related: Bug Exposes 1,000 iPhone and iPad Apps to Possible Hacks
-It's not likely, SourceDNA reported, that the hundreds of apps and their developers were all in on the trick. Since the Youmi code was fairly common and it took a careful breakdown of it to identify the sketchy functions, it's more likely these app creators had no idea and Youmi was acting alone.
-"Given how simple this obfuscation is and how long the apps have been available that have it, we’re concerned other published apps may be using different but related approaches to hide their malicious behavior," wrote SourceDNA in its blog post.

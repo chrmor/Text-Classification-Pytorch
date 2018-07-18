@@ -16,7 +16,7 @@ import pickle
 seedId = 0;
 torch.manual_seed(seedId)
 
-iscuda = False
+iscuda = True
 
 if iscuda:
 	import GPUtil
@@ -160,7 +160,7 @@ if __name__=='__main__':
 	"save_model": True,
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
-	"embeddings_dim": 300,
+	"embeddings_dim": 100,
 	"data_folder": 'WE_clean_balanced_1207',
 	"dataset": '2010-2017-full-text',#options.architecture,
 	"dataset_model": '2010-2017-full-text',#options.architecture,        

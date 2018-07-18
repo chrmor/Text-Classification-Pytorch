@@ -153,12 +153,12 @@ if __name__=='__main__':
 #parameters 
 	params = {
 	"embeddings": 'glove-6B-100',#options.model,
-	"WE_dataset": '2012-2017-full-text',#options.architecture,
+	"WE_dataset": '2010-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"max_length": 2000,
+	"max_length": 200,
 	"load_model": False,
 	"num_epochs": 4,
-	"batch_size": 10        
+	"batch_size": 20        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['WE_dataset']) + "_" + str(params['embeddings']) + "_" + str(params['num_epochs']) + "_" + str(params['batch_size']) + '_seed' + str(seedId)  + '.txt'
     
@@ -185,7 +185,8 @@ if __name__=='__main__':
 	label_field = data.Field(sequential = False)
 
     #select data set 
-	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = params['WE_dataset'], device = device_value, repeat = False)
+	dataprefix = 'WE_clean_balanced_1500'
+	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = dataprefix + params['WE_dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)

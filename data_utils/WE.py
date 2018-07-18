@@ -58,7 +58,7 @@ class WE(data.Dataset):
 	        Remaining keyword arguments: Passed to the splits method of
 	            Dataset.
 	    """
-	    dirname = '.data/WE/'
+	    dirname = '.data/'
 	    path = dirname + dataset
 	    examples = cls(path, text_field, label_field, **kwargs).examples
 

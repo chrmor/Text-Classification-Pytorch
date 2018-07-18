@@ -34,14 +34,14 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
 def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
 	#pickle.dump(model, open(path, "wb"))
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
 	try:
 		if iscuda:
 			model = torch.load(path)
@@ -160,7 +160,7 @@ if __name__=='__main__':
 	"save_model": True,
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
-	"embeddings_dim": 100,
+	"embeddings_dim": 300,
 	"data_folder": 'WE_clean_balanced_1207',
 	"dataset": '2010-2017-full-text',#options.architecture,
 	"dataset_model": '2010-2017-full-text',#options.architecture,        
@@ -171,7 +171,7 @@ if __name__=='__main__':
 	"num_epochs": 20,
 	"batch_size": 30        
 }
-	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'
+	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'
     
 	glove = vocab.GloVe(name = '6B', dim = params['embeddings_dim'])
     

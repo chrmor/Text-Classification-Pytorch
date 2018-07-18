@@ -157,7 +157,7 @@ if __name__=='__main__':
 	"data_folder": 'WE_clean_balanced_1500',
 	"dataset": '2010-2017-full-text',#options.architecture,
 	"nn_model": 'RCNN',#options.dataset,
-	"dropout_p": 0.5,
+	"dropout_p": 0.9,
 	"learning_rate": 0.001,
 	"max_length": 200,
 	"load_model": False,

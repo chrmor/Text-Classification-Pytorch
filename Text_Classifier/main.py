@@ -16,7 +16,7 @@ import pickle
 seedId = 0;
 torch.manual_seed(seedId)
 
-iscuda = True
+iscuda = False
 
 if iscuda:
 	import GPUtil
@@ -154,14 +154,14 @@ if __name__=='__main__':
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 100,
-	"data_folder": 'WE_clean_balanced_1500',
+	"data_folder": 'WE_clean_balanced_50',
 	"dataset": '2010-2017-full-text',#options.architecture,
-	"nn_model": 'RCNN',#options.dataset,
-	"dropout_p": 0.9,
+	"nn_model": 'CNN',#options.dataset,
+	"dropout_p": 0.5,
 	"learning_rate": 0.001,
 	"max_length": 200,
-	"load_model": False,
-	"num_epochs": 4,
+	"load_model": True,
+	"num_epochs": 20,
 	"batch_size": 20        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'

@@ -60,36 +60,21 @@ class WE(data.Dataset):
 	    """
 	    dirname = '.data/'
 	    path = dirname + dataset
-	    examples = cls(path, text_field, label_field, **kwargs).examples
-
+	    train_examples = cls(path + "/train", text_field, label_field, **kwargs).examples
+	    test_examples = cls(path + "/test", text_field, label_field, **kwargs).examples
         
-        #TODO: balance classes while shuffling?
-	    classes_examples = {}
-	    for example in examples:
-		    if not example.label in classes_examples:
-			    classes_examples[example.label] = [example]
-		    else:
-			    classes_examples[example.label].append(example)
-	    train_data = []
-	    val_data = []
-	    test_data = []
-	    for cl in classes_examples:
-		    random.shuffle(classes_examples[cl])
-        
-	    #random.shuffle(examples)
-
-	    random.shuffle(examples)
+	    random.shuffle(train_examples)
 	    dev_ratio = 0.1 
-	    test_ratio = 0.1 
-	    dev_index = -1 * int((dev_ratio+test_ratio)*len(examples))
-	    test_index = -1 * int(test_ratio * len(examples))
+	    #test_ratio = 0.1 
+	    dev_index = -1 * int(dev_ratio*len(train_examples))
+	    #test_index = -1 * int(test_ratio * len(examples))
 
 	    train_data = None if train is None else cls(
-	    	path, text_field, label_field, examples=examples[:dev_index], **kwargs)
+	    	path, text_field, label_field, examples=train_examples[:dev_index], **kwargs)
 	    val_data = None if validation is None else cls(
-	    	path, text_field, label_field, examples=examples[dev_index:test_index], **kwargs)
+	    	path, text_field, label_field, examples=train_examples[dev_index:], **kwargs)
 	    test_data = None if test is None else cls(
-	    	path, text_field, label_field, examples=examples[test_index:], **kwargs)
+	    	path, text_field, label_field, examples=test_examples, **kwargs)
 	    return tuple(d for d in (train_data, val_data, test_data)
 	                 if d is not None)
 

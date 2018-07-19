@@ -161,15 +161,15 @@ if __name__=='__main__':
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 300,
-	"data_folder": 'WE_clean_balanced_1207',
+	"data_folder": 'WE_clean_balanced_10000',
 	"dataset": '2010-2017-full-text',#options.architecture,
 	"dataset_model": '2010-2017-full-text',#options.architecture,        
-	"nn_model": 'CNN',#options.dataset,
+	"nn_model": 'RCNN',#options.dataset,
 	"dropout_p": 0.9,
 	"learning_rate": 0.001,
-	"max_length": 200,
-	"num_epochs": 20,
-	"batch_size": 30        
+	"max_length": 2000,
+	"num_epochs": 5,
+	"batch_size": 20        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'
     

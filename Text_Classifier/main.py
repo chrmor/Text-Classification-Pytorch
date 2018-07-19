@@ -169,7 +169,7 @@ if __name__=='__main__':
 	"learning_rate": 0.001,
 	"max_length": 2000,
 	"num_epochs": 5,
-	"batch_size": 20        
+	"batch_size": 10        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'
     

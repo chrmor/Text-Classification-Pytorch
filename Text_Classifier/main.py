@@ -108,8 +108,6 @@ def News_20_data_loader(text_field, label_field, vector, b_size, **kwargs):
 	train_loader, dev_loader, test_loader = data.BucketIterator.splits(
 		(train_data, dev_data, test_data), batch_sizes = (b_size, len(dev_data), len(test_data)), **kwargs)
 
-
-
 	return train_loader, dev_loader, test_loader
 
 def WE_data_loader(text_field, label_field, vector, b_size, log_file, ds, **kwargs):
@@ -117,7 +115,7 @@ def WE_data_loader(text_field, label_field, vector, b_size, log_file, ds, **kwar
 	train_data, dev_data, test_data = WE.splits(text_field, label_field, dataset = ds)
 	text_field.build_vocab(train_data, dev_data, test_data, vectors= vector)
 	label_field.build_vocab(train_data, dev_data, test_data, vectors = vector)
-
+    
 	# print information about the data
 	print('len(train)', len(train_data))
 	print('len(dev)', len(dev_data))
@@ -135,9 +133,9 @@ def WE_data_loader(text_field, label_field, vector, b_size, log_file, ds, **kwar
 	train_loader, dev_loader, test_loader = data.BucketIterator.splits(
 		(train_data, dev_data, test_data), batch_sizes = (b_size, b_size, b_size), **kwargs)
 
-
-
-	return train_loader, dev_loader, test_loader
+	label_list = WE.getLabels(dataset = ds)
+    
+	return train_loader, dev_loader, test_loader, label_list
 
 def clean_str(strings):
     stop_words = list(set(stopwords.words('english')))
@@ -151,31 +149,26 @@ if __name__=='__main__':
 
     
 	print_evaluation_details = False
+	TH = 0.001
 
 #parameters 
 	params = {
     #Setting this to True we load a previously trained model with the same parameters as specified here!
-	"load_model": False,    
-	"do_training": True,
-	"save_model": True,
+	"load_model": True,    
+	"do_training": False,
+	"save_model": False,
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 300,
-	"data_folder": 'WE_clean_balanced_1207',
-	"dataset": '2010-2017-full-text',#options.architecture,
-	"dataset_model": '2010-2017-full-text',#options.architecture,        
+	"data_folder": 'WE_clean_balanced_50',
+	"dataset": '2010-2010-full-text',#options.architecture,
+	"dataset_model": '2010-2010-full-text',#options.architecture,        
 	"nn_model": 'CNN',#options.dataset,
 	"dropout_p": 0.9,
-	"learning_rate": 0.001,
-<<<<<<< HEAD
-	"max_length": 200,
-	"num_epochs": 20,
-	"batch_size": 30        
-=======
+	"learning_rate": 0.001,       
 	"max_length": 2000,
-	"num_epochs": 5,
+	"num_epochs": 10,
 	"batch_size": 10        
->>>>>>> refs/remotes/origin/master
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'
     
@@ -202,7 +195,7 @@ if __name__=='__main__':
 	label_field = data.Field(sequential = False)
 
     #select data set 
-	train_loader, dev_loader, test_loader = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
+	train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
@@ -259,7 +252,7 @@ if __name__=='__main__':
         
 	# eval 
 	print("Evaluation")
-	msg = train.eval_treshold(test_loader, classifier_model, iscuda, print_evaluation_details, 0.2) 
+	msg = train.eval_treshold_classes(label_list, test_loader, classifier_model, iscuda, print_evaluation_details, TH) 
 	print(msg)
 	with open(log_file, 'a') as the_file:
 		the_file.write('\nTest: ' + msg)

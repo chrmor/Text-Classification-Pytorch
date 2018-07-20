@@ -7,13 +7,12 @@ import torchtext.data as data
 
 
 class WE(data.Dataset):
-
+    
 	@staticmethod
 	def sort_key(ex):
 		return len(ex.text)
 
-	def __init__(self, path, text_field, label_field, examples = None, **kwargs):
-
+	def __init__(self, path, text_field, label_field, examples = None, label_list = None, **kwargs):
 		"""Create an  dataset instance given a path and fields.
 	    Arguments:
 	        path: Path to the data file
@@ -24,7 +23,7 @@ class WE(data.Dataset):
 	    """
 		fields = [('text', text_field), ('label', label_field)]
 		abs_path = os.path.abspath(path)     
-		label_list = os.listdir(abs_path)
+		label_list = os.listdir(abs_path)        
 		if examples is None:
 			examples = [] 
 			for label in label_list:
@@ -38,6 +37,12 @@ class WE(data.Dataset):
 
 		super(WE, self).__init__(examples, fields, **kwargs)
 
+	def getLabels(dataset = '2012-2017-long-text'):
+		path = '.data/' + dataset + "/test"
+		abs_path = os.path.abspath(path)     
+		label_list = os.listdir(abs_path)
+		return label_list
+        
 	@classmethod
 	def splits(cls, text_field, label_field, root='.data',
 	           train='train.txt', validation='dev.txt', test='test.txt', dataset = '2012-2017-long-text', **kwargs):
@@ -60,8 +65,10 @@ class WE(data.Dataset):
 	    """
 	    dirname = '.data/'
 	    path = dirname + dataset
-	    train_examples = cls(path + "/train", text_field, label_field, **kwargs).examples
-	    test_examples = cls(path + "/test", text_field, label_field, **kwargs).examples
+	    train_path = path + "/train"
+	    test_path = path + "/test"
+	    train_examples = cls(train_path, text_field, label_field, **kwargs).examples
+	    test_examples = cls(test_path, text_field, label_field, **kwargs).examples
         
 	    random.shuffle(train_examples)
 	    dev_ratio = 0.1 
@@ -70,11 +77,11 @@ class WE(data.Dataset):
 	    #test_index = -1 * int(test_ratio * len(examples))
 
 	    train_data = None if train is None else cls(
-	    	path, text_field, label_field, examples=train_examples[:dev_index], **kwargs)
+	    	train_path, text_field, label_field, examples=train_examples[:dev_index], **kwargs)
 	    val_data = None if validation is None else cls(
-	    	path, text_field, label_field, examples=train_examples[dev_index:], **kwargs)
+	    	train_path, text_field, label_field, examples=train_examples[dev_index:], **kwargs)
 	    test_data = None if test is None else cls(
-	    	path, text_field, label_field, examples=test_examples, **kwargs)
+	    	test_path, text_field, label_field, examples=test_examples, **kwargs)
 	    return tuple(d for d in (train_data, val_data, test_data)
 	                 if d is not None)
 

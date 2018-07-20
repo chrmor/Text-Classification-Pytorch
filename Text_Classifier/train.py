@@ -133,12 +133,16 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
  	#Loss and optimizer 
  	criterion = nn.CrossEntropyLoss()
 
+ 	predictions_per_class = {}
+ 	examples_per_class = {}
+ 	total_examples_per_class = {}    
  	corrects_per_class = {}
  	for label in label_list:
+ 		predictions_per_class[label] = 0
  		corrects_per_class[label] = 0
- 	examples_per_class = {}
- 	for label in label_list:
  		examples_per_class[label] = 0
+ 		total_examples_per_class[label] = 0
+
     
  	corrects = 0
  	predictions = 0
@@ -153,7 +157,7 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
     
  			output = model(feature)
  			#loss = criterion(output, target) # losses are summed, not average 
-
+            
  			prediction = torch.max(output, 1)[1].view(target.size()).data
  			th_output = (torch.max(output, 1)[0] >= th)
             
@@ -164,7 +168,7 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
  				if item == 1:
  					th_prediction.append(prediction.data[ix].item())
  					th_target.append(target.data[ix].item())
- 					predictions += 1;
+ 					predictions += 1
  				ix += 1
             
  			t_th_target = torch.tensor(th_target)
@@ -177,6 +181,7 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
  			for label in label_list:
  				t_class_target = t_th_target.clone()
  				examples_per_class[label] += (t_class_target==count).sum()
+ 				total_examples_per_class[label] += (target==count).sum()                
  				t_class_target[t_class_target!=count] = -1
  				corrects_per_class[label] += (torch.tensor(th_prediction) == t_class_target).sum()
  				count += 1
@@ -207,7 +212,7 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
  	dtl_msg = '\nAccuracy per class:\n'
  	for label in label_list:
  		accuracy_class = 100 * float(corrects_per_class[label].item()) / examples_per_class[label].item()
- 		dtl_msg += label + ": " + '  Accuracy: {:.4f}%({}/{}) \n'.format(accuracy_class,corrects_per_class[label].item(),examples_per_class[label].item())
+ 		dtl_msg += label + ": " + 'Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(float(examples_per_class[label].item())/float(total_examples_per_class[label]), examples_per_class[label].item(), total_examples_per_class[label],  accuracy_class, corrects_per_class[label].item(), examples_per_class[label].item())
  	return msg + dtl_msg
 
 

@@ -157,7 +157,7 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
     
  			output = model(feature)
  			#loss = criterion(output, target) # losses are summed, not average 
- 			print("batch size: " + target.size())
+ 			print("batch size: " + str(target.size()))
  			prediction = torch.max(output, 1)[1].view(target.size()).data
  			th_output = (torch.max(output, 1)[0] >= th)
             

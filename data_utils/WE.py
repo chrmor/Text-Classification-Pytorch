@@ -23,7 +23,8 @@ class WE(data.Dataset):
 	    """
 		fields = [('text', text_field), ('label', label_field)]
 		abs_path = os.path.abspath(path)     
-		label_list = os.listdir(abs_path).sort()      
+		label_list = os.listdir(abs_path)
+		label_list.sort()
 		if examples is None:
 			examples = [] 
 			for label in label_list:
@@ -40,7 +41,8 @@ class WE(data.Dataset):
 	def getLabels(dataset = '2012-2017-long-text'):
 		path = '.data/' + dataset + "/test"
 		abs_path = os.path.abspath(path)     
-		label_list = os.listdir(abs_path).sort()
+		label_list = os.listdir(abs_path)
+		label_list.sort()        
 		return label_list
         
 	@classmethod

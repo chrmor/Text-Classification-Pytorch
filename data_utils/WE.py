@@ -72,6 +72,35 @@ class WE(data.Dataset):
 	    train_examples = cls(train_path, text_field, label_field, **kwargs).examples
 	    test_examples = cls(test_path, text_field, label_field, **kwargs).examples
         
+	    if False:        
+		    max_length = 0
+		    total_length = 0
+		    c = 0;
+		    exceeding_1 = 0;        
+		    exceeding_2 = 0;        
+		    exceeding_3 = 0; 
+		    exceeding_4 = 0; 
+		    for ex in train_examples:
+		    	if len(ex.text) > max_length:
+		    		max_length = len(ex.text)
+		    	if len(ex.text) > 2000:
+		    		exceeding_1 += 1
+		    	if len(ex.text) > 1500:
+		    		exceeding_2 += 1
+		    	if len(ex.text) > 1000:
+		    		exceeding_3 += 1
+		    	if len(ex.text) > 500:
+		    		exceeding_4 += 1
+		    	total_length += len(ex.text)
+		    	c += 1
+		    print("Examples: " + str(c))            
+		    print("Max length: " + str(max_length))       
+		    print("Avg. length: " + str(total_length/c))
+		    print("Exceedings 2000: " + str(exceeding_1))
+		    print("Exceedings 1500: " + str(exceeding_2))
+		    print("Exceedings 1000: " + str(exceeding_3))
+		    print("Exceedings 500: " + str(exceeding_4))        
+        
 	    random.shuffle(train_examples)
 	    dev_ratio = 0.1 
 	    #test_ratio = 0.1 

@@ -154,7 +154,7 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
  			target.data.sub_(1) # index
  			if cuda:
  				feature, target = feature.cuda(), target.cuda()
-    
+               
  			output = model(feature)
  			#loss = criterion(output, target) # losses are summed, not average 
  			if list(target.size())[0]==1:
@@ -213,7 +213,10 @@ def eval_treshold_classes(label_list, test_loader, model, cuda, print_details, t
  	msg = '\nTH: {:.2f} Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(th, predictions/size, predictions, size, accuracy, corrects, predictions)
  	dtl_msg = '\nAccuracy per class:\n'
  	for label in label_list:
- 		accuracy_class = 100 * float(corrects_per_class[label].item()) / examples_per_class[label].item()
+ 		if examples_per_class[label].item() == 0:
+ 			accuracy_class = 0
+ 		else:    
+ 			accuracy_class = 100 * float(corrects_per_class[label].item()) / examples_per_class[label].item()
  		dtl_msg += label + ": " + 'Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(float(examples_per_class[label].item())/float(total_examples_per_class[label]), examples_per_class[label].item(), total_examples_per_class[label],  accuracy_class, corrects_per_class[label].item(), examples_per_class[label].item())
  	return msg + dtl_msg
 

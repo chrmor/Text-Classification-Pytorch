@@ -156,6 +156,11 @@ if __name__=='__main__':
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 300,
+	#parameter of rnn 
+	"num_layer": 25,
+	"num_hidden": 128, 
+	#param of rcnn
+	"num_sm_hidden": 100, 
 	"data_folder": 'WE_clean_balanced_10000',
 	"dataset": '2010-2017-full-text', #'2010-2017-full-text',#options.architecture,
 	"dataset_model": '2010-2017-full-text', #options.architecture,        
@@ -207,14 +212,6 @@ if __name__=='__main__':
 	embedding_weight = text_field.vocab.vectors
 
 
-
-	#parameter of rnn 
-	num_layer  = 25
-	num_hidden = 128
-
-	#param of rcnn
-	num_sm_hidden = 100 
-
 	with open(log_file, 'a') as the_file:
 		the_file.write("\nModel: " + params['nn_model'])
 		the_file.write("\nMax length: " + str(params['max_length']))
@@ -229,11 +226,11 @@ if __name__=='__main__':
 	else:
 		print("Init new model...")
 		if params['nn_model'] == 'RCNN':
-			classifier_model = model.RCNN_Classifier(voca_size, embed_dim, num_hidden, num_sm_hidden, num_layer, num_classes, embedding_weight,iscuda)
+			classifier_model = model.RCNN_Classifier(voca_size, embed_dim, params['num_hidden'], params['num_sm_hidden'], params['num_layer'], num_classes, embedding_weight,iscuda)
 		elif params['nn_model'] == 'CNN':
 			classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, params['dropout_p'], embedding_weight)
 		elif params['nn_model'] == 'RNN':
-			classifier_model = model.RNNClassifier(voca_size, embed_dim, num_hidden, num_layer, num_classes, embedding_weight, iscuda)
+			classifier_model = model.RNNClassifier(voca_size, embed_dim, params['num_hidden'], params['num_layer'], num_classes, embedding_weight, iscuda)
 
 	if iscuda:
 		classifier_model = classifier_model.cuda()

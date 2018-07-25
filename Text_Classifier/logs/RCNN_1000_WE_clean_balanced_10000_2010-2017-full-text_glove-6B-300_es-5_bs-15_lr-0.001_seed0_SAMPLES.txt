@@ -1,0 +1,234 @@
+Event:
+In tennis, Maria Sharapova of Russia wins her second title in the French Open women's singles defeating Simona Halep of Romania 6-4, 6-7, 6-4. (The Telegraph)
+Online news:
+http://www.telegraph.co.uk/sport/tennis/frenchopen/10883337/Maria-Sharapova-v-Simona-Halep-French-Open-2014-womens-final-live.html
+Type: sport
+
+prediction: sport
+probabilities:
+	armed conflicts and attacks : 5.927342385803058e-07
+	politics and elections : 3.1941647193889366e-06
+	law and crime : 6.645657413173467e-05
+	disasters and accidents : 6.41541337245144e-05
+	sport : 0.9997944235801697
+	business and economy : 2.6360569336247863e-06
+	arts and culture : 3.56005671164894e-06
+	science and technology : 6.501382449641824e-05
+
+
+Event:
+2014 Mosul offensive: Insurgents continue their offensive, gaining control of the city of Tikrit, the second provincial capital to fall in as many days. At least 500,000 residents of Mosul flee the fighting and head east into Kurdish-controlled territory, while insurgents storm the Turkish Embassy and take 48 Turks hostage, including the Consul General. (Al Jazeera)
+Online news:
+http://www.aljazeera.com/news/middleeast/2014/06/iraqi-city-tikrit-falls-isil-fighters-2014611135333576799.html
+Type: armed conflicts and attacks
+
+prediction: armed conflicts and attacks
+probabilities:
+	armed conflicts and attacks : 0.9999997615814209
+	politics and elections : 1.369254221117444e-07
+	law and crime : 1.0460732724482114e-08
+	disasters and accidents : 9.578390347542154e-08
+	sport : 6.327687263052439e-10
+	business and economy : 5.641654365895477e-10
+	arts and culture : 1.7148745756756512e-09
+	science and technology : 6.379959671676261e-09
+
+
+Event:
+Uruguay's star striker Luis Suárez is expelled from the tournament, banned for nine international matches and suspended from all football-related activity for four months for biting Giorgio Chiellini of Italy in Tuesday's Group D match. The verdict, the most severe against any player in FIFA World Cup history, means Suárez will be unable to play or train for his club Liverpool until 27 October. (Press Association) (BBC Sport)
+Online news:
+http://www.bbc.com/sport/0/football/28023882
+Type: sport
+
+prediction: sport
+probabilities:
+	armed conflicts and attacks : 8.400257684115786e-06
+	politics and elections : 8.502475452587532e-07
+	law and crime : 5.29609496879857e-05
+	disasters and accidents : 1.2146760752784758e-07
+	sport : 0.9999324083328247
+	business and economy : 4.628269323347922e-07
+	arts and culture : 3.913537511834875e-06
+	science and technology : 7.758014817227377e-07
+
+
+Event:
+A ceasefire deal, brokered by Egypt, is accepted by Israel but rejected by Hamas. (The Guardian) (Haaretz)
+Online news:
+https://www.theguardian.com/world/2014/jul/15/israel-accepts-egypt-ceasefire-gaza-hamas
+Type: armed conflicts and attacks
+
+prediction: armed conflicts and attacks
+probabilities:
+	armed conflicts and attacks : 0.9999997615814209
+	politics and elections : 2.107626642100513e-07
+	law and crime : 1.4629757127959664e-10
+	disasters and accidents : 8.597077910676987e-11
+	sport : 4.976802997491703e-11
+	business and economy : 2.822091671461635e-09
+	arts and culture : 3.911761581321116e-09
+	science and technology : 1.4571330253509984e-10
+
+
+Event:
+Malaysia Airlines Flight 17 carrying 298 people from multiple countries is shot down near Hrabove in Donetsk Oblast, on a flight from Amsterdam to Kuala Lumpur. (BBC) (Reuters)
+Online news:
+http://www.bbc.com/news/world-europe-28354856
+Type: armed conflicts and attacks
+
+prediction: armed conflicts and attacks
+probabilities:
+	armed conflicts and attacks : 0.9947585463523865
+	politics and elections : 2.436160855268099e-07
+	law and crime : 0.0004157822113484144
+	disasters and accidents : 0.0036538990680128336
+	sport : 4.283797807147494e-06
+	business and economy : 9.485770715400577e-05
+	arts and culture : 3.0057399271754548e-05
+	science and technology : 0.0010423408821225166
+
+
+Event:
+Liberia and Sierra Leone declare a state of emergency in response to the Ebola virus disease by sending in troops and ordering the closure of schools and markets and the quarantining of affected communities. (Reuters) (The Guardian)
+Online news:
+http://uk.reuters.com/article/2014/08/01/uk-health-ebola-leone-idUKKBN0G00PW20140801
+Type: health and medicine
+
+prediction: disasters and accidents
+probabilities:
+	armed conflicts and attacks : 0.003228361951187253
+	politics and elections : 4.72054562123958e-05
+	law and crime : 3.791034032474272e-06
+	disasters and accidents : 0.9966128468513489
+	sport : 3.017585413545021e-06
+	business and economy : 1.1083584467996843e-05
+	arts and culture : 1.2453511999410694e-06
+	science and technology : 9.253827010979876e-05
+
+
+Event:
+The Islamic State seizes the Yazidi-dominated town of Sinjar. (BBC) It also seized control of the Mosul Dam, which is Iraq's biggest dam, the Ain Zalah oil field, and two more towns. (Reuters)
+Online news:
+http://www.bbc.com/news/world-middle-east-28631770
+Type: armed conflicts and attacks
+
+prediction: armed conflicts and attacks
+probabilities:
+	armed conflicts and attacks : 0.9999986886978149
+	politics and elections : 4.2527992150098726e-07
+	law and crime : 1.158140916501793e-09
+	disasters and accidents : 6.999493962212e-07
+	sport : 2.111220087641641e-10
+	business and economy : 6.248601636116291e-08
+	arts and culture : 3.3902175289313163e-08
+	science and technology : 2.1042470876864172e-08
+
+
+Event:
+A magnitude 6.1 earthquake kills at least 367 people and injures more than 1,700 in Yunnan, China. (BBC)
+Online news:
+http://www.bbc.com/news/world-asia-china-28630110
+Type: disasters and accidents
+
+prediction: disasters and accidents
+probabilities:
+	armed conflicts and attacks : 4.330949465725098e-08
+	politics and elections : 1.9874041967682388e-08
+	law and crime : 1.5376455664295463e-09
+	disasters and accidents : 0.9999972581863403
+	sport : 1.0499967117993947e-08
+	business and economy : 1.0937623073914438e-06
+	arts and culture : 1.7216477132819819e-09
+	science and technology : 1.5143314158194698e-06
+
+
+Event:
+Michael Brown incident in Ferguson, MO: Protests about police shooting a teenager on Saturday in the St Louis suburb of Ferguson turn ugly with looting and vandalism. (CNN)
+Online news:
+http://edition.cnn.com/2014/08/10/justice/missouri-police-involved-shooting/index.html?eref=edition
+Type: law and crime
+
+prediction: law and crime
+probabilities:
+	armed conflicts and attacks : 0.0001372161350445822
+	politics and elections : 1.7653926988714375e-05
+	law and crime : 0.9998273849487305
+	disasters and accidents : 1.1310056834190618e-05
+	sport : 1.90168520930456e-07
+	business and economy : 3.887446382577764e-06
+	arts and culture : 2.254202854601317e-06
+	science and technology : 1.865985943538817e-08
+
+
+Event:
+Oscar-winning American comedic actor Robin Williams is found dead at age 63 by asphyxiation. (MSN) (CNN) (New York Times)
+Online news:
+http://www.cnn.com/2014/08/11/showbiz/robin-williams-dead/index.html
+Type: arts and culture
+
+prediction: arts and culture
+probabilities:
+	armed conflicts and attacks : 1.6273768324026605e-06
+	politics and elections : 0.005535250063985586
+	law and crime : 0.09228985756635666
+	disasters and accidents : 0.000982630648650229
+	sport : 0.000823620765004307
+	business and economy : 0.00010728571214713156
+	arts and culture : 0.9002310037612915
+	science and technology : 2.876849794120062e-05
+
+
+Event:
+The 66th Primetime Emmy Awards for American television shows are held at the Nokia Theatre in Los Angeles, California. (News Limited)
+Online news:
+http://www.news.com.au/entertainment/awards/emmys-2014-winners-nominees-opening-jokes-and-more/story-e6frfuf0-1227036962296
+Type: arts and culture
+
+prediction: arts and culture
+probabilities:
+	armed conflicts and attacks : 2.5964522137655877e-05
+	politics and elections : 0.0001975270133698359
+	law and crime : 4.8318815970560536e-05
+	disasters and accidents : 8.831271003373331e-08
+	sport : 2.158422830689233e-06
+	business and economy : 5.8086708776272644e-08
+	arts and culture : 0.9997180104255676
+	science and technology : 7.882610589149408e-06
+
+
+Event:
+South African athlete Oscar Pistorius is found guilty of the "culpable homicide" of his partner Reeva Steenkamp. (BBC)
+Online news:
+http://www.bbc.com/news/world-africa-29149581
+Type: law and crime
+
+prediction: law and crime
+probabilities:
+	armed conflicts and attacks : 3.596635766989209e-10
+	politics and elections : 3.813847797573544e-06
+	law and crime : 0.9999785423278809
+	disasters and accidents : 2.035995549931613e-07
+	sport : 8.689358764968347e-06
+	business and economy : 4.922972038912121e-06
+	arts and culture : 3.844013008347247e-06
+	science and technology : 1.159105367243285e-09
+
+
+Event:
+NASA's MAVEN space probe successfully arrives in orbit over Mars. (BBC)
+Online news:
+http://www.bbc.com/news/science-environment-29253788
+Type: science and technology
+
+prediction: science and technology
+probabilities:
+	armed conflicts and attacks : 5.9381509345257655e-06
+	politics and elections : 1.3342861166165676e-05
+	law and crime : 2.3903182864160044e-06
+	disasters and accidents : 2.048012538580224e-05
+	sport : 7.319136784644797e-05
+	business and economy : 1.1655104117380688e-06
+	arts and culture : 0.0022970037534832954
+	science and technology : 0.9975864887237549
+
+

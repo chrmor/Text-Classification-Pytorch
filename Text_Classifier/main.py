@@ -16,7 +16,7 @@ import pickle
 seedId = 0;
 torch.manual_seed(seedId)
 
-iscuda = False
+iscuda = True
 
 if iscuda:
 	import GPUtil
@@ -150,9 +150,9 @@ if __name__=='__main__':
 #parameters 
 	params = {
     #Setting this to True we load a previously trained model with the same parameters as specified here!
-	"load_model": True,    
-	"do_training": False,
-	"save_model": False,
+	"load_model": False,    
+	"do_training": True,
+	"save_model": True,
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 300,
@@ -164,11 +164,11 @@ if __name__=='__main__':
 	"data_folder": 'WE_clean_balanced_10000',
 	"dataset": '2010-2017-full-text', #'2010-2017-full-text',#options.architecture,
 	"dataset_model": '2010-2017-full-text', #options.architecture,        
-	"nn_model": 'CNN',#options.dataset,
+	"nn_model": 'RNN',#options.dataset,
 	"dropout_p": 0.5,
-	"learning_rate": 0.01,       
+	"learning_rate": 0.001,       
 	"max_length": 1000,
-	"num_epochs": 5,
+	"num_epochs": 20,
 	"batch_size": 15        
 }
 	log_file = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)  + '.txt'

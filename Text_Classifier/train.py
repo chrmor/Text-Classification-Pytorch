@@ -260,7 +260,7 @@ def eval(test_loader, model, cuda, print_details):
  	return '\nEvaluation - acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
 
 
-def predict(sample_text, model, text_field, label_field):
+def predict(sample_text, model, text_field, label_field, iscuda):
 
 	model.eval()
 
@@ -268,12 +268,19 @@ def predict(sample_text, model, text_field, label_field):
 	text = [[text_field.vocab.stoi[x] for x in text]]
 	x = text_field.tensor_type(text)
 	x = autograd.Variable(x)
-	if cuda:
+	if iscuda:
 		x = x.cuda()
 	output = model(x)
+	msg = ''
 	_, predicted = torch.max(output, 1)
-
-	return label_field.vocab.itos[predicted.data[0]+1]
+	msg += '\nprediction: ' + label_field.vocab.itos[predicted.data[0]+1] + "\n"
+	msg += 'probabilities:\n'
+	ix = 0
+	for v in output[0]:
+		label = label_field.vocab.itos[ix+1]
+		msg += "\t" + label + " : " + str(v.item()) + "\n"
+		ix += 1
+	return msg
 
 
 

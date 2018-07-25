@@ -266,7 +266,8 @@ def predict(sample_text, model, text_field, label_field, iscuda):
 
 	text = text_field.preprocess(sample_text)
 	text = [[text_field.vocab.stoi[x] for x in text]]
-	x = text_field.tensor_type(text)
+	x = torch.tensor(text)    
+	#x = text_field.tensor_type(text)
 	x = autograd.Variable(x)
 	if iscuda:
 		x = x.cuda()

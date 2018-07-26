@@ -20,7 +20,7 @@ print("Torch version:"  + torch.__version__)
 seedId = 0;
 torch.manual_seed(seedId)
 
-iscuda = True
+iscuda = False
 
 if iscuda:
 	import GPUtil
@@ -157,9 +157,9 @@ if __name__=='__main__':
     #Setting this to True we load a previously trained model with the same parameters as specified here!
 	"load_model": True,    
 	"do_training": False,
-	"do_eval": False,
+	"do_eval": True,
 	"save_model": False,
-	"predict_samples": True,    
+	"predict_samples": False,    
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 300,
@@ -168,15 +168,15 @@ if __name__=='__main__':
 	"num_hidden": 128, 
 	#param of rcnn
 	"num_sm_hidden": 100, 
-	"data_folder": 'WE_clean_balanced_10000',
-	"dataset": '2010-2017-full-text', #'2010-2017-full-text',#options.architecture,
-	"dataset_model": '2010-2017-full-text', #options.architecture,        
-	"nn_model": 'RCNN',#options.dataset,
+	"data_folder": 'WE_clean_balanced_50',
+	"dataset": '2010-2010-full-text', #'2010-2017-full-text',#options.architecture,
+	"dataset_model": '2010-2010-full-text', #options.architecture,        
+	"nn_model": 'CNN',#options.dataset,
 	"dropout_p": 0.5,
-	"learning_rate": 0.001,       
+	"learning_rate": 0.01,       
 	"max_length": 1000,
 	"num_epochs": 5,
-	"batch_size": 15        
+	"batch_size": 30        
 }
 	ext = '.txt'
 	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)
@@ -257,11 +257,11 @@ if __name__=='__main__':
         
 	if params['do_eval']:        
 		# eval
-		print_evaluation_details = False
+		print_evaluation_details = True
 		ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
 		print("Evaluation")
 		for th in ths:
-			msg = train.eval_treshold_classes(label_list, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
+			msg = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
 			print(msg)
 			with open(log_file, 'a') as the_file:
 				the_file.write('\nTest: ' + msg)

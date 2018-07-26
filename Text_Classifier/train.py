@@ -272,12 +272,13 @@ def predict(sample_text, model, text_field, label_field, iscuda):
 	if iscuda:
 		x = x.cuda()
 	output = model(x)
+	print("Output:"+ str(output))
 	msg = ''
-	_, predicted = torch.max(output, 1)
+	_, predicted = torch.max(output, 0)
 	msg += '\nprediction: ' + label_field.vocab.itos[predicted.data[0]+1] + "\n"
 	msg += 'probabilities:\n'
 	ix = 0
-	for v in output[0]:
+	for v in output:
 		label = label_field.vocab.itos[ix+1]
 		msg += "\t" + label + " : " + str(v.item()) + "\n"
 		ix += 1

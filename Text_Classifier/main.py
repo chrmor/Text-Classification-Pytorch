@@ -15,10 +15,12 @@ import pickle
 import pandas as pd
 import numpy as np
 
+print("Torch version:"  + torch.__version__)
+
 seedId = 0;
 torch.manual_seed(seedId)
 
-iscuda = False
+iscuda = True
 
 if iscuda:
 	import GPUtil
@@ -166,15 +168,15 @@ if __name__=='__main__':
 	"num_hidden": 128, 
 	#param of rcnn
 	"num_sm_hidden": 100, 
-	"data_folder": 'WE_clean_balanced_50',
-	"dataset": '2010-2010-full-text', #'2010-2017-full-text',#options.architecture,
-	"dataset_model": '2010-2010-full-text', #options.architecture,        
-	"nn_model": 'CNN',#options.dataset,
+	"data_folder": 'WE_clean_balanced_10000',
+	"dataset": '2010-2017-full-text', #'2010-2017-full-text',#options.architecture,
+	"dataset_model": '2010-2017-full-text', #options.architecture,        
+	"nn_model": 'RCNN',#options.dataset,
 	"dropout_p": 0.5,
-	"learning_rate": 0.01,       
+	"learning_rate": 0.001,       
 	"max_length": 1000,
 	"num_epochs": 5,
-	"batch_size": 30        
+	"batch_size": 15        
 }
 	ext = '.txt'
 	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)
@@ -272,7 +274,8 @@ if __name__=='__main__':
 				desc = row['Event description']
 				text = row['News full text']
 				link = row['News link']
-				the_file.write("Event:\n" + desc + "\nOnline news:\n" + link + "\n")        
+				target = row['Event type']
+				the_file.write("Event:\n" + desc + "\nOnline news:\n" + link + "\nType: " + target + "\n" )        
 				msg = train.predict(text, classifier_model, text_field, label_field, iscuda)
 				the_file.write(msg + "\n\n")
 

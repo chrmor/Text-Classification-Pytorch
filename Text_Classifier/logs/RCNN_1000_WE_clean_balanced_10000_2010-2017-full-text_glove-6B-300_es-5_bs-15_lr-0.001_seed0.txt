@@ -297,3 +297,151 @@ law and crime: Recall: 0.79%(370/470)  Accuracy: 98.6486%(365/370)
 politics and elections: Recall: 0.71%(334/469)  Accuracy: 94.0120%(314/334) 
 science and technology: Recall: 0.57%(208/362)  Accuracy: 80.2885%(167/208) 
 sport: Recall: 0.69%(168/242)  Accuracy: 88.6905%(149/168) 
+
+
+datasetWE_clean_balanced_10000/2010-2017-full-text
+len(train)23063
+len(dev)2562
+len(test)6411
+Model: RCNN
+Max length: 1000
+batch_size: 15
+Embeddings: glove-6B
+
+datasetWE_clean_balanced_10000/2010-2017-full-text
+len(train)23063
+len(dev)2562
+len(test)6411
+Model: RCNN
+Max length: 1000
+batch_size: 15
+Embeddings: glove-6B
+Test: 
+TH: 0.10 Recall: 1.00%(6411/6411)  Accuracy: 83.2631%(5338/6411) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 1.00%(1757/1757)  Accuracy: 89.1292%(1566/1757) 
+politics and elections: Recall: 1.00%(1146/1146)  Accuracy: 82.0244%(940/1146) 
+law and crime: Recall: 1.00%(1014/1014)  Accuracy: 69.0335%(700/1014) 
+disasters and accidents: Recall: 1.00%(951/951)  Accuracy: 90.9569%(865/951) 
+sport: Recall: 1.00%(470/470)  Accuracy: 93.1915%(438/470) 
+business and economy: Recall: 1.00%(469/469)  Accuracy: 84.0085%(394/469) 
+arts and culture: Recall: 1.00%(362/362)  Accuracy: 68.2320%(247/362) 
+science and technology: Recall: 1.00%(242/242)  Accuracy: 77.6860%(188/242) 
+
+Test: 
+TH: 0.20 Recall: 1.00%(6411/6411)  Accuracy: 83.3255%(5342/6411) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 1.00%(1757/1757)  Accuracy: 89.1861%(1567/1757) 
+politics and elections: Recall: 1.00%(1146/1146)  Accuracy: 82.0244%(940/1146) 
+law and crime: Recall: 1.00%(1014/1014)  Accuracy: 69.1321%(701/1014) 
+disasters and accidents: Recall: 1.00%(951/951)  Accuracy: 91.0620%(866/951) 
+sport: Recall: 1.00%(470/470)  Accuracy: 93.1915%(438/470) 
+business and economy: Recall: 1.00%(469/469)  Accuracy: 84.0085%(394/469) 
+arts and culture: Recall: 1.00%(362/362)  Accuracy: 68.2320%(247/362) 
+science and technology: Recall: 1.00%(242/242)  Accuracy: 78.0992%(189/242) 
+
+Test: 
+TH: 0.30 Recall: 1.00%(6405/6411)  Accuracy: 83.4036%(5342/6405) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 1.00%(1756/1757)  Accuracy: 89.1800%(1566/1756) 
+politics and elections: Recall: 1.00%(1146/1146)  Accuracy: 82.0244%(940/1146) 
+law and crime: Recall: 1.00%(1013/1014)  Accuracy: 69.2004%(701/1013) 
+disasters and accidents: Recall: 1.00%(950/951)  Accuracy: 91.1579%(866/950) 
+sport: Recall: 1.00%(468/470)  Accuracy: 93.3761%(437/468) 
+business and economy: Recall: 1.00%(469/469)  Accuracy: 84.0085%(394/469) 
+arts and culture: Recall: 1.00%(361/362)  Accuracy: 68.9751%(249/361) 
+science and technology: Recall: 1.00%(242/242)  Accuracy: 78.0992%(189/242) 
+
+Test: 
+TH: 0.40 Recall: 1.00%(6385/6411)  Accuracy: 83.5395%(5334/6385) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 1.00%(1755/1757)  Accuracy: 89.1738%(1565/1755) 
+politics and elections: Recall: 1.00%(1144/1146)  Accuracy: 82.1678%(940/1144) 
+law and crime: Recall: 0.99%(1007/1014)  Accuracy: 69.5134%(700/1007) 
+disasters and accidents: Recall: 1.00%(948/951)  Accuracy: 91.2447%(865/948) 
+sport: Recall: 1.00%(468/470)  Accuracy: 93.1624%(436/468) 
+business and economy: Recall: 1.00%(469/469)  Accuracy: 83.7953%(393/469) 
+arts and culture: Recall: 0.98%(356/362)  Accuracy: 69.3820%(247/356) 
+science and technology: Recall: 0.98%(238/242)  Accuracy: 78.9916%(188/238) 
+
+Test: 
+TH: 0.50 Recall: 0.98%(6303/6411)  Accuracy: 84.1504%(5304/6303) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 0.99%(1745/1757)  Accuracy: 89.4556%(1561/1745) 
+politics and elections: Recall: 0.99%(1129/1146)  Accuracy: 83.0824%(938/1129) 
+law and crime: Recall: 0.98%(994/1014)  Accuracy: 69.9195%(695/994) 
+disasters and accidents: Recall: 0.99%(939/951)  Accuracy: 91.6933%(861/939) 
+sport: Recall: 0.98%(461/470)  Accuracy: 94.1432%(434/461) 
+business and economy: Recall: 0.98%(461/469)  Accuracy: 84.8156%(391/461) 
+arts and culture: Recall: 0.94%(341/362)  Accuracy: 69.7947%(238/341) 
+science and technology: Recall: 0.96%(233/242)  Accuracy: 79.8283%(186/233) 
+
+Test: 
+TH: 0.60 Recall: 0.95%(6101/6411)  Accuracy: 85.3139%(5205/6101) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 0.97%(1712/1757)  Accuracy: 90.1869%(1544/1712) 
+politics and elections: Recall: 0.95%(1094/1146)  Accuracy: 84.0951%(920/1094) 
+law and crime: Recall: 0.93%(938/1014)  Accuracy: 71.1087%(667/938) 
+disasters and accidents: Recall: 0.97%(919/951)  Accuracy: 92.7095%(852/919) 
+sport: Recall: 0.96%(451/470)  Accuracy: 94.9002%(428/451) 
+business and economy: Recall: 0.94%(442/469)  Accuracy: 86.1991%(381/442) 
+arts and culture: Recall: 0.89%(321/362)  Accuracy: 71.6511%(230/321) 
+science and technology: Recall: 0.93%(224/242)  Accuracy: 81.6964%(183/224) 
+
+Test: 
+TH: 0.70 Recall: 0.92%(5897/6411)  Accuracy: 86.6373%(5109/5897) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 0.96%(1681/1757)  Accuracy: 90.6008%(1523/1681) 
+politics and elections: Recall: 0.92%(1055/1146)  Accuracy: 85.4028%(901/1055) 
+law and crime: Recall: 0.87%(883/1014)  Accuracy: 73.4994%(649/883) 
+disasters and accidents: Recall: 0.95%(899/951)  Accuracy: 93.6596%(842/899) 
+sport: Recall: 0.94%(444/470)  Accuracy: 95.4955%(424/444) 
+business and economy: Recall: 0.90%(422/469)  Accuracy: 87.4408%(369/422) 
+arts and culture: Recall: 0.83%(299/362)  Accuracy: 74.2475%(222/299) 
+science and technology: Recall: 0.88%(214/242)  Accuracy: 83.6449%(179/214) 
+
+Test: 
+TH: 0.80 Recall: 0.88%(5630/6411)  Accuracy: 88.2238%(4967/5630) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 0.93%(1634/1757)  Accuracy: 91.7381%(1499/1634) 
+politics and elections: Recall: 0.88%(1004/1146)  Accuracy: 87.3506%(877/1004) 
+law and crime: Recall: 0.81%(820/1014)  Accuracy: 75.6098%(620/820) 
+disasters and accidents: Recall: 0.92%(872/951)  Accuracy: 94.6101%(825/872) 
+sport: Recall: 0.90%(425/470)  Accuracy: 96.4706%(410/425) 
+business and economy: Recall: 0.85%(399/469)  Accuracy: 88.7218%(354/399) 
+arts and culture: Recall: 0.76%(275/362)  Accuracy: 76.7273%(211/275) 
+science and technology: Recall: 0.83%(201/242)  Accuracy: 85.0746%(171/201) 
+
+Test: 
+TH: 0.90 Recall: 0.82%(5255/6411)  Accuracy: 90.1808%(4739/5255) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 0.89%(1555/1757)  Accuracy: 93.2476%(1450/1555) 
+politics and elections: Recall: 0.83%(948/1146)  Accuracy: 89.4515%(848/948) 
+law and crime: Recall: 0.71%(725/1014)  Accuracy: 77.7931%(564/725) 
+disasters and accidents: Recall: 0.89%(842/951)  Accuracy: 96.1995%(810/842) 
+sport: Recall: 0.84%(395/470)  Accuracy: 97.4684%(385/395) 
+business and economy: Recall: 0.79%(369/469)  Accuracy: 91.0569%(336/369) 
+arts and culture: Recall: 0.65%(234/362)  Accuracy: 78.6325%(184/234) 
+science and technology: Recall: 0.77%(187/242)  Accuracy: 86.6310%(162/187) 
+
+Test: 
+TH: 0.95 Recall: 0.77%(4909/6411)  Accuracy: 91.8110%(4507/4909) 
+
+Accuracy per class:
+armed conflicts and attacks: Recall: 0.84%(1484/1757)  Accuracy: 94.8113%(1407/1484) 
+politics and elections: Recall: 0.77%(888/1146)  Accuracy: 90.7658%(806/888) 
+law and crime: Recall: 0.64%(645/1014)  Accuracy: 79.5349%(513/645) 
+disasters and accidents: Recall: 0.85%(812/951)  Accuracy: 96.7980%(786/812) 
+sport: Recall: 0.79%(370/470)  Accuracy: 98.6486%(365/370) 
+business and economy: Recall: 0.71%(334/469)  Accuracy: 94.0120%(314/334) 
+arts and culture: Recall: 0.57%(208/362)  Accuracy: 80.2885%(167/208) 
+science and technology: Recall: 0.69%(168/242)  Accuracy: 88.6905%(149/168) 

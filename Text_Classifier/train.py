@@ -242,7 +242,9 @@ def eval(test_loader, model, cuda, print_details):
     
  			output = model(feature)
  			#loss = criterion(output, target) # losses are summed, not average 
-
+ 			if list(target.size())[0]==1:
+ 				print("batch size: " + str(target.size()))
+ 				continue
  			#avg_loss += loss.item()
  			scores = (torch.max(output, 1)[1].view(target.size()).data == target.data).sum()
  			corrects += scores

@@ -1,0 +1,24 @@
+Governments, IOC and UN hit by massive cyber-attack
+IT security firm McAfee claims to have uncovered one of the largest ever series of cyber-attacks.
+It lists 72 different organisations that were targeted over five years, including the International Olympic Committee, the UN and security firms.
+McAfee will not say who it thinks is responsible, but there is speculation that China may be behind the attacks.
+Beijing has always denied any state involvement in cyber-attacks, calling such accusations "groundless".
+Speaking to BBC News, McAfee's chief European technology officer, Raj Samani, said the attacks were still going on.
+"This is a whole different level to the Night Dragon attacks that occurred earlier this year. Those were attacks on a specific sector. This one is very, very broad."
+Dubbed Operation Shady RAT - after the remote access tool that security experts and hackers use to remotely access computer networks - the five-year investigation examined information from a number of different organisations which thought they may have been hit.
+"From the logs we were able to see where the traffic flow was coming from," said Mr Samani.
+"In some cases, we were permitted to delve a bit deeper and see what, if anything, had been taken, and in many cases we found evidence that intellectual property (IP) had been stolen.
+"The United Nations, the Indian government, the International Olympic Committee, the steel industry, defence firms, even computer security companies were hit," he added.
+McAfee said it did not know what was happening to the stolen data, but it could be used to improve existing products or help beat a competitor, representing a major economic threat.
+"This was what we call a spear-phish attack, as opposed to a trawl, where they were targeting specific individuals within an organisation," said Mr Samani.
+"An email would be sent to an individual with the right level of access within the system; attached to the message was a piece of malware which would then execute and open a channel to a remote website giving them access.
+"Once they had access to an organisation, they either did what we would call a 'smash-and-grab' operation, where they would try and grab as much information before they got caught, or they sometimes embedded themselves in the network and [tried to] spread across different systems within an organisation."
+Mr Samani said his firm would "not make any guesses on where this has come from", but China is seen by many in the industry as a prime suspect.
+Jim Lewis, a cyber expert with the Centre for Strategic and International Studies, was quoted by the Reuters news agency as saying it was "very likely China was behind the campaign because some of the targets had information that would be of particular interest to Beijing".
+"Everything points to China. It could be the Russians, but there is more that points to China than Russia," Lewis said.
+However, Graham Cluley - a computer security expert with Sophos, is not so sure. He said: "Every time one of these reports come out, people always point the finger at China."
+He told BBC News: "We cannot prove it's China. That doesn't mean we should be naive. Every country in the world is probably using the internet to spy.
+"After all, it's easy and cost-effective - but there's many different countries and organisations it could be."
+Mr Cluley said firms were often distracted by the very public actions of LulzSec and Anonymous, groups of online activists who have hacked a number of high-profile websites in recent months.
+"Sometimes it's not about stealing your money or publicly leaking your data. It's about quietly stealing your information, which can have a very high political, military or financial value.
+"In short, don't let your defences down," he added.

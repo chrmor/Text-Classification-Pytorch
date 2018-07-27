@@ -1,0 +1,19 @@
+Turkish net hijack hits big name websites
+Visitors to the websites of Vodafone, the Daily Telegraph, UPS and four others were re-directed to a site set up by Turkish hackers on Sunday night.
+The diversion was the result of the group's attack on computers that hold web address information.
+Real URL names were deliberately mistranslated into the IP address of the hackers' site.
+No data from the seven victims was lost or compromised as a result of the attack.
+The hacking group, called Turkguvenligi, targeted the net's Domain Name System (DNS).
+This acts as an address book for the web and turns the names that people use (eg bbc.co.uk) into IP address numbers that computers understand (eg 212.58.246.90).
+DNS is consulted by a person's web browser when they want to visit a particular site.
+In its attack, the Turkguvenligi group changed the records relating to seven sites in DNS databases run by NetNames and Ascio - two subsidiaries of domain name management firm Group NBT.
+In an interview with the Guardian, Turkguvenligi revealed that it got access to the files using a well-established attack method known as SQL injection.
+It said it had targeted the sites and found that attacking their DNS records was the easiest way to achieve their ends.
+"The hardest one is reaching the domain company but if you can succeed there will be a treasure for you," Turkguvenligi told the Guardian.
+According to Zone-H, which logs website defacements and hack attacks, Turkguvenligi has carried out 186 defacements since late 2008.
+In a DNS attack, the sites targeted are not affected at all. The only impact is for visitors who will be re-directed to a site they were not expecting.
+A statement by The Register about the attack suggests the re-direct was active for about three hours.
+Writing on the blog of security company Sophos, Graham Cluley said: "We have to be grateful that the message displayed appears to be graffiti, rather than an attempt to phish information from users or install malware."
+A spokesperson for Group NBT said the hijack was carried out by the hackers managing to trick servers used to update its DNS database.
+"The illegal changes were reversed quickly to bring service back to the customers impacted and the accounts concerned have been disabled to block any further access to the systems," said NBT.
+"While no-one can completely defend against such sustained and concentrated malicious attacks we will continue to review our systems to ensure that we provide our customers a solid, robust and above all secure service," it added.

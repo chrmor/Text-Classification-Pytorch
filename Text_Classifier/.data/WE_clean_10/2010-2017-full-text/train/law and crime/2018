@@ -1,0 +1,34 @@
+Global internet slows after 'biggest attack in history'
+The internet around the world has been slowed down in what security experts are describing as the biggest cyber-attack of its kind in history.
+A row between a spam-fighting group and hosting firm has sparked retaliation attacks affecting the wider internet.
+Experts worry that the row could escalate to affect banking and email systems.
+Five national cyber-police-forces are investigating the attacks.
+Spamhaus, a group based in both London and Geneva, is a non-profit organisation that aims to help email providers filter out spam and other unwanted content.
+To do this, the group maintains a number of blocklists - a database of servers known to be being used for malicious purposes.
+Recently, Spamhaus blocked servers maintained by Cyberbunker, a Dutch web host that states it will host anything with the exception of child pornography or terrorism-related material.
+Sven Olaf Kamphuis, who claims to be a spokesman for Cyberbunker, said, in a message, that Spamhaus was abusing its position, and should not be allowed to decide "what goes and does not go on the internet".
+Spamhaus has alleged that Cyberbunker, in cooperation with "criminal gangs" from Eastern Europe and Russia, is behind the attack.
+Cyberbunker has not responded to the BBC's request for comment.
+Steve Linford, chief executive for Spamhaus, told the BBC the scale of the attack was unprecedented.
+"We've been under this cyber-attack for well over a week.
+"But we're up - they haven't been able to knock us down. Our engineers are doing an immense job in keeping it up - this sort of attack would take down pretty much anything else."
+Mr Linford told the BBC that the attack was being investigated by five different national cyber-police-forces around the world.
+He claimed he was unable to disclose more details because the forces were concerned that they too may suffer attacks on their own infrastructure.
+The attackers have used a tactic known as Distributed Denial of Service (DDoS), which floods the intended target with large amounts of traffic in an attempt to render it unreachable.
+In this case, Spamhaus's Domain Name System (DNS) servers were targeted - the infrastructure that joins domain names, such as bbc.co.uk, the website's numerical internet protocol address.
+Mr Linford said the attack's power would be strong enough to take down government internet infrastructure.
+"If you aimed this at Downing Street they would be down instantly," he said. "They would be completely off the internet."
+He added: "These attacks are peaking at 300 Gbps (gigabits per second).
+"Normally when there are attacks against major banks, we're talking about 50 Gbps"
+The knock-on effect is hurting internet services globally, said Prof Alan Woodward, a cybersecurity expert at the University of Surrey.
+"If you imagine it as a motorway, attacks try and put enough traffic on there to clog up the on and off ramps," he told the BBC.
+"With this attack, there's so much traffic it's clogging up the motorway itself."
+Arbor Networks, a firm which specialises in protecting against DDoS attacks, also said it was the biggest such attack they had seen.
+"The largest DDoS attack that we have witnessed prior to this was in 2010, which was 100 Gbps. Obviously the jump from 100 to 300 is pretty massive," said Dan Holden, the company's director of security research.
+"There's certainly possibility for some collateral damage to other services along the way, depending on what that infrastructure looks like."
+Spamhaus said it was able to cope as it has highly distributed infrastructure in a number of countries.
+The group is supported by many of the world's largest internet companies who rely on it to filter unwanted material.
+Mr Linford told the BBC that several companies, such as Google, had made their resources available to help "absorb all of this traffic".
+The attacks typically happened in intermittent bursts of high activity.
+"They are targeting every part of the internet infrastructure that they feel can be brought down," Mr Linford said.
+"Spamhaus has more than 80 servers around the world. We've built the biggest DNS server around."

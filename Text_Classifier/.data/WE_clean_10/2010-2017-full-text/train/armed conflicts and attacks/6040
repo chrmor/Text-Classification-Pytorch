@@ -1,0 +1,16 @@
+Researchers use spoofing to 'hack' into a flying drone
+American researchers took control of a flying drone by "hacking" into its GPS system - acting on a $1,000 (£640) dare from the US Department of Homeland Security (DHS).
+A University of Texas at Austin team used "spoofing" - a technique where the drone mistakes the signal from hackers for the one sent from GPS satellites.
+The same method may have been used to bring down a US drone in Iran in 2011.
+Analysts say that the demo shows the potential danger of using drones.
+Drones are unmanned aircraft, often controlled from a hub located thousands of kilometres away.
+They are mostly used by the military in conflict zones such as Afghanistan.
+Todd Humphreys and his colleagues from the Radionavigation Lab at the University of Texas at Austin hacked the GPS system of a drone belonging to the university.
+They demonstrated the technique to DHS officials, using a mini helicopter drone, flown over a stadium in Austin, said Fox News, who broke the story .
+"Imagine you've got a plane in the air and it sends back information to the person controlling it on the ground. So if I wanted to fly my drone on a route between London and Birmingham, delivering mail for instance, I would get continuous signals coming back telling me where it is at all times. And I would get GPS co-ordinates, using a signal from the satellite to navigate. But if the drone is near Birmingham, but it receives GPS co-ordinates for Gloucester, it would then think it is in Gloucester and make an adjustment to go further north, changing the course."
+"What if you could take down one of these drones delivering FedEx packages and use that as your missile?" Fox News quoted Mr Humphreys.
+"That's the same mentality the 911 attackers had."
+The spoofed drone used an unencrypted GPS signal, which is normally used by civilian planes, says Noel Sharkey, co-founder of the International Committee for Robot Arms Control.
+"It's easy to spoof an unencrypted drone. Anybody technically skilled could do this - it would cost them some £700 for the equipment and that's it," he told BBC News.
+"It's very dangerous - if a drone is being directed somewhere using its GPS, [a spoofer] can make it think it's somewhere else and make it crash into a building, or crash somewhere else, or just steal it and fill it with explosives and direct somewhere.
+"But the big worry is - it also means that it wouldn't be too hard for [a very skilled person] to work out how to un-encrypt military drones and spoof them, and that could be extremely dangerous because they could turn them on the wrong people.

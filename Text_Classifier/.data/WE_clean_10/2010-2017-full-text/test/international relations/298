@@ -1,0 +1,33 @@
+Hackers release files indicating NSA monitored global bank transfers
+(Reuters) - Hackers released documents and files on Friday that cybersecurity experts said indicated the U.S. National Security Agency had accessed the SWIFT interbank messaging system, allowing it to monitor money flows among some Middle Eastern and Latin American banks.
+The release included computer code that could be adapted by criminals to break into SWIFT servers and monitor messaging activity, said Shane Shook, a cyber security consultant who has helped banks investigate breaches of their SWIFT systems.
+The documents and files were released by a group calling themselves The Shadow Brokers. Some of the records bear NSA seals, but Reuters could not confirm their authenticity.
+The NSA could not immediately be reached for comment.
+Also published were many programs for attacking various versions of the Windows operating system, at least some of which still work, researchers said.
+In a statement to Reuters, Microsoft (MSFT.O), maker of Windows, said it had not been warned by any part of the U.S. government that such files existed or had been stolen.
+“Other than reporters, no individual or organization has contacted us in relation to the materials released by Shadow Brokers,” the company said.
+The absence of warning is significant because the NSA knew for months about the Shadow Brokers breach, officials previously told Reuters. Under a White House process established by former President Barack Obama’s staff, companies were usually warned about dangerous flaws.
+Shook said criminal hackers could use the information released on Friday to hack into banks and steal money in operations mimicking a heist last year of $81 million from the Bangladesh central bank.
+“The release of these capabilities could enable fraud like we saw at Bangladesh Bank,” Shook said.
+The SWIFT messaging system is used by banks to transfer trillions of dollars each day. Belgium-based SWIFT downplayed the risk of attacks employing the code released by hackers on Friday.
+SWIFT said it regularly releases security updates and instructs client banks on how to handle known threats.
+“We mandate that all customers apply the security updates within specified times,” SWIFT said in a statement.
+SWIFT said it had no evidence that the main SWIFT network had ever been accessed without authorization.
+It was possible that the local messaging systems of some SWIFT client banks had been breached, SWIFT said in a statement, which did not specifically mention the NSA.
+When cyberthieves robbed the Bangladesh Bank last year, they compromised that bank’s local SWIFT network to order money transfers from its account at the New York Federal Reserve.
+The documents released by the Shadow Brokers on Friday indicate that the NSA may have accessed the SWIFT network through service bureaus. SWIFT service bureaus are companies that provide an access point to the SWIFT system for the network’s smaller clients and may send or receive messages regarding money transfers on their behalf.
+“If you hack the service bureau, it means that you also have access to all of their clients, all of the banks,” said Matt Suiche, founder of the United Arab Emirates-based cybersecurity firm Comae Technologies, who has studied the Shadow Broker releases and believes the group has access to NSA files.
+The documents posted by the Shadow Brokers include Excel files listing computers on a service bureau network, user names, passwords and other data, Suiche said.
+“That’s information you can only get if you compromise the system,” he said.
+Cris Thomas, a prominent security researcher with the cybersecurity firm Tenable, said the documents and files released by the Shadow Brokers show “the NSA has been able to compromise SWIFT banking systems, presumably as a way to monitor, if not disrupt, financial transactions to terrorists groups”.  
+Since the early 1990s, interrupting the flow of money from Saudi Arabia, the United Arab Emirates and elsewhere to al Qaeda, the Taliban, and other militant Islamic groups in Afghanistan, Pakistan and other countries has been a major objective of U.S. and allied intelligence agencies.
+Mustafa Al-Bassam, a computer science researcher at University College London, said on Twitter that the Shadow Brokers documents show that the “NSA hacked a bunch of banks, oil and investment companies in Palestine, UAE, Kuwait, Qatar, Yemen, more.”
+He added that NSA “completely hacked” EastNets, one of two SWIFT service bureaus named in the documents that were released by the Shadow Brokers. 
+Reuters could not independently confirm that EastNets had been hacked.
+EastNets, based in Dubai, denied it had been hacked in a statement, calling the assertion “totally false and unfounded.”
+EastNets ran a “complete check of its servers and found no hacker compromise or any vulnerabilities,” according to a statement from EastNets’ chief executive and founder, Hazem Mulhim.
+In 2013, documents released by former NSA contractor Edward Snowden said the NSA had been able to monitor SWIFT messages.
+The agency monitored the system to spot payments intended to finance crimes, according to the documents released by Snowden.
+Reuters could not confirm whether the documents released Friday by the Shadow Brokers, if authentic, were related to NSA monitoring of SWIFT transfers since 2013.
+Some of the documents released by the Shadow Brokers were dated 2013, but others were not dated.
+The documents released by the hackers did not clearly indicate whether the NSA had actually used all the techniques cited for monitoring SWIFT messages.

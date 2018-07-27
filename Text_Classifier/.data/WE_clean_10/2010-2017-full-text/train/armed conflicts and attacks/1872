@@ -1,0 +1,21 @@
+Flame and Stuxnet makers 'co-operated' on code
+Teams responsible for the Flame and Stuxnet cyber-attacks worked together in the early stages of each threat's development, researchers have said.
+Flame, revealed last month, attacked targets in Iran, as did Stuxnet which was discovered in 2010.
+Kaspersky Lab said they co-operated "at least once" to share source code.
+"What we have found is very strong evidence that Stuxnet/Duqu and Flame cyber-weapons are connected," Kaspersky said.
+Alexander Gostev, chief security expert at the Russian-based security company added: "The new findings that reveal how the teams shared source code of at least one module in the early stages of development prove that the groups co-operated at least once."
+Vitaly Kamluk, the firm's chief malware expert, said: "There is a link proven - it's not just copycats.
+"We think that these teams are different, two different teams working with each other, helping each other at different stages."
+The findings relate to the discovery of "Resource 207", a module found in early versions of the Stuxnet malware.
+It bears a "striking resemblance" to code used in Flame, Kaspersky said.
+"The list includes the names of mutually exclusive objects, the algorithm used to decrypt strings, and the similar approaches to file naming," Mr Gostev said.
+Recently, a New York Times investigation - based on an upcoming book - singled out the US as being responsible for Stuxnet, under the direct orders of President Barack Obama.
+The report said the threat had been developed in co-operation with Israel.
+No country is yet to publicly take responsibility for the attack.
+Speaking about Flame, a spokesman for the Israeli government distanced the country from involvement following an interview in which a minister seemed to back the attacks.
+"There was no part of the interview where the minister has said anything to imply that Israel was responsible for the virus," the spokesman said.
+Last week, the UN's telecommunications head Dr Hamadoun Toure said he did not believe the US was behind Flame, and that reports regarding the country's involvement in Stuxnet were "speculation".
+Prof Alan Woodward, a security expert from the University of Surrey, described the findings as interesting - but not yet a clear indicator of who was behind the attacks.
+"The fact that they shared source code further suggests that it wasn't just someone copying or reusing one bit of Stuxnet or Flame that they had found in the wild, but rather those that wrote the code passed it over," he said.
+"However, everything else still indicates that Flame and Stuxnet were written designed and built by a completely separate group of developers.
+"At the very least it suggests there are two groups capable of building this type of code but they are somehow collaborating, albeit only in a minor way."

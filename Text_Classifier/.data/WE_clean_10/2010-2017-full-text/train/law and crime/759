@@ -1,0 +1,14 @@
+Almost 6,000 online shops hit by hackers
+Almost 6,000 web shops are unknowingly harbouring malicious code that is stealing the credit card details of customers, suggests research.
+The code has been injected into the sites by cyberthieves, said Dutch developer Willem De Groot.
+He found the 5,925 compromised sites by scanning for the specific signature of the data-stealing code in website software.
+Some of the stolen data was sent to servers based in Russia, he said.
+In a blogpost, Mr De Groot said the attacks exploited known vulnerabilities in several different widely used web retailing programs. Mr De Groot is co-founder and head of security at Dutch ecommerce site byte.nl
+Having won access, the attackers injected a short chunk of obfuscated code that copied credit card and other payment information. Stolen data was being sold on dark web markets at a rate of about $30 (£25) per card, he said.
+His research found nine separate types of skimming code on sites, suggesting many different crime groups were involved.
+Mr De Groot said he had been investigating skimming since his own card details were stolen. His work revealed the first sites harbouring the malicious code in late 2015 but further research showed the skimming started in earnest in May 2015. By the end of that year about 3,500 sites had been compromised.
+Since then, he said, the number of sites had grown to 5,925 with some harbouring skimming code for almost 18 months. Victims included carmakers, fashion firms, government sites and museums.
+The code used to steal data steadily became more sophisticated and now makes efforts to hide itself and tackle more types of payment systems.
+"New cases could be stopped right away if store owners would upgrade their software regularly," wrote Mr De Groot. "But this is costly and most merchants don't bother."
+Mr De Groot said some stores had taken action to flush out the skimming code and patch their stores after he published a list of compromised sites.
+"I would recommend consumers to only enter their payment details on sites of known payment providers such as Paypal," he told the BBC. "They have hundreds of people working on security, the average store probably has none."

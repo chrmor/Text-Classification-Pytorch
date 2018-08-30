@@ -1,0 +1,8 @@
+armed conflicts and attacks : 558
+disasters and accidents : 444
+law and crime : 468
+politics and elections : 654
+business and economy : 147
+sport : 132
+science and technology : 136
+arts and culture : 117

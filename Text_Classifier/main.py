@@ -10,6 +10,7 @@ import train
 from data_utils.MR import MR
 from data_utils.News20 import News20
 from data_utils.WE import WE
+from data_utils.WE_2 import WE_2
 from nltk.corpus import stopwords
 import pickle
 import pandas as pd
@@ -38,14 +39,14 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
 def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
 	#pickle.dump(model, open(path, "wb"))
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
 
 
 def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['data_folder']}_{params['dataset_model']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_seed{seedId}.pt"
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
 	try:
 		if iscuda:
 			model = torch.load(path)
@@ -131,16 +132,32 @@ def WE_data_loader(text_field, label_field, vector, b_size, log_file, ds, **kwar
 			the_file.write('\nlen(dev)' +  str(len(dev_data)))
 			the_file.write('\nlen(test)' + str(len(test_data)))
 			the_file.close()
+
+def WE_2_data_loader(text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix, vector, b_size, log_file, **kwargs):
+
+	train_data, dev_data, test_data = WE_2.splits(text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix)
+	text_field.build_vocab(train_data, dev_data, test_data, vectors= vector)
+	label_field.build_vocab(train_data, dev_data, test_data, vectors = vector)
     
+	# print information about the data
+	print('len(train)', len(train_data))
+	print('len(dev)', len(dev_data))
+	print('len(test)', len(test_data))
+	if (log_file!=None):   
+		with open(log_file, 'a') as the_file:
+			the_file.write('\n\ndata folder:' +  data_path)            
+			the_file.write('\n\nfold indexes:' +  idx_path + "/" + str(fold))
+			the_file.write('\nlen(train)' +  str(len(train_data)))
+			the_file.write('\nlen(dev)' +  str(len(dev_data)))
+			the_file.write('\nlen(test)' + str(len(test_data)))
+			the_file.close()
 
 	#train_loader, dev_loader, test_loader = data.BucketIterator.splits(
 		#(train_data, dev_data, test_data), batch_sizes = (b_size, len(dev_data), len(test_data)), **kwargs)
 	train_loader, dev_loader, test_loader = data.BucketIterator.splits(
 		(train_data, dev_data, test_data), batch_sizes = (b_size, b_size, b_size), **kwargs)
-
-	label_list = WE.getLabels(dataset = ds)
     
-	return train_loader, dev_loader, test_loader, label_list
+	return train_loader, dev_loader, test_loader
 
 def clean_str(strings):
     stop_words = list(set(stopwords.words('english')))
@@ -152,13 +169,15 @@ def clean_str(strings):
 
 if __name__=='__main__':
 
+	root_path = '../data/'
+    
 #parameters 
 	params = {
     #Setting this to True we load a previously trained model with the same parameters as specified here!
-	"load_model": True,    
-	"do_training": False,
+	"load_model": False,    
+	"do_training": True,
 	"do_eval": True,
-	"save_model": False,
+	"save_model": True,
 	"predict_samples": False,    
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
@@ -168,18 +187,23 @@ if __name__=='__main__':
 	"num_hidden": 128, 
 	#param of rcnn
 	"num_sm_hidden": 100, 
-	"data_folder": 'WE_clean_balanced_50',
-	"dataset": '2010-2010-full-text', #'2010-2017-full-text',#options.architecture,
-	"dataset_model": '2010-2010-full-text', #options.architecture,        
 	"nn_model": 'CNN',#options.dataset,
 	"dropout_p": 0.5,
 	"learning_rate": 0.01,       
-	"max_length": 1000,
+	"max_length": 50,
 	"num_epochs": 5,
-	"batch_size": 30        
+	"batch_size": 30,      
+            
+	"data_folder": 'json',
+	"start": 2010,
+	"end": 2018,
+	"prefix": 'wiki-events-',
+	"suffix": '_multilink_data_id_clean',
+	"dataset": '30-fold-8-classes-2010-2018',
+	"fold": 1    
 }
 	ext = '.txt'
-	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + str(params['dataset']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)
+	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + params['dataset'] + "-" + str(params['fold']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)
 	log_file = "logs/" + model_name + ext
 	log_file_samples = "logs/" + model_name + "_SAMPLES" + ext    
     
@@ -208,7 +232,8 @@ if __name__=='__main__':
 		#load data
 		print("Load data...")
 		#select data set 
-		train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
+		train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, root_path + params["dataset"], params["fold"], root_path + params["data_folder"], params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
+		#train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
@@ -257,7 +282,7 @@ if __name__=='__main__':
         
 	if params['do_eval']:        
 		# eval
-		print_evaluation_details = True
+		print_evaluation_details = False
 		ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
 		print("Evaluation")
 		for th in ths:
@@ -268,7 +293,7 @@ if __name__=='__main__':
 				the_file.close()
             
 	if params['predict_samples']:
-		df = pd.read_csv('.data/samples/wiki-events-2014_multilink_data_clean.csv')
+		df = pd.read_csv(root_path + '/samples/wiki-events-2014_multilink_data_clean.csv')
 		with open(log_file_samples, 'w') as the_file:
 			for index, row in df.iterrows():
 				desc = row['Event description']

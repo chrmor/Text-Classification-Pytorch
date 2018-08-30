@@ -129,8 +129,6 @@ def eval_treshold(test_loader, model, cuda, print_details, th):
 def eval_treshold_classes(label_field, test_loader, model, cuda, print_details, th):
  	#eval mode 
  	model.eval()
-    
- 	print(label_field.vocab.itos[1:])
 
  	#Loss and optimizer 
  	criterion = nn.CrossEntropyLoss()
@@ -159,6 +157,97 @@ def eval_treshold_classes(label_field, test_loader, model, cuda, print_details, 
                
  			output = model(feature)
  			#loss = criterion(output, target) # losses are summed, not average 
+ 			if list(target.size())[0]==1:
+ 				print("batch size: " + str(target.size()))
+ 				continue
+ 			prediction = torch.max(output, 1)[1].view(target.size()).data
+ 			th_output = (torch.max(output, 1)[0] >= th)
+            
+ 			th_prediction = []
+ 			th_target = []
+ 			ix = 0;
+ 			for item in th_output.data:
+ 				if item == 1:
+ 					th_prediction.append(prediction.data[ix].item())
+ 					th_target.append(target.data[ix].item())
+ 					predictions += 1
+ 				ix += 1
+            
+ 			t_th_target = torch.tensor(th_target)
+ 			t_th_prediction = torch.tensor(th_prediction)
+ 			matches = (t_th_prediction == t_th_target)
+ 			scores = matches.sum()
+ 			corrects += scores            
+            
+ 			for label in label_field.vocab.itos[1:]:
+ 				idx = label_field.vocab.stoi[label]-1
+ 				#print(label + " --> " + str(idx))
+ 				t_class_target = t_th_target.clone()
+ 				examples_per_class[label] += (t_class_target==idx).sum()
+ 				total_examples_per_class[label] += (target==idx).sum()                
+ 				t_class_target[t_class_target!=idx] = -1
+ 				corrects_per_class[label] += (torch.tensor(th_prediction) == t_class_target).sum()
+            
+ 			if print_details:
+ 				#avg_loss += loss.item()
+ 				#print("MAX:" + str(torch.max(output, 1)[0]))
+ 				print("\nOutPut:\n" + str(output.data))
+ 				print("Target:\n" + str(target))
+ 				print("Prediction:\n" + str(prediction.data))                
+ 				print("Matches:\n" + str(matches.data))
+ 				print("TH_Output:\n" + str(th_output.data))
+ 				#print("\nPrediction:\n" + str(torch.max(output, 1)))
+ 				print("Corrects:\n" + str(scores))
+ 				print("TH Prediction:\n" + str(th_prediction))
+ 				print("TH Target:\n" + str(th_target))
+ 				print("Target class: " + str(t_class_target))                
+ 				print("Accuracy:\n")
+ 				for label in label_field.vocab.itos[1:]:
+ 					accuracy_class = 100 * float(corrects_per_class[label]) / examples_per_class[label]
+ 					print(label + ": " + str(accuracy_class))
+            
+ 	
+ 	size = len(test_loader.dataset)
+ 	accuracy = 100 * float(corrects) / predictions 
+ 	model.train()
+ 	msg = '\nTH: {:.2f} Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(th, predictions/size, predictions, size, accuracy, corrects, predictions)
+ 	dtl_msg = '\nAccuracy per class:\n'
+ 	for label in label_field.vocab.itos[1:]:
+ 		if examples_per_class[label].item() == 0:
+ 			accuracy_class = 0
+ 		else:    
+ 			accuracy_class = 100 * float(corrects_per_class[label].item()) / examples_per_class[label].item()
+ 		print(label + " : " + str(float(total_examples_per_class[label])))    
+ 		dtl_msg += label + ": " + 'Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(float(examples_per_class[label].item())/float(total_examples_per_class[label]), examples_per_class[label].item(), total_examples_per_class[label],  accuracy_class, corrects_per_class[label].item(), examples_per_class[label].item())
+ 	return msg + dtl_msg
+
+def eval_combined_treshold_classes(label_field, test_loader, model1, model2, cuda, print_details, th):
+ 	#eval mode 
+ 	model.eval()
+
+ 	predictions_per_class = {}
+ 	examples_per_class = {}
+ 	total_examples_per_class = {}    
+ 	corrects_per_class = {}
+ 	for label in label_field.vocab.itos[1:]:
+ 		predictions_per_class[label] = 0
+ 		corrects_per_class[label] = 0
+ 		examples_per_class[label] = 0
+ 		total_examples_per_class[label] = 0
+
+    
+ 	corrects = 0
+ 	predictions = 0
+ 	avg_loss = 0 
+ 	with torch.no_grad(): 
+ 		for i, batch in enumerate(test_loader):
+ 			feature, target = batch.text, batch.label
+ 			#print("Batch: " + str(feature.size()) )            
+ 			target.data.sub_(1) # index
+ 			if cuda:
+ 				feature, target = feature.cuda(), target.cuda()
+               
+ 			output = model(feature)
  			if list(target.size())[0]==1:
  				print("batch size: " + str(target.size()))
  				continue
@@ -221,7 +310,6 @@ def eval_treshold_classes(label_field, test_loader, model, cuda, print_details, 
  			accuracy_class = 100 * float(corrects_per_class[label].item()) / examples_per_class[label].item()
  		dtl_msg += label + ": " + 'Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(float(examples_per_class[label].item())/float(total_examples_per_class[label]), examples_per_class[label].item(), total_examples_per_class[label],  accuracy_class, corrects_per_class[label].item(), examples_per_class[label].item())
  	return msg + dtl_msg
-
 
 def eval(test_loader, model, cuda, print_details):
  	#eval mode 

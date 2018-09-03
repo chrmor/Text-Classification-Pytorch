@@ -21,7 +21,7 @@ print("Torch version:"  + torch.__version__)
 seedId = 0;
 torch.manual_seed(seedId)
 
-iscuda = False
+iscuda = True
 
 if iscuda:
 	import GPUtil
@@ -187,12 +187,12 @@ if __name__=='__main__':
 	"num_hidden": 128, 
 	#param of rcnn
 	"num_sm_hidden": 100, 
-	"nn_model": 'CNN',#options.dataset,
+	"nn_model": 'RCNN',#options.dataset,
 	"dropout_p": 0.5,
-	"learning_rate": 0.01,       
-	"max_length": 50,
-	"num_epochs": 5,
-	"batch_size": 30,      
+	"learning_rate": 0.001,       
+	"max_length": 1000,
+	"num_epochs": 4,
+	"batch_size": 20,      
             
 	"data_folder": 'json',
 	"start": 2010,

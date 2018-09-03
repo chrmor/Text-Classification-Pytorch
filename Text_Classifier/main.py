@@ -38,15 +38,15 @@ if iscuda:
 		print(deviceIDs[0])
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
 
-def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
-	#pickle.dump(model, open(path, "wb"))
+def save_model_path(model, path):        
 	torch.save(model, path) 
 	print(f"A model is saved successfully as {path}!")
-
-
-def load_model(params):
+        
+def save_model(model, params):
 	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
+	save_model_path(model, path)
+
+def load_model_path(path):
 	try:
 		if iscuda:
 			model = torch.load(path)
@@ -61,6 +61,10 @@ def load_model(params):
 	except:
 		print(f"No available model such as {path}.")
 		exit()
+
+def load_model(params):
+	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
+	return load_model_path(path)
         
 def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
@@ -174,10 +178,12 @@ if __name__=='__main__':
 #parameters 
 	params = {
     #Setting this to True we load a previously trained model with the same parameters as specified here!
-	"load_model": False,    
+	"load_model": False, 
+	"load_model_name": None,         
 	"do_training": True,
 	"do_eval": True,
 	"save_model": True,
+	"save_model_name": None,        
 	"predict_samples": False,    
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
@@ -258,8 +264,12 @@ if __name__=='__main__':
     
 	# model 
 	if params['load_model']:
-		print("Load pre-trained model...")
-		classifier_model = load_model(params)
+		if params['load_model_name'] != None:        
+			print("Loading pre-trained model from " + params['load_model_name'] + " ...")            
+			classifier_model = load_model_path(params['load_model_name'])
+		else:    
+			print("Loading pre-trained model with same params ...")
+			classifier_model = load_model(params)
 	else:
 		print("Init new model...")
 		if params['nn_model'] == 'RCNN':
@@ -278,7 +288,10 @@ if __name__=='__main__':
 		train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file)
 		print("Finished Train...")
 	if params['save_model']:
-		save_model(classifier_model, params)
+		if params['save_model_name']!=None:
+			save_model_path(classifier_model, params['save_model_name'])            
+		else:       
+			save_model(classifier_model, params)
         
 	if params['do_eval']:        
 		# eval

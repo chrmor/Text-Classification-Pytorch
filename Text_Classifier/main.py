@@ -179,11 +179,11 @@ if __name__=='__main__':
 	params = {
     #Setting this to True we load a previously trained model with the same parameters as specified here!
 	"load_model": False, 
-	"load_model_name": None,         
+	"load_model_name": 'saved_models/RCNN_1000_glove-6B_300_4_20_0.001_dataset-30-fold-8-classes-2010-2018.pt',         
 	"do_training": True,
 	"do_eval": True,
 	"save_model": True,
-	"save_model_name": None,        
+	"save_model_name": None, #'saved_models/RCNN_1000_glove-6B_300_5_20_0.001_dataset-30-fold-8-classes-2010-2018.pt',        
 	"predict_samples": False,    
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
@@ -206,7 +206,7 @@ if __name__=='__main__':
 	"prefix": 'wiki-events-',
 	"suffix": '_multilink_data_id_clean',
 	"dataset": '30-fold-8-classes-2010-2018',
-	"fold": 1    
+	"fold": 2    
 }
 	ext = '.txt'
 	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + params['dataset'] + "-" + str(params['fold']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)

@@ -348,8 +348,7 @@ def eval(test_loader, model, cuda, print_details):
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / size 
  	model.train()
- 	#return '\nEvaluation - loss: {:.6f}  acc: {:.4f}%({}/{}) \n'.format(avg_loss, accuracy, corrects, size)
- 	return '\nEvaluation - acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
+ 	return '\nValidation - acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
 
 
 def predict(sample_text, model, text_field, label_field, iscuda):

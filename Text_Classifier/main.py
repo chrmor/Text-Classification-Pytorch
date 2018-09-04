@@ -15,13 +15,39 @@ from nltk.corpus import stopwords
 import pickle
 import pandas as pd
 import numpy as np
+import argparse
 
-#print("Torch version:"  + torch.__version__)
+def str2bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+parser = argparse.ArgumentParser(description='Text Classification Experiments')
+parser.add_argument('--dataset', help='the dataset')
+parser.add_argument('--fold', help='the fold')
+parser.add_argument('--load_model', type=str2bool, help='load a model?')
+parser.add_argument('--load_model_name', help='the name of the model to be loaded')
+parser.add_argument('--save_model', type=str2bool, help='save the trained model?')
+parser.add_argument('--save_model_name', help='the name of the trained model to be saved')
+parser.add_argument('--num_epochs', type=int, help='number of training epochs')
+parser.add_argument('--nn_model', help='the model to train (RCNN|CNN)')
+parser.add_argument('--cuda', type=str2bool, help='Use CUDA?')
+parser.add_argument('--y_start', type=int, help='The beginning year of the time range of data')
+parser.add_argument('--y_end', type=int, help='The ending year of the time range of data')
+parser.add_argument('--do_training', type=str2bool, help='Perform training? dafault: True')
+parser.add_argument('--do_eval', type=str2bool, help='Perform evaluation on test set? dafault: True')
+
+args = parser.parse_args()
 
 seedId = 0;
 torch.manual_seed(seedId)
 
 iscuda = True
+if args.cuda != None:
+    iscuda = args.cuda
 
 if iscuda:
 	import GPUtil
@@ -37,34 +63,28 @@ if iscuda:
 	else:
 		print(deviceIDs[0])
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
-
-def save_model_path(model, path):        
-	torch.save(model, path) 
-	print(f"A model is saved successfully as {path}!")
         
-def save_model(model, params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
-	save_model_path(model, path)
+def save_model(model, name):        
+	torch.save(model, "saved_models/" + name + ".pt") 
+	print(f"A model is saved successfully as {name}!")
+        
 
-def load_model_path(path):
+def load_model(name):
 	try:
 		if iscuda:
-			model = torch.load(path)
+			model = torch.load("saved_models/" + name + ".pt")
 		else:
 			#model = torch.load(path, map_location=lambda storage, loc: storage)
-			model = torch.load(path)
+			model = torch.load("saved_models/" + name + ".pt")
 			model = model.cpu()
 		#model = pickle.load(open(path, "rb"))
-		print(f"Model in {path} loaded successfully!")
+		print(f"Model in {name} loaded successfully!")
 
 		return model
 	except:
-		print(f"No available model such as {path}.")
+		print(f"No available model such as {name}.")
 		exit()
 
-def load_model(params):
-	path = f"saved_models/{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}.pt"
-	return load_model_path(path)
         
 def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
@@ -164,11 +184,11 @@ def WE_2_data_loader(text_field, label_field, idx_path, fold, data_path, start, 
 	return train_loader, dev_loader, test_loader
 
 def clean_str(strings):
-    stop_words = list(set(stopwords.words('english')))
-    stop_characters = ["`", "\'", "\"", ".", "\(", "\)", "," , '``', "''", '--', '...']
-    stop_words.extend(stop_characters)
-    filtered_words = [word for word in strings if word not in stop_words]
-    return filtered_words
+	stop_words = list(set(stopwords.words('english')))
+	stop_characters = ["`", "\'", "\"", ".", "\(", "\)", "," , '``', "''", '--', '...']
+	stop_words.extend(stop_characters)
+	filtered_words = [word for word in strings if word not in stop_words]
+	return filtered_words
 
 
 if __name__=='__main__':
@@ -179,11 +199,11 @@ if __name__=='__main__':
 	params = {
     #Setting this to True we load a previously trained model with the same parameters as specified here!
 	"load_model": False, 
-	"load_model_name": 'saved_models/RCNN_1000_glove-6B_300_4_20_0.001_dataset-30-fold-8-classes-2010-2018.pt',         
+	"load_model_name": None,         
 	"do_training": True,
 	"do_eval": True,
 	"save_model": True,
-	"save_model_name": None, #'saved_models/RCNN_1000_glove-6B_300_5_20_0.001_dataset-30-fold-8-classes-2010-2018.pt',        
+	"save_model_name": None,
 	"predict_samples": False,    
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
@@ -205,27 +225,48 @@ if __name__=='__main__':
 	"end": 2018,
 	"prefix": 'wiki-events-',
 	"suffix": '_multilink_data_id_clean',
-	"dataset": '30-fold-8-classes-2010-2018',
-	"fold": 2    
+	"dataset": '30-fold-8-classes',
+	"fold": 1   
 }
     
 #COMMAND LINE ARGUMENTS
 
-if len(sys.argv) > 1:
-	params["fold"] = int(sys.argv[1])
-	print("Command line: FOLD = " + str(params["fold"]))
+	if args.fold != None:
+		params["fold"] = int(args.fold)
+	if args.dataset != None: 
+		params["dataset"] = args.dataset
+	if args.load_model != None:
+		params["load_model"] = args.load_model
+	if args.save_model != None:
+		params["save_model"] = args.save_model
+	if args.load_model_name != None:
+		params["load_model_name"] = args.load_model_name
+	if args.save_model_name != None:
+		params["save_model_name"] = args.save_model_name
+	if args.num_epochs != None:
+		params["num_epochs"] = args.num_epochs  
+	if args.nn_model != None:
+		params["nn_model"] = args.nn_model
+	if args.y_start != None:
+		params["start"] = args.y_start
+	if args.y_end != None:
+		params["end"] = args.y_end 
+	if args.do_training != None:
+		params["do_training"] = args.do_training
+	if args.do_eval != None:
+		params["do_eval"] = args.do_eval
     
-	ext = '.txt'
-	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + params['dataset'] + "-" + str(params['fold']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)
-	log_file = "logs/" + model_name + ext
-	log_file_samples = "logs/" + model_name + "_SAMPLES" + ext    
+	experiment_name = f"{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}_fold-{params['fold']}"    
     
-	glove = vocab.GloVe(name = '6B', dim = params['embeddings_dim'])
+log_file = "logs/" + experiment_name + ".txt"
+log_file_samples = "logs/" + experiment_name + "_SAMPLES.txt"    
     
-	if (iscuda):
-		device_value = 0  #device = - 1 : cpu 
-	else:
-		device_value = -1 #device = - 1 : cpu 
+glove = vocab.GloVe(name = '6B', dim = params['embeddings_dim'])
+    
+if (iscuda):
+	device_value = 0  #device = - 1 : cpu 
+else:
+	device_value = -1 #device = - 1 : cpu 
 
 
 #	if torch.cuda.is_available() is True:
@@ -245,7 +286,7 @@ if len(sys.argv) > 1:
 		#load data
 		print("Load data...")
 		#select data set 
-		train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, root_path + params["dataset"], params["fold"], root_path + params["data_folder"], params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
+		train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, root_path + params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"]), params["fold"], root_path + params["data_folder"], params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
 		#train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
@@ -272,11 +313,9 @@ if len(sys.argv) > 1:
 	# model 
 	if params['load_model']:
 		if params['load_model_name'] != None:        
-			print("Loading pre-trained model from " + params['load_model_name'] + " ...")            
-			classifier_model = load_model_path(params['load_model_name'])
+			classifier_model = load_model(params['load_model_name'])
 		else:    
-			print("Loading pre-trained model with same params ...")
-			classifier_model = load_model(params)
+			classifier_model = load_model(experiment_name)
 	else:
 		print("Init new model...")
 		if params['nn_model'] == 'RCNN':
@@ -296,9 +335,9 @@ if len(sys.argv) > 1:
 		print("Finished Train...")
 	if params['save_model']:
 		if params['save_model_name']!=None:
-			save_model_path(classifier_model, params['save_model_name'])            
+			save_model(classifier_model, params['save_model_name'])            
 		else:       
-			save_model(classifier_model, params)
+			save_model(classifier_model, experiment_name)
         
 	if params['do_eval']:        
 		# eval

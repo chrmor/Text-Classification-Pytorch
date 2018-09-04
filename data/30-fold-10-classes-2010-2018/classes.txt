@@ -1,0 +1,10 @@
+armed conflicts and attacks : 9783
+arts and culture : 2008
+business and economy : 2638
+disasters and accidents : 5575
+health : 571
+international relations : 4187
+law and crime : 5982
+politics and elections : 6640
+sport : 2544
+science and technology : 1482

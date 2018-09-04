@@ -16,7 +16,7 @@ import pickle
 import pandas as pd
 import numpy as np
 
-print("Torch version:"  + torch.__version__)
+#print("Torch version:"  + torch.__version__)
 
 seedId = 0;
 torch.manual_seed(seedId)
@@ -208,6 +208,13 @@ if __name__=='__main__':
 	"dataset": '30-fold-8-classes-2010-2018',
 	"fold": 2    
 }
+    
+#COMMAND LINE ARGUMENTS
+
+if len(sys.argv) > 1:
+	params["fold"] = int(sys.argv[1])
+	print("Command line: FOLD = " + str(params["fold"]))
+    
 	ext = '.txt'
 	model_name = str(params['nn_model']) + "_" + str(params['max_length']) + "_" + str(params['data_folder']) + "_" + params['dataset'] + "-" + str(params['fold']) + "_" + str(params['embeddings']) + "-" + str(params['embeddings_dim']) + "_es-" + str(params['num_epochs']) + "_bs-" + str(params['batch_size']) + "_lr-" + str(params['learning_rate']) + '_seed' + str(seedId)
 	log_file = "logs/" + model_name + ext

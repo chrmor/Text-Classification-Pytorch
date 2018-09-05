@@ -297,7 +297,7 @@ else:
 		#load data
 		print("Load data...")
 		#select data set 
-		train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, root_path + params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"]), params["fold"], os.path.join(root_path,params["data_folder"]), params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
+		train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, os.path.join(root_path,params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"])), params["fold"], os.path.join(root_path,params["data_folder"]), params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
 		#train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)

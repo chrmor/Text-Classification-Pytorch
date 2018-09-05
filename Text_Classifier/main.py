@@ -36,6 +36,7 @@ parser.add_argument('--save_model_name', help='the name of the trained model to 
 parser.add_argument('--num_epochs', type=int, help='number of training epochs')
 parser.add_argument('--nn_model', help='the model to train (RCNN|CNN)')
 parser.add_argument('--cuda', type=str2bool, help='Use CUDA?')
+parser.add_argument('--use_gputil', type=str2bool, help='Use GPUtil?')
 parser.add_argument('--y_start', type=int, help='The beginning year of the time range of data')
 parser.add_argument('--y_end', type=int, help='The ending year of the time range of data')
 parser.add_argument('--do_training', type=str2bool, help='Perform training? dafault: True')
@@ -48,10 +49,11 @@ seedId = 0;
 torch.manual_seed(seedId)
 
 iscuda = True
+use_gputil = True
 if args.cuda != None:
     iscuda = args.cuda
 
-if iscuda:
+if iscuda and use_gputil:
 	import GPUtil
 
 	# Get the first available GPU

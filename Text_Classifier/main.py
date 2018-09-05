@@ -224,7 +224,7 @@ if __name__=='__main__':
 	"learning_rate": 0.001,       
 	"max_length": 1000,
 	"num_epochs": 4,
-	"batch_size": 20,      
+	"batch_size": 15,      
             
 	"data_folder": 'json',
 	"start": 2010,

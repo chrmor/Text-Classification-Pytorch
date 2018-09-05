@@ -8,6 +8,7 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 		the_file.write("\nModel: " + str(model))
 		the_file.write("\nLearning rate: " + str(learnign_rate));
 		the_file.write("\nEpochs: " + str(num_epochs));
+		the_file.write("\nTraining started...");        
 		the_file.close()
     
     # gpu runnable 
@@ -67,6 +68,9 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 					the_file.write('\nDev: ' + msg)
 					the_file.close()
 				#print(predicted[:10])
+                
+	with open(log_file, 'a') as the_file:
+		the_file.write("\nTraining finished...");                
 
 def eval_treshold(test_loader, model, cuda, print_details, th):
  	#eval mode 
@@ -122,11 +126,14 @@ def eval_treshold(test_loader, model, cuda, print_details, th):
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / predictions 
  	model.train()
- 	msg = '\nTH: {:.2f} Recall: {:.2f}%({}/{}) Accuracy: {:.4f}%({}/{}) \n'.format(th, predictions/size, predictions, size, accuracy, corrects, predictions)
+ 	msg = '\nTH: {:.2f} Coverage: {:.2f}%({}/{}) Accuracy: {:.4f}%({}/{}) \n'.format(th, predictions/size, predictions, size, accuracy, corrects, predictions)
  	return msg 
 
 
 def eval_treshold_classes(label_field, test_loader, model, cuda, print_details, th):
+    
+ 	csv_rows = []
+    
  	#eval mode 
  	model.eval()
 
@@ -161,6 +168,7 @@ def eval_treshold_classes(label_field, test_loader, model, cuda, print_details, 
  				print("batch size: " + str(target.size()))
  				continue
  			prediction = torch.max(output, 1)[1].view(target.size()).data
+            
  			th_output = (torch.max(output, 1)[0] >= th)
             
  			th_prediction = []
@@ -206,20 +214,32 @@ def eval_treshold_classes(label_field, test_loader, model, cuda, print_details, 
  					accuracy_class = 100 * float(corrects_per_class[label]) / examples_per_class[label]
  					print(label + ": " + str(accuracy_class))
             
- 	
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / predictions 
+ 	coverage = predictions/size
  	model.train()
- 	msg = '\nTH: {:.2f} Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(th, predictions/size, predictions, size, accuracy, corrects, predictions)
- 	dtl_msg = '\nAccuracy per class:\n'
+    
+ 	csv_row = [th, 'all', coverage, predictions, size, accuracy, corrects.item()]
+ 	csv_rows.append(csv_row)
+    
+ 	msg = '\nTH: {:.2f} Coverage: {:.2f}({}/{})  Accuracy: {:.4f}({}/{}) \n'.format(th, coverage, predictions, size, accuracy, corrects, predictions)
+ 	dtl_msg = 'Classes:\n'
  	for label in label_field.vocab.itos[1:]:
  		if examples_per_class[label].item() == 0:
  			accuracy_class = 0
  		else:    
  			accuracy_class = 100 * float(corrects_per_class[label].item()) / examples_per_class[label].item()
- 		print(label + " : " + str(float(total_examples_per_class[label])))    
- 		dtl_msg += label + ": " + 'Recall: {:.2f}%({}/{})  Accuracy: {:.4f}%({}/{}) \n'.format(float(examples_per_class[label].item())/float(total_examples_per_class[label]), examples_per_class[label].item(), total_examples_per_class[label],  accuracy_class, corrects_per_class[label].item(), examples_per_class[label].item())
- 	return msg + dtl_msg
+ 		#print(label + " : " + str(float(total_examples_per_class[label])))    
+        
+ 		cl_coverage = float(examples_per_class[label].item())/float(total_examples_per_class[label])
+ 		cl_covered = examples_per_class[label].item()
+ 		cl_total = total_examples_per_class[label].item()
+ 		cl_correct = corrects_per_class[label].item()
+ 		csv_row = [th, label, cl_coverage, cl_covered, cl_total, accuracy_class, cl_correct]
+ 		csv_rows.append(csv_row)
+        
+ 		dtl_msg += label + ": " + 'Coverage: {:.2f}({}/{})  Accuracy: {:.4f}({}/{}) \n'.format(cl_coverage, cl_covered, cl_total,  accuracy_class, cl_correct, cl_covered)
+ 	return msg + dtl_msg, csv_rows
 
 def eval_combined_treshold_classes(label_field, test_loader, model1, model2, cuda, print_details, th):
  	#eval mode 

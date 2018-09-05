@@ -16,6 +16,7 @@ import pickle
 import pandas as pd
 import numpy as np
 import argparse
+import csv
 
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
@@ -257,9 +258,14 @@ if __name__=='__main__':
 		params["do_eval"] = args.do_eval
     
 	experiment_name = f"{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}_fold-{params['fold']}"    
-    
-log_file = "logs/" + experiment_name + ".txt"
-log_file_samples = "logs/" + experiment_name + "_SAMPLES.txt"    
+
+if params['save_model_name'] != None:
+	log_name = params['save_model_name']
+else:
+	log_name = experiment_name
+log_file = "logs/" + log_name + ".txt"
+log_file_samples = "logs/" + log_name + "_SAMPLES.txt"    
+csv_path = "csv/" + log_name + ".csv"
     
 glove = vocab.GloVe(name = '6B', dim = params['embeddings_dim'])
     
@@ -304,6 +310,8 @@ else:
 
 	if (params['do_training'] or params['do_eval']):
 		with open(log_file, 'a') as the_file:
+			if params['load_model_name'] != None:
+				the_file.write("\nLoaded pre-trained model: " + params['load_model_name'])    
 			the_file.write("\nModel: " + params['nn_model'])
 			the_file.write("\nMax length: " + str(params['max_length']))
 			the_file.write("\nbatch_size: " + str(params['batch_size']));
@@ -330,9 +338,8 @@ else:
 
 	if params['do_training']:    
 		# train 
-		print("Start Train...")
 		train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file)
-		print("Finished Train...")
+        
 	if params['save_model']:
 		if params['save_model_name']!=None:
 			save_model(classifier_model, params['save_model_name'])            
@@ -340,16 +347,26 @@ else:
 			save_model(classifier_model, experiment_name)
         
 	if params['do_eval']:        
-		# eval
+        
+		# init CSV file, write header
+		csv_file = open(csv_path,"a") 
+		csv_writer = csv.writer(csv_file, delimiter=',')
+		csv_header = ['TH','Class', 'Coverage', '#Covered', '#Total', 'Accuracy', '#Correct']
+		csv_writer.writerow(csv_header)
+        
 		print_evaluation_details = False
 		ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
-		print("Evaluation")
 		for th in ths:
-			msg = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
+			msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
 			print(msg)
+            
+			for row in csv_rows:
+				csv_writer.writerow(row)
+                
 			with open(log_file, 'a') as the_file:
-				the_file.write('\nTest: ' + msg)
-				the_file.close()
+				the_file.write('\n\nEvaluation: ' + msg)
+                
+		csv_file.close()                
             
 	if params['predict_samples']:
 		df = pd.read_csv(root_path + '/samples/wiki-events-2014_multilink_data_clean.csv')

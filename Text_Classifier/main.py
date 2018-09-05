@@ -52,6 +52,8 @@ iscuda = True
 use_gputil = True
 if args.cuda != None:
     iscuda = args.cuda
+if args.use_gputil != None:
+    use_gputil = args.use_gputil
 
 if iscuda and use_gputil:
 	import GPUtil

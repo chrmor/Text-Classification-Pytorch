@@ -283,7 +283,6 @@ if (iscuda):
 else:
 	device_value = -1 #device = - 1 : cpu 
 
-
 # to fix length : fix_length = a 
 text_field = data.Field(lower = True, batch_first = True, fix_length = params['max_length'], preprocessing = clean_str)
 label_field = data.Field(sequential = False)

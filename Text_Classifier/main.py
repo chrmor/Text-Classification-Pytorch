@@ -284,108 +284,102 @@ else:
 	device_value = -1 #device = - 1 : cpu 
 
 
-#	if torch.cuda.is_available() is True:
-#		iscuda = True
-#	else:
-#		iscuda = False
-		#device_value = -1 
+# to fix length : fix_length = a 
+text_field = data.Field(lower = True, batch_first = True, fix_length = params['max_length'], preprocessing = clean_str)
+label_field = data.Field(sequential = False)
 
-	# to fix length : fix_length = a 
-	text_field = data.Field(lower = True, batch_first = True, fix_length = params['max_length'], preprocessing = clean_str)
-	label_field = data.Field(sequential = False)
-
-	dataloader_log_file = None
-	if (params['do_training'] or params['do_eval']):
-		dataloader_log_file = log_file
-	if (True):
-		#load data
-		print("Load data...")
-		#select data set 
-		train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, os.path.join(root_path,params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"])), params["fold"], os.path.join(root_path,params["data_folder"]), params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
-		#train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
+dataloader_log_file = None
+if (params['do_training'] or params['do_eval']):
+	dataloader_log_file = log_file
+if (True):
+	#load data
+	print("Load data...")
+	#select data set 
+	train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, os.path.join(root_path,params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"])), params["fold"], os.path.join(root_path,params["data_folder"]), params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
+	#train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = MR_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 
 
-	in_channels = 1 
-	out_channels = 2
-	voca_size = len(text_field.vocab)
-	num_classes = len(label_field.vocab) - 1 
-	embed_dim = glove.vectors.size()[1]
-	kernel_sizes = [3,4,5]
+in_channels = 1 
+out_channels = 2
+voca_size = len(text_field.vocab)
+num_classes = len(label_field.vocab) - 1 
+embed_dim = glove.vectors.size()[1]
+kernel_sizes = [3,4,5]
 
-	embedding_weight = text_field.vocab.vectors
+embedding_weight = text_field.vocab.vectors
 
-	if (params['do_training'] or params['do_eval']):
-		with open(log_file, 'a') as the_file:
-			if params['load_model_name'] != None:
-				the_file.write("\nLoaded pre-trained model: " + params['load_model_name'])    
-			the_file.write("\nModel: " + params['nn_model'])
-			the_file.write("\nMax length: " + str(params['max_length']))
-			the_file.write("\nbatch_size: " + str(params['batch_size']));
-			the_file.write("\nEmbeddings: " + str(params['embeddings']));
-			the_file.close()
+if (params['do_training'] or params['do_eval']):
+	with open(log_file, 'a') as the_file:
+		if params['load_model_name'] != None:
+			the_file.write("\nLoaded pre-trained model: " + params['load_model_name'])    
+		the_file.write("\nModel: " + params['nn_model'])
+		the_file.write("\nMax length: " + str(params['max_length']))
+		the_file.write("\nbatch_size: " + str(params['batch_size']));
+		the_file.write("\nEmbeddings: " + str(params['embeddings']));
+		the_file.close()
     
-	# model 
-	if params['load_model']:
-		if params['load_model_name'] != None:        
-			classifier_model = load_model(params['load_model_name'])
-		else:    
-			classifier_model = load_model(experiment_name)
-	else:
-		print("Init new model...")
-		if params['nn_model'] == 'RCNN':
-			classifier_model = model.RCNN_Classifier(voca_size, embed_dim, params['num_hidden'], params['num_sm_hidden'], params['num_layer'], num_classes, embedding_weight,iscuda)
-		elif params['nn_model'] == 'CNN':
-			classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, params['dropout_p'], embedding_weight)
-		elif params['nn_model'] == 'RNN':
-			classifier_model = model.RNNClassifier(voca_size, embed_dim, params['num_hidden'], params['num_layer'], num_classes, embedding_weight, iscuda)
+# model 
+if params['load_model']:
+	if params['load_model_name'] != None:        
+		classifier_model = load_model(params['load_model_name'])
+	else:    
+		classifier_model = load_model(experiment_name)
+else:
+	print("Init new model...")
+	if params['nn_model'] == 'RCNN':
+		classifier_model = model.RCNN_Classifier(voca_size, embed_dim, params['num_hidden'], params['num_sm_hidden'], params['num_layer'], num_classes, embedding_weight,iscuda)
+	elif params['nn_model'] == 'CNN':
+		classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, params['dropout_p'], embedding_weight)
+	elif params['nn_model'] == 'RNN':
+		classifier_model = model.RNNClassifier(voca_size, embed_dim, params['num_hidden'], params['num_layer'], num_classes, embedding_weight, iscuda)
 
-	if iscuda:
-		classifier_model = classifier_model.cuda()
+if iscuda:
+	classifier_model = classifier_model.cuda()
 
-	if params['do_training']:    
-		# train 
-		train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file)
+if params['do_training']:    
+	# train 
+	train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file)
         
-	if params['save_model']:
-		if params['save_model_name']!=None:
-			save_model(classifier_model, params['save_model_name'])            
-		else:       
-			save_model(classifier_model, experiment_name)
+if params['save_model']:
+	if params['save_model_name']!=None:
+		save_model(classifier_model, params['save_model_name'])            
+	else:       
+		save_model(classifier_model, experiment_name)
         
-	if params['do_eval']:        
+if params['do_eval']:        
         
-		# init CSV file, write header
-		csv_file = open(csv_path,"a") 
-		csv_writer = csv.writer(csv_file, delimiter=',')
-		csv_header = ['TH','Class', 'Coverage', '#Covered', '#Total', 'Accuracy', '#Correct']
-		csv_writer.writerow(csv_header)
+	# init CSV file, write header
+	csv_file = open(csv_path,"a") 
+	csv_writer = csv.writer(csv_file, delimiter=',')
+	csv_header = ['TH','Class', 'Coverage', '#Covered', '#Total', 'Accuracy', '#Correct']
+	csv_writer.writerow(csv_header)
         
-		print_evaluation_details = False
+	print_evaluation_details = False
         
-		for th in ths:
-			msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
-			print(msg)
+	for th in ths:
+		msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
+		print(msg)
             
-			for row in csv_rows:
-				csv_writer.writerow(row)
+		for row in csv_rows:
+			csv_writer.writerow(row)
                 
-			with open(log_file, 'a') as the_file:
-				the_file.write('\n\nEvaluation: ' + msg)
+		with open(log_file, 'a') as the_file:
+			the_file.write('\n\nEvaluation: ' + msg)
                 
-		csv_file.close()                
+	csv_file.close()                
             
-	if params['predict_samples']:
-		df = pd.read_csv(os.path.join(root_path,'samples','wiki-events-2014_multilink_data_clean.csv'))
-		with open(log_file_samples, 'w') as the_file:
-			for index, row in df.iterrows():
-				desc = row['Event description']
-				text = row['News full text']
-				link = row['News link']
-				target = row['Event type']
-				the_file.write("Event:\n" + desc + "\nOnline news:\n" + link + "\nType: " + target + "\n" )        
-				msg = train.predict(text, classifier_model, text_field, label_field, iscuda)
-				the_file.write(msg + "\n\n")
+if params['predict_samples']:
+	df = pd.read_csv(os.path.join(root_path,'samples','wiki-events-2014_multilink_data_clean.csv'))
+	with open(log_file_samples, 'w') as the_file:
+		for index, row in df.iterrows():
+			desc = row['Event description']
+			text = row['News full text']
+			link = row['News link']
+			target = row['Event type']
+			the_file.write("Event:\n" + desc + "\nOnline news:\n" + link + "\nType: " + target + "\n" )        
+			msg = train.predict(text, classifier_model, text_field, label_field, iscuda)
+			the_file.write(msg + "\n\n")
 

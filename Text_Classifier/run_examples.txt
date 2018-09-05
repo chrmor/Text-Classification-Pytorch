@@ -1,0 +1,15 @@
+Example runs
+
+Evaluating a pre-trained model:
+
+python main.py --cuda False --load_model True --save_model False --num_epochs 6 --nn_model CNN --y_start 2017 --y_end 2017
+ --dataset 30-fold-8-classes --fold 1 --do_training False
+ 
+Training and evaluating a model and save it:
+
+python main.py --cuda False --load_model False --save_model True --num_epochs 6 --nn_model CNN --y_start 2017 --y_end 2017
+ --dataset 30-fold-8-classes --fold 1
+
+Further train a pre-trained model and save it:
+
+python main.py --cuda False --load_model True --load_model_name CNN_1000_glove-6B_300_3_20_0.001_dataset-30-fold-8-classes_fold-1 --save_model True --save_model_name CNN_1000_glove-6B_300_6_20_0.001_dataset-30-fold-8-classes_fold-1 --num_epochs 3 --nn_model CNN --y_start 2017 --y_end 2017 --dataset 30-fold-8-classes --do_eval False

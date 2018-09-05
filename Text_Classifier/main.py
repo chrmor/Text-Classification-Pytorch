@@ -67,17 +67,17 @@ if iscuda:
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
         
 def save_model(model, name):        
-	torch.save(model, "saved_models/" + name + ".pt") 
+	torch.save(model, os.path.join("saved_models",name + ".pt")) 
 	print(f"A model is saved successfully as {name}!")
         
 
 def load_model(name):
 	try:
 		if iscuda:
-			model = torch.load("saved_models/" + name + ".pt")
+			model = torch.load(os.path.join("saved_models",name + ".pt"))
 		else:
 			#model = torch.load(path, map_location=lambda storage, loc: storage)
-			model = torch.load("saved_models/" + name + ".pt")
+			model = torch.load(os.path.join("saved_models",name + ".pt"))
 			model = model.cpu()
 		#model = pickle.load(open(path, "rb"))
 		print(f"Model in {name} loaded successfully!")
@@ -172,7 +172,7 @@ def WE_2_data_loader(text_field, label_field, idx_path, fold, data_path, start, 
 	if (log_file!=None):   
 		with open(log_file, 'a') as the_file:
 			the_file.write('\n\ndata folder:' +  data_path)            
-			the_file.write('\n\nfold indexes:' +  idx_path + "/" + str(fold))
+			the_file.write('\n\nfold indexes:' +  os.path.join(idx_path,str(fold)))
 			the_file.write('\nlen(train)' +  str(len(train_data)))
 			the_file.write('\nlen(dev)' +  str(len(dev_data)))
 			the_file.write('\nlen(test)' + str(len(test_data)))
@@ -195,7 +195,7 @@ def clean_str(strings):
 
 if __name__=='__main__':
 
-	root_path = '../data/'
+	root_path = os.path.join('..','data')
     
 #parameters 
 	params = {
@@ -268,9 +268,9 @@ if params['save_model_name'] != None:
 	log_name = params['save_model_name']
 else:
 	log_name = experiment_name
-log_file = "logs/" + log_name + ".txt"
-log_file_samples = "logs/" + log_name + "_SAMPLES.txt"    
-csv_path = "csv/" + log_name + ".csv"
+log_file = os.path.join("logs",log_name + ".txt")
+log_file_samples = os.path.join("logs",log_name + "_SAMPLES.txt")
+csv_path = os.path.join("csv",log_name + ".csv")
     
 glove = vocab.GloVe(name = '6B', dim = params['embeddings_dim'])
     
@@ -374,7 +374,7 @@ else:
 		csv_file.close()                
             
 	if params['predict_samples']:
-		df = pd.read_csv(root_path + '/samples/wiki-events-2014_multilink_data_clean.csv')
+		df = pd.read_csv(os.path.join(root_path,'samples','wiki-events-2014_multilink_data_clean.csv'))
 		with open(log_file_samples, 'w') as the_file:
 			for index, row in df.iterrows():
 				desc = row['Event description']

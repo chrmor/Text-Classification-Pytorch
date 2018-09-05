@@ -40,6 +40,7 @@ parser.add_argument('--y_start', type=int, help='The beginning year of the time 
 parser.add_argument('--y_end', type=int, help='The ending year of the time range of data')
 parser.add_argument('--do_training', type=str2bool, help='Perform training? dafault: True')
 parser.add_argument('--do_eval', type=str2bool, help='Perform evaluation on test set? dafault: True')
+parser.add_argument('--ths', type=float, nargs='+', help='Thresholds')
 
 args = parser.parse_args()
 
@@ -230,6 +231,8 @@ if __name__=='__main__':
 	"fold": 1   
 }
     
+	ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]    
+    
 #COMMAND LINE ARGUMENTS
 
 	if args.fold != None:
@@ -256,6 +259,8 @@ if __name__=='__main__':
 		params["do_training"] = args.do_training
 	if args.do_eval != None:
 		params["do_eval"] = args.do_eval
+	if args.ths != None:
+		ths = args.ths
     
 	experiment_name = f"{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}_fold-{params['fold']}"    
 
@@ -355,7 +360,7 @@ else:
 		csv_writer.writerow(csv_header)
         
 		print_evaluation_details = False
-		ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
+        
 		for th in ths:
 			msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
 			print(msg)

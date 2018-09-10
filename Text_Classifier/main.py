@@ -19,12 +19,12 @@ import argparse
 import csv
 
 def str2bool(v):
-    if v.lower() in ('yes', 'true', 't', 'y', '1'):
-        return True
-    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
+	if v.lower() in ('yes', 'true', 't', 'y', '1'):
+		return True
+	elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+		return False
+	else:
+		raise argparse.ArgumentTypeError('Boolean value expected.')
 
 parser = argparse.ArgumentParser(description='Text Classification Experiments')
 parser.add_argument('--dataset', help='the dataset')
@@ -51,9 +51,9 @@ torch.manual_seed(seedId)
 iscuda = True
 use_gputil = True
 if args.cuda != None:
-    iscuda = args.cuda
+	iscuda = args.cuda
 if args.use_gputil != None:
-    use_gputil = args.use_gputil
+	use_gputil = args.use_gputil
 
 if iscuda and use_gputil:
 	import GPUtil
@@ -104,11 +104,8 @@ def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
 	print('len(train)', len(train_data))
 	print('len(test)', len(test_data))
 
-
 	train_loader, dev_loader, test_loader = data.BucketIterator.splits(
 		(train_data, dev_data, test_data), batch_sizes = (b_size, len(dev_data), len(test_data)), random_state=0, **kwargs)
-
-
 
 	return train_loader, dev_loader, test_loader
 
@@ -125,8 +122,6 @@ def MR_data_loader(text_field, label_field, vector, b_size, **kwargs):
 
 	train_loader, dev_loader, test_loader = data.BucketIterator.splits(
 		(train_data, dev_data, test_data), batch_sizes = (b_size, len(dev_data), len(test_data)), **kwargs)
-
-
 
 	return train_loader, dev_loader, test_loader
 

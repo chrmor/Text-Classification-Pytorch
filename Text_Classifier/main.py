@@ -7,6 +7,7 @@ import torchtext.datasets as datasets
 import torchtext.vocab as vocab
 import model 
 import train 
+import modelsio
 from data_utils.MR import MR
 from data_utils.News20 import News20
 from data_utils.WE import WE
@@ -41,6 +42,7 @@ parser.add_argument('--ths', type=float, nargs='+', help='Thresholds')
 parser.add_argument('--cuda', type=str2bool, help='Use CUDA?')
 parser.add_argument('--use_gputil', type=str2bool, help='Use GPUtil?')
 
+parser.add_argument('--num_epochs', type=int, help='Number of epochs')
 parser.add_argument('--batch_size', type=int, help='Size of batches')
 parser.add_argument('--learning_rate', type=float, help='The learning rate of the gradient descent')
 parser.add_argument('--max_length', type=int, help='max length of classifier input text in number of words')
@@ -51,6 +53,7 @@ parser.add_argument('--dropout_p', type=float, help='Dropout probability')
 parser.add_argument('--num_sm_hidden', type=int, help='Dimension of the hidden layer in SM net')
 
 parser.add_argument('--early_stop', type=str2bool, help='If true stops learning as soon as accuracy goes down on dev set')
+parser.add_argument('--patience', type=int, help='Number of further training epochs to do when accuracy goes down on dev set')
 
 
 
@@ -81,27 +84,6 @@ if iscuda and use_gputil:
 	else:
 		print(deviceIDs[0])
 		os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceIDs[0])
-        
-def save_model(model, name):        
-	torch.save(model, os.path.join("saved_models",name + ".pt")) 
-	print(f"A model is saved successfully as {name}!")
-        
-
-def load_model(name):
-	try:
-		if iscuda:
-			model = torch.load(os.path.join("saved_models",name + ".pt"))
-		else:
-			#model = torch.load(path, map_location=lambda storage, loc: storage)
-			model = torch.load(os.path.join("saved_models",name + ".pt"))
-			model = model.cpu()
-		#model = pickle.load(open(path, "rb"))
-		print(f"Model in {name} loaded successfully!")
-
-		return model
-	except:
-		print(f"No available model such as {name}.")
-		exit()
 
         
 def SST_data_loader(text_field, label_field, vector, b_size, **kwargs):
@@ -240,7 +222,8 @@ if __name__=='__main__':
 	"suffix": '_multilink_data_id_clean',
 	"dataset": '30-fold-8-classes',
 	"fold": 1,
-	"early_stop": True        
+	"early_stop": True,
+	"patience": 1    
 }
     
 	ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]    
@@ -287,6 +270,8 @@ if __name__=='__main__':
 		params["dropout_p"] = args.dropout_p
 	if args.early_stop != None:
 		params["early_stop"] = args.early_stop
+	if args.patience != None:
+		params["patience"] = args.patience
 	if args.ths != None:
 		ths = args.ths
     
@@ -347,9 +332,9 @@ if (params['do_training'] or params['do_eval']):
 # model 
 if params['load_model']:
 	if params['load_model_name'] != None:        
-		classifier_model = load_model(params['load_model_name'])
+		classifier_model = modelsio.load_model(params['load_model_name'])
 	else:    
-		classifier_model = load_model(experiment_name)
+		classifier_model = modelsio.load_model(experiment_name)
 else:
 	print("Init new model...")
 	if params['nn_model'] == 'RCNN':
@@ -364,15 +349,18 @@ if iscuda:
 
 if params['do_training']:    
 	# train 
-	train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file, params["early_stop"])
+	train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file, log_name, params["early_stop"], params["patience"])
         
 if params['save_model']:
 	if params['save_model_name']!=None:
-		save_model(classifier_model, params['save_model_name'])            
+		modelsio.save_model(classifier_model, params['save_model_name'])            
 	else:       
-		save_model(classifier_model, experiment_name)
+		modelsio.save_model(classifier_model, experiment_name)
         
 if params['do_eval']:        
+
+	if params['early_stop']:
+		classifier_model = modelsio.load_model(log_name + "_best")        
         
 	# init CSV file, write header
 	csv_file = open(csv_path,"a") 

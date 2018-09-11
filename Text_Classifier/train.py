@@ -1,8 +1,9 @@
 import torch 
 import torch.autograd as autograd
 import torch.nn as nn
+import modelsio
 
-def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batch_size, log_file, early_stop=False):
+def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batch_size, log_file, model_name, early_stop=False, patience = 1):
 
 	with open(log_file, 'a') as the_file:
 		the_file.write("\nModel: " + str(model))
@@ -29,6 +30,7 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 	optimizer = torch.optim.Adam(model.parameters(), lr = learnign_rate)
 
 	stop = False
+	max_accuracy_on_dev_set = 0.0
     
 	for epoch in range(num_epochs):
 		if early_stop and stop:
@@ -66,19 +68,21 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 					the_file.write('\n' + msg)
 					the_file.close()
 
-			if(step) % 500 == 0:
-				msg, accuracy = eval(dev_loader, model, cuda, False)
-				if max_accuracy_on_dev_set <= accuracy:
-					max_accuracy_on_dev_set = accuracy
-					stop = False
-				else:
+		if True: #Do this at each epoch
+			msg, accuracy = eval(dev_loader, model, cuda, False)
+			print(msg)
+			with open(log_file, 'a') as the_file:
+				the_file.write('\nDev: ' + msg)
+				the_file.close()
+			if max_accuracy_on_dev_set <= accuracy:
+				max_accuracy_on_dev_set = accuracy
+				modelsio.save_model(model, model_name + "_best")
+				stop = False
+				epochs_stop = patience
+			else:
+				epochs_stop -= 1
+				if epochs_stop == 0:
 					stop = True
-                    
-				print(msg)
-				with open(log_file, 'a') as the_file:
-					the_file.write('\nDev: ' + msg)
-					the_file.close()
-				#print(predicted[:10])
                 
 	with open(log_file, 'a') as the_file:
 		the_file.write("\nTraining finished...");                

@@ -213,10 +213,10 @@ if __name__=='__main__':
 	"num_layer": 25,
 	"num_hidden": 128, 
 	#param of rcnn
-	"num_sm_hidden": 100, 
+	"num_sm_hidden": 100, #PAPER : 100
 	"nn_model": 'RCNN',#options.dataset,
 	"dropout_p": 0.5,
-	"learning_rate": 0.001,       
+	"learning_rate": 0.001,  #PAPER: 0.01     
 	"max_length": 1000,
 	"num_epochs": 4,
 	"batch_size": 15,      

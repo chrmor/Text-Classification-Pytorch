@@ -33,15 +33,27 @@ parser.add_argument('--load_model', type=str2bool, help='load a model?')
 parser.add_argument('--load_model_name', help='the name of the model to be loaded')
 parser.add_argument('--save_model', type=str2bool, help='save the trained model?')
 parser.add_argument('--save_model_name', help='the name of the trained model to be saved')
-parser.add_argument('--num_epochs', type=int, help='number of training epochs')
-parser.add_argument('--nn_model', help='the model to train (RCNN|CNN)')
-parser.add_argument('--cuda', type=str2bool, help='Use CUDA?')
-parser.add_argument('--use_gputil', type=str2bool, help='Use GPUtil?')
 parser.add_argument('--y_start', type=int, help='The beginning year of the time range of data')
 parser.add_argument('--y_end', type=int, help='The ending year of the time range of data')
 parser.add_argument('--do_training', type=str2bool, help='Perform training? dafault: True')
 parser.add_argument('--do_eval', type=str2bool, help='Perform evaluation on test set? dafault: True')
 parser.add_argument('--ths', type=float, nargs='+', help='Thresholds')
+parser.add_argument('--cuda', type=str2bool, help='Use CUDA?')
+parser.add_argument('--use_gputil', type=str2bool, help='Use GPUtil?')
+
+parser.add_argument('--batch_size', type=int, help='Size of batches')
+parser.add_argument('--learning_rate', type=float, help='The learning rate of the gradient descent')
+parser.add_argument('--max_length', type=int, help='max length of classifier input text in number of words')
+parser.add_argument('--embeddings', help='Pretrained embeddings to use')
+parser.add_argument('--embeddings_dim', type=int, help='Lenght of word embedded vectors')
+parser.add_argument('--nn_model', help='the model to train (RCNN|CNN)')
+parser.add_argument('--dropout_p', type=float, help='Dropout probability')
+parser.add_argument('--num_sm_hidden', type=int, help='Dimension of the hidden layer in SM net')
+
+parser.add_argument('--early_stop', type=str2bool, help='If true stops learning as soon as accuracy goes down on dev set')
+
+
+
 
 args = parser.parse_args()
 
@@ -227,7 +239,8 @@ if __name__=='__main__':
 	"prefix": 'wiki-events-',
 	"suffix": '_multilink_data_id_clean',
 	"dataset": '30-fold-8-classes',
-	"fold": 1   
+	"fold": 1,
+	"early_stop": True        
 }
     
 	ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]    
@@ -246,6 +259,8 @@ if __name__=='__main__':
 		params["load_model_name"] = args.load_model_name
 	if args.save_model_name != None:
 		params["save_model_name"] = args.save_model_name
+	if args.batch_size != None:
+		params["batch_size"] = args.batch_size
 	if args.num_epochs != None:
 		params["num_epochs"] = args.num_epochs  
 	if args.nn_model != None:
@@ -258,10 +273,24 @@ if __name__=='__main__':
 		params["do_training"] = args.do_training
 	if args.do_eval != None:
 		params["do_eval"] = args.do_eval
+	if args.embeddings != None:
+		params["embeddings"] = args.embeddings        
+	if args.embeddings_dim != None:
+		params["embeddings_dim"] = args.embeddings_dim
+	if args.learning_rate != None:
+		params["learning_rate"] = args.learning_rate
+	if args.max_length != None:
+		params["max_length"] = args.max_length        
+	if args.num_sm_hidden != None:
+		params["num_sm_hidden"] = args.num_sm_hidden        
+	if args.dropout_p != None:
+		params["dropout_p"] = args.dropout_p
+	if args.early_stop != None:
+		params["early_stop"] = args.early_stop
 	if args.ths != None:
 		ths = args.ths
     
-	experiment_name = f"{params['nn_model']}_{params['max_length']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_dataset-{params['dataset']}_fold-{params['fold']}"    
+	experiment_name = f"{params['nn_model']}_{params['max_length']}_{params['num_sm_hidden']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_{params['dropout_p']}_dataset-{params['dataset']}_fold-{params['fold']}_earlystop-{params['early_stop']}"
 
 if params['save_model_name'] != None:
 	log_name = params['save_model_name']
@@ -335,7 +364,7 @@ if iscuda:
 
 if params['do_training']:    
 	# train 
-	train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file)
+	train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file, params["early_stop"])
         
 if params['save_model']:
 	if params['save_model_name']!=None:

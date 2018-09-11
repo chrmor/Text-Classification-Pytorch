@@ -2,7 +2,7 @@ import torch
 import torch.autograd as autograd
 import torch.nn as nn
 
-def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batch_size, log_file):
+def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batch_size, log_file, early_stop=False):
 
 	with open(log_file, 'a') as the_file:
 		the_file.write("\nModel: " + str(model))
@@ -28,8 +28,14 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 	criterion = nn.CrossEntropyLoss()
 	optimizer = torch.optim.Adam(model.parameters(), lr = learnign_rate)
 
+	stop = False
+    
 	for epoch in range(num_epochs):
+		if early_stop and stop:
+			continue        
 		for i, batch in enumerate(train_loader):
+			if early_stop and stop:
+				continue    
 			feature, target = batch.text, batch.label
 			if feature.size()[0]!= batch_size:
 				continue
@@ -59,10 +65,15 @@ def train(train_loader, dev_loader, model, cuda, learnign_rate, num_epochs, batc
 				with open(log_file, 'a') as the_file:
 					the_file.write('\n' + msg)
 					the_file.close()
-    
 
 			if(step) % 500 == 0:
-				msg = eval(dev_loader, model, cuda, False)
+				msg, accuracy = eval(dev_loader, model, cuda, False)
+				if max_accuracy_on_dev_set <= accuracy:
+					max_accuracy_on_dev_set = accuracy
+					stop = False
+				else:
+					stop = True
+                    
 				print(msg)
 				with open(log_file, 'a') as the_file:
 					the_file.write('\nDev: ' + msg)
@@ -368,7 +379,7 @@ def eval(test_loader, model, cuda, print_details):
  	size = len(test_loader.dataset)
  	accuracy = 100 * float(corrects) / size 
  	model.train()
- 	return '\nValidation - acc: {:.4f}%({}/{}) \n'.format(accuracy, corrects, size)
+ 	return '\nValidation - acc: {:.4f}({}/{}) \n'.format(accuracy, corrects, size), accuracy
 
 
 def predict(sample_text, model, text_field, label_field, iscuda):

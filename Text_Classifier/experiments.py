@@ -1,7 +1,7 @@
 import subprocess
 
 experiments_to_run = []
-fixed = "python main.py --cuda True --load_model False --save_model True --use_gputil False"
+fixed = "python main.py --cuda True --load_model False --save_model True --use_gputil False --field full-text"
 
 #experiments_to_run.append(fixed + " --nn_model CNN --field wiki-cats --learning_rate 0.001 --max_length 200 --embeddings_dim 300 --dropout_p 0.5 --batch_size 30 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0 0.5 0.9")
 

@@ -69,13 +69,13 @@ class WE_2(data.Dataset):
 						#USE ENTITY CATEGORIES
 					elif field == "wiki-cats":
 						entities = event['entities']
-						text_cats = ''
+						text = ''
 						for entity in entities:
 							avgconf = sum(float(i) for i in entity['confidence'])/len(entity['confidence'])
 							if avgconf > minConf:
-								text_cats = text_cats + ' ' + " ".join(entity['categories']).replace("_"," ")
+								text = text + ' ' + " ".join(entity['categories']).replace("_"," ")
                                 
-					examples.append(data.Example.fromlist([text_cats, label], fields))
+					examples.append(data.Example.fromlist([text, label], fields))
 
 		super(WE_2, self).__init__(examples, fields, **kwargs)
 

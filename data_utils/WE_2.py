@@ -44,7 +44,7 @@ class WE_2(data.Dataset):
 	def sort_key(ex):
 		return len(ex.text)
 
-	def __init__(self, eventIndex, path, text_field, label_field, examples = None, **kwargs):
+	def __init__(self, eventIndex, path, text_field, label_field, field, examples = None, minConf = 0.7, **kwargs):
 
 		fields = [('text', text_field), ('label', label_field)]
         
@@ -62,14 +62,26 @@ class WE_2(data.Dataset):
 				idxs = tuple(open(os.path.join(path, label, "idx.txt"), 'r'))
 				for idx in idxs:
 					event = eventIndex[int(idx)]
-					text = event['full-text']
-					examples.append(data.Example.fromlist([text, label], fields))
+                    
+					#USE FULL-TEXT
+					if field == "full-text":
+						text = event['full-text']
+						#USE ENTITY CATEGORIES
+					elif field == "wiki-cats":
+						entities = event['entities']
+						text_cats = ''
+						for entity in entities:
+							avgconf = sum(float(i) for i in entity['confidence'])/len(entity['confidence'])
+							if avgconf > minConf:
+								text_cats = text_cats + ' ' + " ".join(entity['categories']).replace("_"," ")
+                                
+					examples.append(data.Example.fromlist([text_cats, label], fields))
 
 		super(WE_2, self).__init__(examples, fields, **kwargs)
 
         
 	@classmethod
-	def splits(cls, text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix, **kwargs):
+	def splits(cls, text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix, field, **kwargs):
 	    """Create dataset objects for splits of the dataset.
 	    Arguments:
 	        text_field: The field that will be used for the sentence.
@@ -91,8 +103,8 @@ class WE_2(data.Dataset):
 	    eventIndex = getEventIndex(getEvents(start, end, data_path, prefix, suffix))    
 	    train_path = os.path.join(idx_path,str(fold),"train")
 	    test_path = os.path.join(idx_path,str(fold),"test")        
-	    train_examples = cls(eventIndex, train_path, text_field, label_field, **kwargs).examples
-	    test_examples = cls(eventIndex, test_path, text_field, label_field, **kwargs).examples       
+	    train_examples = cls(eventIndex, train_path, text_field, label_field, field, **kwargs).examples
+	    test_examples = cls(eventIndex, test_path, text_field, label_field, field, **kwargs).examples       
         
 	    random.shuffle(train_examples)
 	    dev_ratio = 0.1 
@@ -101,11 +113,11 @@ class WE_2(data.Dataset):
 	    #test_index = -1 * int(test_ratio * len(examples))
 
 	    train_data = cls(
-	    	eventIndex, train_path, text_field, label_field, examples=train_examples[:dev_index], **kwargs)
+	    	eventIndex, train_path, text_field, label_field, field, examples=train_examples[:dev_index], **kwargs)
 	    val_data = cls(
-	    	eventIndex, train_path, text_field, label_field, examples=train_examples[dev_index:], **kwargs)
+	    	eventIndex, train_path, text_field, label_field, field, examples=train_examples[dev_index:], **kwargs)
 	    test_data = cls(
-	    	eventIndex, test_path, text_field, label_field, examples=test_examples, **kwargs)
+	    	eventIndex, test_path, text_field, label_field, field, examples=test_examples, **kwargs)
 	    return tuple(d for d in (train_data, val_data, test_data)
 	                 if d is not None)
 

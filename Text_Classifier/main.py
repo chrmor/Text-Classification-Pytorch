@@ -55,6 +55,8 @@ parser.add_argument('--num_sm_hidden', type=int, help='Dimension of the hidden l
 parser.add_argument('--early_stop', type=str2bool, help='If true stops learning as soon as accuracy goes down on dev set')
 parser.add_argument('--patience', type=int, help='Number of further training epochs to do when accuracy goes down on dev set')
 
+parser.add_argument('--field', help='The name of the field to be used as text to feed into the classifier')
+
 
 
 
@@ -152,9 +154,9 @@ def WE_data_loader(text_field, label_field, vector, b_size, log_file, ds, **kwar
 			the_file.write('\nlen(test)' + str(len(test_data)))
 			the_file.close()
 
-def WE_2_data_loader(text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix, vector, b_size, log_file, **kwargs):
+def WE_2_data_loader(text_field, label_field, idx_path, fold, data_path, data_field, start, end, prefix, suffix, vector, b_size, log_file, **kwargs):
 
-	train_data, dev_data, test_data = WE_2.splits(text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix)
+	train_data, dev_data, test_data = WE_2.splits(text_field, label_field, idx_path, fold, data_path, start, end, prefix, suffix, data_field)
 	text_field.build_vocab(train_data, dev_data, test_data, vectors= vector)
 	label_field.build_vocab(train_data, dev_data, test_data, vectors = vector)
     
@@ -203,15 +205,16 @@ if __name__=='__main__':
 	#glove 6B 100 dim / glove 6B 300 dim /glove 42B 300 dim 
 	"embeddings": 'glove-6B',#options.model,
 	"embeddings_dim": 300,
+	"max_length": 1000,        
 	#parameter of rnn 
 	"num_layer": 25,
 	"num_hidden": 128, 
+	"kernel_sizes" : [2,5,10],
 	#param of rcnn
 	"num_sm_hidden": 100, #PAPER : 100
 	"nn_model": 'RCNN',#options.dataset,
 	"dropout_p": 0.5,
-	"learning_rate": 0.001,  #PAPER: 0.01     
-	"max_length": 1000,
+	"learning_rate": 0.001,  #PAPER: 0.01
 	"num_epochs": 4,
 	"batch_size": 15,      
             
@@ -223,7 +226,9 @@ if __name__=='__main__':
 	"dataset": '30-fold-8-classes',
 	"fold": 1,
 	"early_stop": True,
-	"patience": 1    
+	"patience": 1,
+        
+	"field": "full-text"        
 }
     
 	ths = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]    
@@ -272,10 +277,12 @@ if __name__=='__main__':
 		params["early_stop"] = args.early_stop
 	if args.patience != None:
 		params["patience"] = args.patience
+	if args.field != None:
+		params["field"] = args.field        
 	if args.ths != None:
 		ths = args.ths
     
-	experiment_name = f"{params['nn_model']}_{params['max_length']}_{params['num_sm_hidden']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_{params['dropout_p']}_dataset-{params['dataset']}_fold-{params['fold']}_earlystop-{params['early_stop']}"
+	experiment_name = f"{params['nn_model']}_{params['field']}_{params['max_length']}_{params['num_sm_hidden']}_{params['embeddings']}_{params['embeddings_dim']}_{params['num_epochs']}_{params['batch_size']}_{params['learning_rate']}_{params['dropout_p']}_dataset-{params['dataset']}_fold-{params['fold']}_earlystop-{params['early_stop']}"
 
 if params['save_model_name'] != None:
 	log_name = params['save_model_name']
@@ -303,7 +310,7 @@ if (True):
 	#load data
 	print("Load data...")
 	#select data set 
-	train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, os.path.join(root_path,params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"])), params["fold"], os.path.join(root_path,params["data_folder"]), params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
+	train_loader, dev_loader, test_loader = WE_2_data_loader(text_field, label_field, os.path.join(root_path,params["dataset"] + '-' + str(params["start"]) + '-' + str(params["end"])), params["fold"], os.path.join(root_path,params["data_folder"]), params['field'] ,params["start"], params["end"], params["prefix"], params["suffix"], glove, params['batch_size'], dataloader_log_file, device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader, label_list = WE_data_loader(text_field, label_field, glove, params['batch_size'], dataloader_log_file, ds = params['data_folder'] + "/" +  params['dataset'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = News_20_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
 	#train_loader, dev_loader, test_loader = SST_data_loader(text_field, label_field, glove, params['batch_size'], device = device_value, repeat = False)
@@ -315,7 +322,6 @@ out_channels = 2
 voca_size = len(text_field.vocab)
 num_classes = len(label_field.vocab) - 1 
 embed_dim = glove.vectors.size()[1]
-kernel_sizes = [3,4,5]
 
 embedding_weight = text_field.vocab.vectors
 
@@ -340,7 +346,7 @@ else:
 	if params['nn_model'] == 'RCNN':
 		classifier_model = model.RCNN_Classifier(voca_size, embed_dim, params['num_hidden'], params['num_sm_hidden'], params['num_layer'], num_classes, embedding_weight,iscuda)
 	elif params['nn_model'] == 'CNN':
-		classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, kernel_sizes, params['dropout_p'], embedding_weight)
+		classifier_model = model.CNNClassifier(in_channels, out_channels, voca_size, embed_dim, num_classes, params['kernel_sizes'], params['dropout_p'], embedding_weight)
 	elif params['nn_model'] == 'RNN':
 		classifier_model = model.RNNClassifier(voca_size, embed_dim, params['num_hidden'], params['num_layer'], num_classes, embedding_weight, iscuda)
 

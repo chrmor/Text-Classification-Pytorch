@@ -44,14 +44,20 @@ fixed = "python main.py --cuda True --load_model False --save_model True --use_g
 #DONE - INTERRUPTED
 #experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.5 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0")
 
-#TODO
-experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0")
+#DONE - INTERRRUPTED
+#experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1500 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 10 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0")
+
+#DONE - BEST
+#experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0")
 
 #TODO
-experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1500 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 10 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0")
+experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --early_stop True --patience 10 --th 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 --fold 2")
 
-#TODO
-experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.0001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --fold 1 --early_stop True --patience 10 --th 0.0")
+experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --early_stop True --patience 10 --th 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 --fold 3")
+
+experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --early_stop True --patience 10 --th 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 --fold 4")
+
+experiments_to_run.append(fixed + " --nn_model RCNN --learning_rate 0.001 --max_length 1000 --embeddings_dim 300 --dropout_p 0.1 --num_sm_hidden 100 --batch_size 15 --num_epochs 100 --y_start 2010 --y_end 2018 --dataset 30-fold-8-classes --early_stop True --patience 10 --th 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 --fold 5")
 
 for exp in experiments_to_run:
     print("Running experiment with args:\n" + exp)

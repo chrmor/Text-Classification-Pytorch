@@ -57,7 +57,7 @@ parser.add_argument('--patience', type=int, help='Number of further training epo
 
 parser.add_argument('--field', help='The name of the field to be used as text to feed into the classifier')
 
-parser.add_argument('--cuda_device', help='The ID of the CUDA device to run on')
+parser.add_argument('--cuda_device', type=int, help='The ID of the CUDA device to run on')
 
 
 
@@ -361,7 +361,7 @@ if iscuda:
 if params['do_training']:    
 	# train 
 	if (params['use_gputil']==False and params['cuda_device'] != None):
-		with torch.cuda.device(params['cuda_device']):    
+		with torch.cuda.device(params['cuda_device']s):    
 			train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file, log_name, params["early_stop"], params["patience"])
 	else:        
 		train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file, log_name, params["early_stop"], params["patience"])

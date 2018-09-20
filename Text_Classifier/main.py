@@ -360,7 +360,7 @@ if iscuda:
 
 if params['do_training']:    
 	# train 
-	if (params['use_gputil']==False and params['cuda_device'] != None):
+	if (use_gputil==False and params['cuda_device'] != None):
 		with torch.cuda.device(params['cuda_device']):    
 			train.train(train_loader, dev_loader, classifier_model, iscuda, params['learning_rate'], params['num_epochs'], params['batch_size'], log_file, log_name, params["early_stop"], params["patience"])
 	else:        

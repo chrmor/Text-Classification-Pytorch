@@ -1,0 +1,233 @@
+
+
+data folder:../data/json
+
+fold indexes:../data/30-fold-8-classes-2010-2018/25
+len(train)26393
+len(dev)2932
+len(test)7327
+Model: RCNN
+Max length: 1000
+batch_size: 15
+Embeddings: glove-6B
+Model: RCNN_Classifier(
+  (embed): Embedding(477582, 300)
+  (bi_lstm): LSTM(300, 128, num_layers=25, batch_first=True, bidirectional=True)
+  (sm_fc): Linear(in_features=556, out_features=100, bias=True)
+  (fc): Linear(in_features=100, out_features=8, bias=True)
+)
+Learning rate: 0.001
+Epochs: 100
+Training started...
+Epoch [1/100], Steps [100/176000], Loss: 1.8177
+Epoch [1/100], Steps [200/176000], Loss: 1.6820
+Epoch [1/100], Steps [300/176000], Loss: 1.8199
+Epoch [1/100], Steps [400/176000], Loss: 1.4026
+Epoch [1/100], Steps [500/176000], Loss: 1.5231
+Epoch [1/100], Steps [600/176000], Loss: 1.5631
+Epoch [1/100], Steps [700/176000], Loss: 1.5424
+Epoch [1/100], Steps [800/176000], Loss: 1.5365
+Epoch [1/100], Steps [900/176000], Loss: 1.6588
+Epoch [1/100], Steps [1000/176000], Loss: 1.4963
+Epoch [1/100], Steps [1100/176000], Loss: 1.4670
+Epoch [1/100], Steps [1200/176000], Loss: 1.4757
+Epoch [1/100], Steps [1300/176000], Loss: 1.4612
+Epoch [1/100], Steps [1400/176000], Loss: 1.4666
+Epoch [1/100], Steps [1500/176000], Loss: 1.4595
+Epoch [1/100], Steps [1600/176000], Loss: 1.6550
+Epoch [1/100], Steps [1700/176000], Loss: 1.4379
+Dev: 
+Validation - acc: 78.8540(2312/2932) 
+
+Epoch [2/100], Steps [1800/176000], Loss: 1.6827
+Epoch [2/100], Steps [1900/176000], Loss: 1.3422
+Epoch [2/100], Steps [2000/176000], Loss: 1.4317
+Epoch [2/100], Steps [2100/176000], Loss: 1.3954
+Epoch [2/100], Steps [2200/176000], Loss: 1.6756
+Epoch [2/100], Steps [2300/176000], Loss: 1.3665
+Epoch [2/100], Steps [2400/176000], Loss: 1.2948
+Epoch [2/100], Steps [2500/176000], Loss: 1.6116
+Epoch [2/100], Steps [2600/176000], Loss: 1.5203
+Epoch [2/100], Steps [2700/176000], Loss: 1.4954
+Epoch [2/100], Steps [2800/176000], Loss: 1.4128
+Epoch [2/100], Steps [2900/176000], Loss: 1.4356
+Epoch [2/100], Steps [3000/176000], Loss: 1.3523
+Epoch [2/100], Steps [3100/176000], Loss: 1.4092
+Epoch [2/100], Steps [3200/176000], Loss: 1.3963
+Epoch [2/100], Steps [3300/176000], Loss: 1.3182
+Epoch [2/100], Steps [3400/176000], Loss: 1.4092
+Epoch [2/100], Steps [3500/176000], Loss: 1.4205
+Dev: 
+Validation - acc: 83.7312(2455/2932) 
+
+Epoch [3/100], Steps [3600/176000], Loss: 1.3129
+Epoch [3/100], Steps [3700/176000], Loss: 1.4524
+Epoch [3/100], Steps [3800/176000], Loss: 1.4012
+Epoch [3/100], Steps [3900/176000], Loss: 1.3636
+Epoch [3/100], Steps [4000/176000], Loss: 1.3536
+Epoch [3/100], Steps [4100/176000], Loss: 1.3462
+Epoch [3/100], Steps [4200/176000], Loss: 1.3191
+Epoch [3/100], Steps [4300/176000], Loss: 1.3124
+Epoch [3/100], Steps [4400/176000], Loss: 1.3386
+Epoch [3/100], Steps [4500/176000], Loss: 1.2758
+Epoch [3/100], Steps [4600/176000], Loss: 1.3654
+Epoch [3/100], Steps [4700/176000], Loss: 1.4185
+Epoch [3/100], Steps [4800/176000], Loss: 1.3953
+Epoch [3/100], Steps [4900/176000], Loss: 1.3210
+Epoch [3/100], Steps [5000/176000], Loss: 1.3614
+Epoch [3/100], Steps [5100/176000], Loss: 1.3530
+Epoch [3/100], Steps [5200/176000], Loss: 1.3298
+Dev: 
+Validation - acc: 83.3561(2444/2932) 
+
+Epoch [4/100], Steps [5300/176000], Loss: 1.3913
+Epoch [4/100], Steps [5400/176000], Loss: 1.3520
+Epoch [4/100], Steps [5500/176000], Loss: 1.2795
+Epoch [4/100], Steps [5600/176000], Loss: 1.3781
+Epoch [4/100], Steps [5700/176000], Loss: 1.4014
+Epoch [4/100], Steps [5800/176000], Loss: 1.3418
+Epoch [4/100], Steps [5900/176000], Loss: 1.2839
+Epoch [4/100], Steps [6000/176000], Loss: 1.2816
+Epoch [4/100], Steps [6100/176000], Loss: 1.2756
+Epoch [4/100], Steps [6200/176000], Loss: 1.2912
+Epoch [4/100], Steps [6300/176000], Loss: 1.4054
+Epoch [4/100], Steps [6400/176000], Loss: 1.4079
+Epoch [4/100], Steps [6500/176000], Loss: 1.2784
+Epoch [4/100], Steps [6600/176000], Loss: 1.4054
+Epoch [4/100], Steps [6700/176000], Loss: 1.3389
+Epoch [4/100], Steps [6800/176000], Loss: 1.4400
+Epoch [4/100], Steps [6900/176000], Loss: 1.4117
+Epoch [4/100], Steps [7000/176000], Loss: 1.3858
+Dev: 
+Validation - acc: 83.0832(2436/2932) 
+
+Training finished...
+
+Evaluation: 
+TH: 0.00 Coverage: 1.00(7327/7327)  Accuracy: 83.0353(6084/7327) 
+Classes:
+armed conflicts and attacks: Coverage: 1.00(1956/1956)  Accuracy: 88.2413(1726/1956) 
+politics and elections: Coverage: 1.00(1328/1328)  Accuracy: 80.4217(1068/1328) 
+law and crime: Coverage: 1.00(1196/1196)  Accuracy: 73.2441(876/1196) 
+disasters and accidents: Coverage: 1.00(1115/1115)  Accuracy: 91.4798(1020/1115) 
+business and economy: Coverage: 1.00(527/527)  Accuracy: 77.6091(409/527) 
+sport: Coverage: 1.00(508/508)  Accuracy: 94.0945(478/508) 
+arts and culture: Coverage: 1.00(401/401)  Accuracy: 68.5786(275/401) 
+science and technology: Coverage: 1.00(296/296)  Accuracy: 78.3784(232/296) 
+
+
+Evaluation: 
+TH: 0.10 Coverage: 1.00(7327/7327)  Accuracy: 82.9944(6081/7327) 
+Classes:
+armed conflicts and attacks: Coverage: 1.00(1956/1956)  Accuracy: 88.1902(1725/1956) 
+politics and elections: Coverage: 1.00(1328/1328)  Accuracy: 80.4217(1068/1328) 
+law and crime: Coverage: 1.00(1196/1196)  Accuracy: 73.2441(876/1196) 
+disasters and accidents: Coverage: 1.00(1115/1115)  Accuracy: 91.4798(1020/1115) 
+business and economy: Coverage: 1.00(527/527)  Accuracy: 77.4194(408/527) 
+sport: Coverage: 1.00(508/508)  Accuracy: 94.2913(479/508) 
+arts and culture: Coverage: 1.00(401/401)  Accuracy: 68.0798(273/401) 
+science and technology: Coverage: 1.00(296/296)  Accuracy: 78.3784(232/296) 
+
+
+Evaluation: 
+TH: 0.20 Coverage: 1.00(7327/7327)  Accuracy: 83.0081(6082/7327) 
+Classes:
+armed conflicts and attacks: Coverage: 1.00(1956/1956)  Accuracy: 88.1902(1725/1956) 
+politics and elections: Coverage: 1.00(1328/1328)  Accuracy: 80.4217(1068/1328) 
+law and crime: Coverage: 1.00(1196/1196)  Accuracy: 73.2441(876/1196) 
+disasters and accidents: Coverage: 1.00(1115/1115)  Accuracy: 91.3901(1019/1115) 
+business and economy: Coverage: 1.00(527/527)  Accuracy: 77.6091(409/527) 
+sport: Coverage: 1.00(508/508)  Accuracy: 94.2913(479/508) 
+arts and culture: Coverage: 1.00(401/401)  Accuracy: 68.3292(274/401) 
+science and technology: Coverage: 1.00(296/296)  Accuracy: 78.3784(232/296) 
+
+
+Evaluation: 
+TH: 0.30 Coverage: 1.00(7326/7327)  Accuracy: 83.0057(6081/7326) 
+Classes:
+armed conflicts and attacks: Coverage: 1.00(1956/1956)  Accuracy: 88.1902(1725/1956) 
+politics and elections: Coverage: 1.00(1328/1328)  Accuracy: 80.3464(1067/1328) 
+law and crime: Coverage: 1.00(1195/1196)  Accuracy: 73.3054(876/1195) 
+disasters and accidents: Coverage: 1.00(1115/1115)  Accuracy: 91.4798(1020/1115) 
+business and economy: Coverage: 1.00(527/527)  Accuracy: 77.6091(409/527) 
+sport: Coverage: 1.00(508/508)  Accuracy: 94.2913(479/508) 
+arts and culture: Coverage: 1.00(401/401)  Accuracy: 68.0798(273/401) 
+science and technology: Coverage: 1.00(296/296)  Accuracy: 78.3784(232/296) 
+
+
+Evaluation: 
+TH: 0.40 Coverage: 0.99(7280/7327)  Accuracy: 83.3242(6066/7280) 
+Classes:
+armed conflicts and attacks: Coverage: 1.00(1954/1956)  Accuracy: 88.2805(1725/1954) 
+politics and elections: Coverage: 0.99(1316/1328)  Accuracy: 80.8511(1064/1316) 
+law and crime: Coverage: 0.99(1185/1196)  Accuracy: 73.5021(871/1185) 
+disasters and accidents: Coverage: 0.99(1107/1115)  Accuracy: 91.9603(1018/1107) 
+business and economy: Coverage: 0.99(523/527)  Accuracy: 78.2027(409/523) 
+sport: Coverage: 1.00(507/508)  Accuracy: 94.2801(478/507) 
+arts and culture: Coverage: 0.98(394/401)  Accuracy: 68.2741(269/394) 
+science and technology: Coverage: 0.99(294/296)  Accuracy: 78.9116(232/294) 
+
+
+Evaluation: 
+TH: 0.50 Coverage: 0.98(7175/7327)  Accuracy: 84.0418(6030/7175) 
+Classes:
+armed conflicts and attacks: Coverage: 0.99(1934/1956)  Accuracy: 88.7797(1717/1934) 
+politics and elections: Coverage: 0.98(1296/1328)  Accuracy: 81.6358(1058/1296) 
+law and crime: Coverage: 0.97(1161/1196)  Accuracy: 74.2463(862/1161) 
+disasters and accidents: Coverage: 0.99(1100/1115)  Accuracy: 92.3636(1016/1100) 
+business and economy: Coverage: 0.97(512/527)  Accuracy: 79.1016(405/512) 
+sport: Coverage: 0.99(503/508)  Accuracy: 94.6322(476/503) 
+arts and culture: Coverage: 0.95(380/401)  Accuracy: 69.7368(265/380) 
+science and technology: Coverage: 0.98(289/296)  Accuracy: 79.9308(231/289) 
+
+
+Evaluation: 
+TH: 0.60 Coverage: 0.95(6935/7327)  Accuracy: 85.3641(5920/6935) 
+Classes:
+armed conflicts and attacks: Coverage: 0.97(1888/1956)  Accuracy: 89.9894(1699/1888) 
+politics and elections: Coverage: 0.93(1240/1328)  Accuracy: 82.9032(1028/1240) 
+law and crime: Coverage: 0.93(1108/1196)  Accuracy: 75.6318(838/1108) 
+disasters and accidents: Coverage: 0.97(1082/1115)  Accuracy: 93.3457(1010/1082) 
+business and economy: Coverage: 0.94(493/527)  Accuracy: 80.1217(395/493) 
+sport: Coverage: 0.97(492/508)  Accuracy: 95.3252(469/492) 
+arts and culture: Coverage: 0.88(354/401)  Accuracy: 71.7514(254/354) 
+science and technology: Coverage: 0.94(278/296)  Accuracy: 81.6547(227/278) 
+
+
+Evaluation: 
+TH: 0.70 Coverage: 0.91(6654/7327)  Accuracy: 86.8801(5781/6654) 
+Classes:
+armed conflicts and attacks: Coverage: 0.93(1823/1956)  Accuracy: 91.4975(1668/1823) 
+politics and elections: Coverage: 0.89(1186/1328)  Accuracy: 84.2327(999/1186) 
+law and crime: Coverage: 0.87(1044/1196)  Accuracy: 77.2031(806/1044) 
+disasters and accidents: Coverage: 0.95(1057/1115)  Accuracy: 94.5128(999/1057) 
+business and economy: Coverage: 0.88(463/527)  Accuracy: 82.0734(380/463) 
+sport: Coverage: 0.95(481/508)  Accuracy: 96.6736(465/481) 
+arts and culture: Coverage: 0.85(339/401)  Accuracy: 73.1563(248/339) 
+science and technology: Coverage: 0.88(261/296)  Accuracy: 82.7586(216/261) 
+
+
+Evaluation: 
+TH: 0.80 Coverage: 0.87(6352/7327)  Accuracy: 88.2872(5608/6352) 
+Classes:
+armed conflicts and attacks: Coverage: 0.91(1774/1956)  Accuracy: 92.6719(1644/1774) 
+politics and elections: Coverage: 0.84(1117/1328)  Accuracy: 85.7654(958/1117) 
+law and crime: Coverage: 0.82(981/1196)  Accuracy: 78.4913(770/981) 
+disasters and accidents: Coverage: 0.92(1022/1115)  Accuracy: 95.6947(978/1022) 
+business and economy: Coverage: 0.83(435/527)  Accuracy: 83.6782(364/435) 
+sport: Coverage: 0.92(467/508)  Accuracy: 97.6445(456/467) 
+arts and culture: Coverage: 0.76(306/401)  Accuracy: 73.5294(225/306) 
+science and technology: Coverage: 0.84(250/296)  Accuracy: 85.2000(213/250) 
+
+
+Evaluation: 
+TH: 0.90 Coverage: 0.81(5910/7327)  Accuracy: 90.4569(5346/5910) 
+Classes:
+armed conflicts and attacks: Coverage: 0.86(1681/1956)  Accuracy: 94.5271(1589/1681) 
+politics and elections: Coverage: 0.78(1042/1328)  Accuracy: 88.1958(919/1042) 
+law and crime: Coverage: 0.73(873/1196)  Accuracy: 80.9851(707/873) 
+disasters and accidents: Coverage: 0.88(986/1115)  Accuracy: 96.3489(950/986) 
+business and economy: Coverage: 0.74(392/527)  Accuracy: 85.9694(337/392) 
+sport: Coverage: 0.89(450/508)  Accuracy: 98.6667(444/450) 
+arts and culture: Coverage: 0.63(253/401)  Accuracy: 77.8656(197/253) 
+science and technology: Coverage: 0.79(233/296)  Accuracy: 87.1245(203/233) 

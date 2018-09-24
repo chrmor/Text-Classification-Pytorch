@@ -386,7 +386,11 @@ if params['do_eval']:
 	print_evaluation_details = False
         
 	for th in ths:
-		msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
+		if (use_gputil==False and params['cuda_device'] != None):
+			with torch.cuda.device(params['cuda_device']):            
+				msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
+		else:
+			msg, csv_rows = train.eval_treshold_classes(label_field, test_loader, classifier_model, iscuda, print_evaluation_details, th) 
 		print(msg)
             
 		for row in csv_rows:
